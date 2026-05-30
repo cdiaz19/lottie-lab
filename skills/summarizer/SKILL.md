@@ -1,0 +1,22 @@
+# SummarizerSkill
+
+## What it does
+One sentence description.
+
+## Input
+| Field | Type | Required | Description |
+|---|---|---|---|
+| text | str | yes | Input text |
+
+## Output
+| Field | Type | Description |
+|---|---|---|
+| result | str | Processed result |
+
+## Side effects
+None.
+
+## Examples
+### Example 1
+Input: `{"text": "hello"}`
+Output: `{"result": "hello"}`
