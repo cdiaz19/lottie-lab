@@ -3,7 +3,8 @@
 > A Lottie project. This file is read automatically by all AI tools.
 
 ## Agents
-_None yet — scaffold one with `lottie create agent <name>`._
+- **DigestAgent** — `agents/digest/`
 
 ## Skills
-_None yet — scaffold one with `lottie create skill <name>`._
+- **SummarizerSkill** — `skills/summarizer/`
+- **SummarizerSkill** — `skills/summarizer/`
