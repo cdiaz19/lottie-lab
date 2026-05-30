@@ -1,0 +1,5 @@
+# Base governance policy. Rules: allow / deny / escalate.
+name: base
+allow: []
+deny: []
+escalate: []

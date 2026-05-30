@@ -1,0 +1,19 @@
+# API keys
+.env
+
+# Lottie runtime
+.lottie/
+
+# Private AI context
+.private-journey/
+.claude/*
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.ruff_cache/
+dist/
+*.egg-info/
