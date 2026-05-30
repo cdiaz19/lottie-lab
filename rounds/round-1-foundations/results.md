@@ -52,8 +52,9 @@
 
 ## Benchmark summary
 
-> Run `lottie benchmark agent digest` and paste output here once implemented.
-> `lottie benchmark` is deferred to a later Phase 0 increment — not yet available.
+> Run `lottie benchmark agent digest`
+
+<img width="1266" height="744" alt="image" src="https://github.com/user-attachments/assets/559c9bd7-ffed-4d5c-8807-68a5c5cc828e" />
 
 ---
 
