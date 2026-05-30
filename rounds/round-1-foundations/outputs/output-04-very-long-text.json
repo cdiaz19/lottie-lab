@@ -1,0 +1,3 @@
+{
+  "result": "## Summary\n\nYour message is a **repeated stress test phrase** sent 5 times, designed to verify that DigestAgent can handle long inputs **without crashing or truncating content**.\n\n**Key points identified:**\n- ✅ Input received in full\n- ✅ No crashes detected\n- ✅ Content processed without silent truncation\n- 🔁 The phrase was repeated **5 times** — all instances acknowledged\n\n**Core message of the input:**\n> A stress test for the digest/summarizer skill to confirm robustness with verbose or repetitive long-form input.\n\nThe system handled this successfully. Let me know if you'd like to push the test further! 🚀"
+}
