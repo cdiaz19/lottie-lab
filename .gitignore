@@ -1,14 +1,7 @@
-# API keys
 .env
-
-# Lottie runtime
 .lottie/
-
-# Private AI context
 .private-journey/
-.claude/*
-
-# Python
+.claude/settings.local.json
 .venv/
 __pycache__/
 *.pyc
