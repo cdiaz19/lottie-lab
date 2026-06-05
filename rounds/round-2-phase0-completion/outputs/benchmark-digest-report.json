@@ -1,0 +1,48 @@
+{
+  "agent": "digest",
+  "providers": [
+    {
+      "provider": "anthropic/claude-sonnet-4-6",
+      "case_count": 3,
+      "accuracy": 1.0,
+      "success_rate": 1.0,
+      "latency_p50_ms": 7033.943417016417,
+      "latency_p95_ms": 7483.91479201382,
+      "mean_cost_usd": 0.004122,
+      "total_input_tokens": 117,
+      "total_output_tokens": 801,
+      "cases": [
+        {
+          "name": "simple topic returns non-empty result",
+          "passed": true,
+          "success": true,
+          "latency_ms": 7033.943417016417,
+          "input_tokens": 42,
+          "output_tokens": 285,
+          "cost_usd": 0.004401,
+          "error": null
+        },
+        {
+          "name": "result mentions language",
+          "passed": true,
+          "success": true,
+          "latency_ms": 7483.91479201382,
+          "input_tokens": 38,
+          "output_tokens": 351,
+          "cost_usd": 0.005379,
+          "error": null
+        },
+        {
+          "name": "short factual query returns result",
+          "passed": true,
+          "success": true,
+          "latency_ms": 3981.2750830315053,
+          "input_tokens": 37,
+          "output_tokens": 165,
+          "cost_usd": 0.002586,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

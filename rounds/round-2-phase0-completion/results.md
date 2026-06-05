@@ -50,11 +50,14 @@
 ## lottie benchmark agent digest
 
 ### Ran successfully
-- Status: ⏳
+- Status: 3/3 cases
 - JSONL path: `.lottie/benchmarks/digest.jsonl`
-- All 11 metrics present: ⏳
-- Version matches git commit: ⏳
+- All 11 metrics present: ✅
+- Version matches git commit: ✅
 - Output:
+p50: 7034ms, p95: 7484ms
+$0.0041/run
+117 input / 801 output tokens
 
 ---
 

@@ -1,0 +1,21 @@
+cases:
+  - name: simple topic returns non-empty result
+    input:
+      query: "What is a multi-agent AI system?"
+    expect:
+      contains:
+        result: "agent"
+
+  - name: result mentions language
+    input:
+      query: "Explain large language models"
+    expect:
+      contains:
+        result: "language"
+
+  - name: short factual query returns result
+    input:
+      query: "What is Python?"
+    expect:
+      contains:
+        result: "Python"
