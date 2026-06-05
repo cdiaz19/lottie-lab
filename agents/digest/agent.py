@@ -10,6 +10,8 @@ class DigestAgent(BaseAgent[DigestAgentInput, DigestAgentOutput]):
     """LLM-backed agent. Replace `_execute` with real reasoning."""
 
     def _execute(self, data: DigestAgentInput) -> DigestAgentOutput:
+        if not data.query.strip():
+            raise ValueError("query cannot be empty")
         response = self.complete(
             [
                 Message(role="system", content=SYSTEM_PROMPT),

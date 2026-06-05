@@ -24,3 +24,26 @@ def test_digest_handles_empty_query() -> None:
     result = agent.run(DigestAgentInput(query=""))
     assert isinstance(result, DigestAgentOutput)
     assert result.result == "fallback"
+
+
+def test_digest_rejects_empty_query() -> None:
+    import pytest
+    from lottie.llm import MockLLMProvider
+    agent = DigestAgent(llm=MockLLMProvider(["should not reach"]))
+    with pytest.raises(ValueError, match="query cannot be empty"):
+        agent.run(DigestAgentInput(query=""))
+
+
+def test_digest_rejects_whitespace_query() -> None:
+    import pytest
+    from lottie.llm import MockLLMProvider
+    agent = DigestAgent(llm=MockLLMProvider(["should not reach"]))
+    with pytest.raises(ValueError, match="query cannot be empty"):
+        agent.run(DigestAgentInput(query="   "))
+
+def test_digest_handles_empty_query() -> None:
+    import pytest
+    from lottie.llm import MockLLMProvider
+    agent = DigestAgent(llm=MockLLMProvider(["fallback"]))
+    with pytest.raises(ValueError, match="query cannot be empty"):
+        agent.run(DigestAgentInput(query=""))
