@@ -8,4 +8,3 @@
 
 ## Skills
 - **SummarizerSkill** — `skills/summarizer/`
-- **SummarizerSkill** — `skills/summarizer/`

@@ -25,10 +25,11 @@ Each round maps to a Lottie phase. A round doesn't close until every item on its
 |-------|-------|-------|--------|
 | [Round 1](rounds/round-1-foundations/) | Phase 0 | Foundations — CLI, BaseAgent, BaseSkill, first agent end-to-end | Complete |
 | [Round 2](rounds/round-2-phase0-completion/) | Phase 0 | Registry, benchmark, KI-01 fix, second agent | Complete |
-| Round 3 | Phase 1 | Knowledge — document ingest, RAG pipeline, knowledge graph | ⏳ Pending |
-| Round 4 | Phase 2 | Multi-agent mesh — LangGraph, supervisor → workers, parallel runs | ⏳ Pending |
-| Round 5 | Phase 3 | Governance — audit trail, policy engine, security layer | ⏳ Pending |
-| Round 6 | Phase 4 | Integration — MCP server, OpenAI-compat API | ⏳ Pending |
+| [Round 3](rounds/round-3-serve-core/) | Phase 0 | Serve core (`AgentService`), memory stubs, security write-gate — Phase 0 closed | Complete |
+| Round 4 | Phase 1 | Knowledge — document ingest, RAG pipeline, knowledge graph | ⏳ Pending |
+| Round 5 | Phase 2 | Multi-agent mesh — LangGraph, supervisor → workers, parallel runs | ⏳ Pending |
+| Round 6 | Phase 3 | Governance — audit trail, policy engine, security layer | ⏳ Pending |
+| Round 7 | Phase 4 | Integration — MCP server, OpenAI-compat API | ⏳ Pending |
 
 ---
 
@@ -59,6 +60,24 @@ Results logged in [`rounds/round-1-foundations/results.md`](rounds/round-1-found
 **Results:** 11/11 tests · 100% coverage · 2 agents in registry
 
 Results logged in [`rounds/round-2-phase0-completion/results.md`](rounds/round-2-phase0-completion/results.md).
+
+---
+
+## Round 3 - Serve Core - Complete
+
+**What was tested:** transport-agnostic serving core (`AgentService`), the serve-path security gate, the Phase 0 memory stubs, and the rule-13 security write-gate. Closes Phase 0.
+
+**Serving core:** `AgentService.list_agents()` → `["digest", "reviewer"]` (import-free) · `run_agent("digest", payload)` → `RunResult` with latency, input/output tokens, and cost. Errors map to four typed exceptions: `AgentNotFoundError`, `InvalidInputError`, `AgentLoadError`, `AgentExecutionError`.
+
+**Memory stubs:** `BaseAgent.memory` defaults to `NullMemoryClient` · `memory/schema.py` defines all 7 schemas · `MockMemoryClient` / `MockMemoryAgent` for store-free tests.
+
+**Write-gate (rule-13):** `guard_and_write` runs SecretDetection → CodeSecurityScan → mypy → ruff; any failure removes the target dir — no partial/unsafe code survives.
+
+**Results:** 224/224 tests · 99% coverage · serve 15, memory 18, security 17.
+
+> **Caveat:** the serve-path `SecurityGate` chokepoint is wired (input before agent, output before return, order verified) and is constructor-injectable, but the **default gate is identity** — real input/output scanning lands in Phase 1. Injection blocking is demonstrated with a `BlockingGate` subclass, not active on the default path yet.
+
+Results logged in [`rounds/round-3-serve-core/results.md`](rounds/round-3-serve-core/results.md).
 
 ---
 

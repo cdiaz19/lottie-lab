@@ -1,0 +1,28 @@
+{
+  "list_agents": [
+    "digest",
+    "reviewer"
+  ],
+  "digest_happy": {
+    "type": "RunResult",
+    "agent": "digest",
+    "latency_ms": 8437.3,
+    "input_tokens": 38,
+    "output_tokens": 392,
+    "cost_usd": 0.005994,
+    "output_keys": [
+      "result"
+    ],
+    "result_chars": 1408
+  },
+  "error_mapping": {
+    "unknown_agent": "AgentNotFoundError",
+    "bad_payload": "InvalidInputError",
+    "empty_query": "AgentExecutionError"
+  },
+  "gate": {
+    "default_gate": "identity (passes through)",
+    "identity_passthrough": true,
+    "blocking_gate_injection": "InvalidInputError"
+  }
+}

@@ -1,0 +1,16 @@
+Round 3 — verify run (lottie-orchestrator @ 9acb48b, PR #4 merged)
+venv: lottie-orchestrator/.venv  (python 3.12.13, pytest 9.0.3)
+
+pytest src/lottie/serve     -v   : 15 passed
+pytest src/lottie/memory    -v   : 18 passed
+pytest src/lottie/security  -v   : 17 passed
+pytest -q  (full regression)     : 224 passed in ~71s
+pytest --cov=lottie              : TOTAL coverage 99%  (>= 80% gate)
+
+Per-module coverage (serve/security):
+  serve/service.py    96%   (84-85)
+  serve/schema.py    100%
+  serve/security.py  100%
+  security/write_gate.py 94% (71-72)
+  security/validator.py  93% (23)
+No API keys used for the suite (MockLLMProvider). Live smoke used .env keys.

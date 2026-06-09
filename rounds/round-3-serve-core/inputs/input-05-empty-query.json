@@ -1,0 +1,1 @@
+{ "_case": "error", "agent": "digest", "payload": { "query": "   " }, "_expect": "AgentExecutionError" }
