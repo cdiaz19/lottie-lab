@@ -1,0 +1,204 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+testpaths: src, skills, agents, tests
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 610 items
+
+src/lottie/benchmark/tests/test_benchmark_research.py .....              [  0%]
+src/lottie/benchmark/tests/test_runner.py .......                        [  1%]
+src/lottie/benchmark/tests/test_schema.py .....                          [  2%]
+src/lottie/cli/tests/test_benchmark.py .....                             [  3%]
+src/lottie/cli/tests/test_create.py ...................                  [  6%]
+src/lottie/cli/tests/test_doctor.py ...                                  [  7%]
+src/lottie/cli/tests/test_init.py ..................                     [ 10%]
+src/lottie/cli/tests/test_knowledge.py ........................          [ 14%]
+src/lottie/cli/tests/test_memory_cli.py ...........                      [ 15%]
+src/lottie/cli/tests/test_registry.py ..........                         [ 17%]
+src/lottie/cli/tests/test_run.py .......                                 [ 18%]
+src/lottie/cli/tests/test_status.py ...                                  [ 19%]
+src/lottie/core/tests/test_base_agent.py .......                         [ 20%]
+src/lottie/core/tests/test_base_skill.py .....                           [ 21%]
+src/lottie/core/tests/test_metrics.py .......                            [ 22%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py ......... [ 23%]
+...............                                                          [ 26%]
+src/lottie/knowledge/embeddings/tests/test_mock.py ..................    [ 29%]
+src/lottie/knowledge/store/tests/test_chroma_store.py .................. [ 32%]
+......................                                                   [ 35%]
+src/lottie/knowledge/store/tests/test_factory.py ....                    [ 36%]
+src/lottie/knowledge/store/tests/test_memory_store.py .................. [ 39%]
+.......................                                                  [ 43%]
+src/lottie/knowledge/tests/test_frontmatter.py ......................... [ 47%]
+                                                                         [ 47%]
+src/lottie/knowledge/tests/test_graph.py ............................... [ 52%]
+.                                                                        [ 52%]
+src/lottie/knowledge/tests/test_index.py .....                           [ 53%]
+src/lottie/knowledge/tests/test_manifest.py .........                    [ 54%]
+src/lottie/knowledge/tests/test_schema.py ........                       [ 56%]
+src/lottie/llm/tests/test_litellm_provider.py ......                     [ 57%]
+src/lottie/llm/tests/test_llm_base.py .......                            [ 58%]
+src/lottie/llm/tests/test_mock_provider.py ........                      [ 59%]
+src/lottie/memory/tests/test_memory_agent.py ....                        [ 60%]
+src/lottie/memory/tests/test_mock_client.py ........                     [ 61%]
+src/lottie/memory/tests/test_schema.py ......                            [ 62%]
+src/lottie/project/tests/test_config.py .....                            [ 63%]
+src/lottie/project/tests/test_discovery.py ..............                [ 65%]
+src/lottie/project/tests/test_lottie_md.py ...                           [ 66%]
+src/lottie/scaffold/tests/test_desc_templates.py ....                    [ 66%]
+src/lottie/scaffold/tests/test_generate_from_desc.py ..                  [ 67%]
+src/lottie/scaffold/tests/test_generator.py ..............               [ 69%]
+src/lottie/scaffold/tests/test_plan_schema.py .....                      [ 70%]
+src/lottie/scaffold/tests/test_renderer.py .......                       [ 71%]
+src/lottie/scaffold/tests/test_scaffolder_agent.py ....                  [ 71%]
+src/lottie/security/tests/test_code_scanner.py ...                       [ 72%]
+src/lottie/security/tests/test_injection_scanner.py ...................  [ 75%]
+src/lottie/security/tests/test_schema.py .....                           [ 76%]
+src/lottie/security/tests/test_secret_detector.py ...                    [ 76%]
+src/lottie/security/tests/test_validator.py ...                          [ 77%]
+src/lottie/security/tests/test_write_gate.py ...                         [ 77%]
+src/lottie/serve/tests/test_schema.py ..                                 [ 78%]
+src/lottie/serve/tests/test_security.py ..                               [ 78%]
+src/lottie/serve/tests/test_service.py ............                      [ 80%]
+skills/chunker/tests/test_chunker.py ................                    [ 83%]
+skills/document_ingest/tests/test_document_ingest.py .                   [ 83%]
+skills/document_ingest/tests/test_ingest.py ................             [ 85%]
+skills/retrieval/tests/test_hybrid.py .........                          [ 87%]
+skills/retrieval/tests/test_retrieval.py ........                        [ 88%]
+skills/summarizer/tests/test_summarizer.py ..............                [ 90%]
+agents/research/tests/test_research_agent.py .......                     [ 92%]
+agents/research/tests/test_research_from_project.py .....                [ 92%]
+tests/contracts/test_knowledge_schema.py ............................... [ 98%]
+............                                                             [100%]
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.13-final-0 _______________
+
+Name                                                             Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------------
+src/lottie/__init__.py                                               0      0   100%
+src/lottie/benchmark/__init__.py                                     3      0   100%
+src/lottie/benchmark/runner.py                                      65      4    94%   34-35, 85-86
+src/lottie/benchmark/schema.py                                      34      0   100%
+src/lottie/benchmark/tests/__init__.py                               0      0   100%
+src/lottie/benchmark/tests/test_benchmark_research.py               95      1    99%   218
+src/lottie/benchmark/tests/test_runner.py                           67      0   100%
+src/lottie/benchmark/tests/test_schema.py                           23      0   100%
+src/lottie/cli/__init__.py                                           2      0   100%
+src/lottie/cli/app.py                                               25      0   100%
+src/lottie/cli/benchmark.py                                         41      0   100%
+src/lottie/cli/create.py                                            27      0   100%
+src/lottie/cli/doctor.py                                            53      3    94%   62-63, 66
+src/lottie/cli/init.py                                              49      0   100%
+src/lottie/cli/knowledge.py                                        109     13    88%   109-110, 122-124, 281-284, 294-295, 298-303
+src/lottie/cli/memory.py                                            70      0   100%
+src/lottie/cli/registry.py                                          70      2    97%   47-48
+src/lottie/cli/run.py                                               38      2    95%   48, 67
+src/lottie/cli/status.py                                            36      1    97%   47
+src/lottie/cli/templates.py                                          8      0   100%
+src/lottie/cli/tests/__init__.py                                     0      0   100%
+src/lottie/cli/tests/test_benchmark.py                              61      0   100%
+src/lottie/cli/tests/test_create.py                                121      0   100%
+src/lottie/cli/tests/test_doctor.py                                 30      0   100%
+src/lottie/cli/tests/test_init.py                                  112      0   100%
+src/lottie/cli/tests/test_knowledge.py                             157      5    97%   168-171, 343
+src/lottie/cli/tests/test_memory_cli.py                             86      0   100%
+src/lottie/cli/tests/test_registry.py                               72      0   100%
+src/lottie/cli/tests/test_run.py                                    67      0   100%
+src/lottie/cli/tests/test_status.py                                 30      0   100%
+src/lottie/core/__init__.py                                          5      0   100%
+src/lottie/core/base_agent.py                                       24      0   100%
+src/lottie/core/base_skill.py                                        8      0   100%
+src/lottie/core/metrics.py                                          51      2    96%   68-69
+src/lottie/core/runnable.py                                         45      0   100%
+src/lottie/governance/__init__.py                                    0      0   100%
+src/lottie/knowledge/__init__.py                                    10      0   100%
+src/lottie/knowledge/chunking.py                                    45      0   100%
+src/lottie/knowledge/embeddings/__init__.py                          9      0   100%
+src/lottie/knowledge/embeddings/base.py                              9      0   100%
+src/lottie/knowledge/embeddings/litellm_provider.py                 44      3    93%   101-102, 121
+src/lottie/knowledge/embeddings/mock.py                             33      2    94%   27, 38
+src/lottie/knowledge/embeddings/tests/__init__.py                    0      0   100%
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py     155      1    99%   62
+src/lottie/knowledge/embeddings/tests/test_mock.py                  82      0   100%
+src/lottie/knowledge/frontmatter.py                                 50      2    96%   49, 65
+src/lottie/knowledge/graph.py                                       58      0   100%
+src/lottie/knowledge/index.py                                       19      1    95%   66
+src/lottie/knowledge/ingest.py                                     116      0   100%
+src/lottie/knowledge/manifest.py                                    28      0   100%
+src/lottie/knowledge/schema.py                                      55      0   100%
+src/lottie/knowledge/store/__init__.py                              15      0   100%
+src/lottie/knowledge/store/base.py                                  13      0   100%
+src/lottie/knowledge/store/chroma.py                                75      1    99%   193
+src/lottie/knowledge/store/memory.py                                46      0   100%
+src/lottie/knowledge/store/tests/__init__.py                         0      0   100%
+src/lottie/knowledge/store/tests/test_chroma_store.py              248      0   100%
+src/lottie/knowledge/store/tests/test_factory.py                    26      0   100%
+src/lottie/knowledge/store/tests/test_memory_store.py              242      0   100%
+src/lottie/knowledge/tests/__init__.py                               0      0   100%
+src/lottie/knowledge/tests/test_frontmatter.py                     122      0   100%
+src/lottie/knowledge/tests/test_graph.py                           152      0   100%
+src/lottie/knowledge/tests/test_index.py                            47      0   100%
+src/lottie/knowledge/tests/test_manifest.py                         54      0   100%
+src/lottie/knowledge/tests/test_schema.py                           35      0   100%
+src/lottie/llm/__init__.py                                           6      0   100%
+src/lottie/llm/base.py                                              23      0   100%
+src/lottie/llm/litellm_provider.py                                  21      0   100%
+src/lottie/llm/mock.py                                              21      0   100%
+src/lottie/memory/__init__.py                                        4      0   100%
+src/lottie/memory/agent.py                                          18      0   100%
+src/lottie/memory/base.py                                           20      0   100%
+src/lottie/memory/mock.py                                           35      0   100%
+src/lottie/memory/schema.py                                         33      0   100%
+src/lottie/memory/tests/__init__.py                                  0      0   100%
+src/lottie/memory/tests/test_memory_agent.py                        29      0   100%
+src/lottie/memory/tests/test_mock_client.py                         59      0   100%
+src/lottie/memory/tests/test_schema.py                              38      0   100%
+src/lottie/project/__init__.py                                       0      0   100%
+src/lottie/project/config.py                                        41      0   100%
+src/lottie/project/discovery.py                                     87      2    98%   94, 133
+src/lottie/project/lottie_md.py                                     31      3    90%   24, 48-49
+src/lottie/project/tests/__init__.py                                 0      0   100%
+src/lottie/project/tests/test_config.py                             33      0   100%
+src/lottie/project/tests/test_discovery.py                          86      0   100%
+src/lottie/project/tests/test_lottie_md.py                          33      0   100%
+src/lottie/scaffold/__init__.py                                      0      0   100%
+src/lottie/scaffold/generator.py                                   133      6    95%   124-125, 146-147, 221-222
+src/lottie/scaffold/hello.py                                         8      0   100%
+src/lottie/scaffold/renderer.py                                     12      0   100%
+src/lottie/scaffold/scaffolder_agent.py                             20      0   100%
+src/lottie/scaffold/scaffolder_prompts.py                            8      0   100%
+src/lottie/scaffold/schema.py                                       43      0   100%
+src/lottie/scaffold/tests/__init__.py                                0      0   100%
+src/lottie/scaffold/tests/test_desc_templates.py                    25      0   100%
+src/lottie/scaffold/tests/test_generate_from_desc.py                26      0   100%
+src/lottie/scaffold/tests/test_generator.py                         14      0   100%
+src/lottie/scaffold/tests/test_plan_schema.py                       19      0   100%
+src/lottie/scaffold/tests/test_renderer.py                          36      0   100%
+src/lottie/scaffold/tests/test_scaffolder_agent.py                  27      0   100%
+src/lottie/security/__init__.py                                      7      0   100%
+src/lottie/security/code_scanner.py                                 17      2    88%   40-43
+src/lottie/security/injection_scanner.py                            42      0   100%
+src/lottie/security/schema.py                                       28      0   100%
+src/lottie/security/secret_detector.py                              39      3    92%   41, 58, 84
+src/lottie/security/tests/__init__.py                                0      0   100%
+src/lottie/security/tests/test_code_scanner.py                      20      0   100%
+src/lottie/security/tests/test_injection_scanner.py                113      0   100%
+src/lottie/security/tests/test_schema.py                            19      0   100%
+src/lottie/security/tests/test_secret_detector.py                   20      0   100%
+src/lottie/security/tests/test_validator.py                         21      0   100%
+src/lottie/security/tests/test_write_gate.py                        24      0   100%
+src/lottie/security/validator.py                                    14      1    93%   23
+src/lottie/security/write_gate.py                                   31      2    94%   71-72
+src/lottie/serve/__init__.py                                         5      0   100%
+src/lottie/serve/schema.py                                          12      0   100%
+src/lottie/serve/security.py                                         6      0   100%
+src/lottie/serve/service.py                                         48      0   100%
+src/lottie/serve/tests/__init__.py                                   0      0   100%
+src/lottie/serve/tests/test_schema.py                               14      0   100%
+src/lottie/serve/tests/test_security.py                              8      0   100%
+src/lottie/serve/tests/test_service.py                             124      0   100%
+----------------------------------------------------------------------------------------------
+TOTAL                                                             5073     62    99%
+======================== 610 passed in 89.06s (0:01:29) ========================

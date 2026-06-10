@@ -1,0 +1,47 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 36 items
+
+src/lottie/security/tests/test_injection_scanner.py::test_benign_text_not_flagged PASSED                                                                                                         [  2%]
+src/lottie/security/tests/test_injection_scanner.py::test_fp_system_prompt_section_reference PASSED                                                                                              [  5%]
+src/lottie/security/tests/test_injection_scanner.py::test_fp_act_as_proxy PASSED                                                                                                                 [  8%]
+src/lottie/security/tests/test_injection_scanner.py::test_fp_you_are_now_connected PASSED                                                                                                        [ 11%]
+src/lottie/security/tests/test_injection_scanner.py::test_fp_print_instructions_to_stdout PASSED                                                                                                 [ 13%]
+src/lottie/security/tests/test_injection_scanner.py::test_you_are_now_developer_flagged PASSED                                                                                                   [ 16%]
+src/lottie/security/tests/test_injection_scanner.py::test_classic_injection_flagged PASSED                                                                                                       [ 19%]
+src/lottie/security/tests/test_injection_scanner.py::test_source_label_in_finding PASSED                                                                                                         [ 22%]
+src/lottie/security/tests/test_injection_scanner.py::test_determinism PASSED                                                                                                                     [ 25%]
+src/lottie/security/tests/test_injection_scanner.py::test_multiple_markers_ordered_by_position PASSED                                                                                            [ 27%]
+src/lottie/security/tests/test_injection_scanner.py::test_last_metrics_populated PASSED                                                                                                          [ 30%]
+src/lottie/security/tests/test_injection_scanner.py::test_role_override_flagged PASSED                                                                                                           [ 33%]
+src/lottie/security/tests/test_injection_scanner.py::test_system_prompt_tag_flagged PASSED                                                                                                       [ 36%]
+src/lottie/security/tests/test_injection_scanner.py::test_exfiltration_flagged PASSED                                                                                                            [ 38%]
+src/lottie/security/tests/test_injection_scanner.py::test_data_control_begin_injection PASSED                                                                                                    [ 41%]
+src/lottie/security/tests/test_injection_scanner.py::test_finding_fields_populated PASSED                                                                                                        [ 44%]
+src/lottie/security/tests/test_injection_scanner.py::test_finding_line_is_one_based PASSED                                                                                                       [ 47%]
+src/lottie/security/tests/test_injection_scanner.py::test_finding_line_multiline PASSED                                                                                                          [ 50%]
+src/lottie/security/tests/test_injection_scanner.py::test_overlapping_rules_single_redaction PASSED                                                                                              [ 52%]
+skills/document_ingest/tests/test_document_ingest.py::test_schema_importable PASSED                                                                                                              [ 55%]
+skills/document_ingest/tests/test_ingest.py::test_text_ingest_happy_path PASSED                                                                                                                  [ 58%]
+skills/document_ingest/tests/test_ingest.py::test_injection_rejected PASSED                                                                                                                      [ 61%]
+skills/document_ingest/tests/test_ingest.py::test_secret_rejected PASSED                                                                                                                         [ 63%]
+skills/document_ingest/tests/test_ingest.py::test_file_ingest PASSED                                                                                                                             [ 66%]
+skills/document_ingest/tests/test_ingest.py::test_url_raises_not_implemented PASSED                                                                                                              [ 69%]
+skills/document_ingest/tests/test_ingest.py::test_url_in_batch_lands_in_errors PASSED                                                                                                            [ 72%]
+skills/document_ingest/tests/test_ingest.py::test_bad_file_path_isolated_in_batch PASSED                                                                                                         [ 75%]
+skills/document_ingest/tests/test_ingest.py::test_last_metrics_populated PASSED                                                                                                                  [ 77%]
+skills/document_ingest/tests/test_ingest.py::test_mixed_batch PASSED                                                                                                                             [ 80%]
+skills/document_ingest/tests/test_ingest.py::test_make_draft_id_file_includes_content_hash PASSED                                                                                                [ 83%]
+skills/document_ingest/tests/test_ingest.py::test_make_draft_id_file_idempotent PASSED                                                                                                           [ 86%]
+skills/document_ingest/tests/test_ingest.py::test_make_draft_id_text_idempotent PASSED                                                                                                           [ 88%]
+skills/document_ingest/tests/test_ingest.py::test_make_draft_id_text_slug PASSED                                                                                                                 [ 91%]
+skills/document_ingest/tests/test_ingest.py::test_load_source_text PASSED                                                                                                                        [ 94%]
+skills/document_ingest/tests/test_ingest.py::test_load_source_file PASSED                                                                                                                        [ 97%]
+skills/document_ingest/tests/test_ingest.py::test_empty_content_skipped PASSED                                                                                                                   [100%]
+
+============================== 36 passed in 2.23s ==============================

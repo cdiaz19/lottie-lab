@@ -1,0 +1,12 @@
+╭─────────────────────────── document: lottie/auth ────────────────────────────╮
+│ id:          lottie/auth                                                     │
+│ layer:       platform                                                        │
+│ status:      curated                                                         │
+│ source:                                                                      │
+│ /Users/cdiaz19/Documents/trae_projects/lottie-lab/rounds/round-4-knowledge/i │
+│ nputs/fixture/knowledge/platform/auth.md                                     │
+│ tags:        ['auth', 'jwt']                                                 │
+│ depends_on:  ['global/conventions']                                          │
+│ chunks:      1                                                               │
+│ dependents:  ['lottie/api']                                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯

@@ -1,0 +1,8 @@
+       Knowledge Dependency Graph       
+┏━━━━━━━━━━━━━━━━━━━━┳━━━┳━━━━━━━━━━━━━┓
+┃ dependency         ┃ → ┃ dependent   ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━╇━━━━━━━━━━━━━┩
+│ global/conventions │ → │ lottie/auth │
+│ lottie/auth        │ → │ lottie/api  │
+└────────────────────┴───┴─────────────┘
+3 node(s), 2 edge(s).

@@ -1,0 +1,6 @@
+{
+  "_case": "memory",
+  "argv": ["memory", "impact", "global/conventions", "--root", "{FIXTURE}"],
+  "_expect_contains": ["lottie/api", "lottie/auth", "2 document(s) transitively depend"],
+  "_note": "impact(global/conventions) = transitive descendants that would break if it were deprecated: lottie/auth (direct) + lottie/api (via auth)."
+}

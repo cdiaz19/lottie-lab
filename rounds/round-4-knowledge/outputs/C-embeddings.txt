@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 42 items
+
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderModelProperty::test_default_model PASSED                                                             [  2%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderModelProperty::test_custom_model PASSED                                                              [  4%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderModelProperty::test_model_property_matches_constructor PASSED                                        [  7%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmbed::test_embed_two_texts_returns_two_embeddings PASSED                                            [  9%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmbed::test_embed_vectors_match_stub PASSED                                                          [ 11%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmbed::test_embed_dim_equals_vector_length PASSED                                                    [ 14%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmbed::test_embed_model_field_matches_provider PASSED                                                [ 16%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmbed::test_embed_custom_model_propagated PASSED                                                     [ 19%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmbed::test_embed_order_preserved PASSED                                                             [ 21%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmptyInput::test_empty_returns_empty_list PASSED                                                     [ 23%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderEmptyInput::test_empty_does_not_call_litellm PASSED                                                  [ 26%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderIndexSort::test_shuffled_response_reorders_by_index PASSED                                           [ 28%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderCountGuard::test_fewer_embeddings_than_inputs_raises PASSED                                          [ 30%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderExtractVector::test_item_with_no_embedding_raises PASSED                                             [ 33%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderNonNumericIndex::test_non_numeric_index_returns_results PASSED                                       [ 35%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestLiteLLMEmbeddingProviderErrorPropagation::test_litellm_error_propagates PASSED                                               [ 38%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_mock_prefix_returns_mock_provider PASSED                                                 [ 40%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_bare_mock_returns_mock_provider PASSED                                                   [ 42%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_mock_slash_custom_returns_mock_provider PASSED                                           [ 45%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_openai_model_returns_litellm_provider PASSED                                             [ 47%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_cohere_model_returns_litellm_provider PASSED                                             [ 50%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_litellm_provider_model_string_set PASSED                                                 [ 52%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_mock_provider_model_string_set PASSED                                                    [ 54%]
+src/lottie/knowledge/embeddings/tests/test_litellm_provider.py::TestBuildEmbeddingProviderFactory::test_factory_returns_embedding_provider_abc PASSED                                            [ 57%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_same_text_same_vector PASSED                                                                         [ 59%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_different_text_different_vector PASSED                                                               [ 61%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_vector_length_is_dim PASSED                                                                          [ 64%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_embedding_dim_field PASSED                                                                           [ 66%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_embedding_model_field PASSED                                                                         [ 69%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_vector_is_l2_normalized PASSED                                                                       [ 71%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDefaults::test_model_property PASSED                                                                                [ 73%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDeterminism::test_deterministic_across_instances PASSED                                                             [ 76%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderDeterminism::test_deterministic_different_texts_across_instances PASSED                                             [ 78%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_custom_dim_8_field PASSED                                                                           [ 80%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_custom_dim_8_vector_length PASSED                                                                   [ 83%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_custom_dim_8_normalized PASSED                                                                      [ 85%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_custom_model_string PASSED                                                                          [ 88%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_dim_64_vector_length PASSED                                                                         [ 90%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_dim_64_normalized PASSED                                                                            [ 92%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_dim_64_deterministic PASSED                                                                         [ 95%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_dim_8193_does_not_overflow PASSED                                                                   [ 97%]
+src/lottie/knowledge/embeddings/tests/test_mock.py::TestMockEmbeddingProviderCustomDim::test_dim_32_exact_digest PASSED                                                                          [100%]
+
+============================== 42 passed in 1.78s ==============================

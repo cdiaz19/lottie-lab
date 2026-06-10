@@ -26,7 +26,7 @@ Each round maps to a Lottie phase. A round doesn't close until every item on its
 | [Round 1](rounds/round-1-foundations/) | Phase 0 | Foundations — CLI, BaseAgent, BaseSkill, first agent end-to-end | Complete |
 | [Round 2](rounds/round-2-phase0-completion/) | Phase 0 | Registry, benchmark, KI-01 fix, second agent | Complete |
 | [Round 3](rounds/round-3-serve-core/) | Phase 0 | Serve core (`AgentService`), memory stubs, security write-gate — Phase 0 closed | Complete |
-| Round 4 | Phase 1 | Knowledge — document ingest, RAG pipeline, knowledge graph | ⏳ Pending |
+| [Round 4](rounds/round-4-knowledge/) | Phase 1 | Knowledge — document ingest, RAG pipeline, knowledge graph, `ResearchAgent` | Complete |
 | Round 5 | Phase 2 | Multi-agent mesh — LangGraph, supervisor → workers, parallel runs | ⏳ Pending |
 | Round 6 | Phase 3 | Governance — audit trail, policy engine, security layer | ⏳ Pending |
 | Round 7 | Phase 4 | Integration — MCP server, OpenAI-compat API | ⏳ Pending |
@@ -78,6 +78,28 @@ Results logged in [`rounds/round-2-phase0-completion/results.md`](rounds/round-2
 > **Caveat:** the serve-path `SecurityGate` chokepoint is wired (input before agent, output before return, order verified) and is constructor-injectable, but the **default gate is identity** — real input/output scanning lands in Phase 1. Injection blocking is demonstrated with a `BlockingGate` subclass, not active on the default path yet.
 
 Results logged in [`rounds/round-3-serve-core/results.md`](rounds/round-3-serve-core/results.md).
+
+---
+
+## Round 4 - Knowledge Core - Complete
+
+**What was tested:** Phase 1 knowledge layer end-to-end on Mock providers (API keys unset) — ingest → injection/secret scan → deterministic chunk → embed (provider abstraction) → vector store → typed `RetrievalSkill`; a networkx dependency graph answering `impact`/`audit`/cycle queries; and a reference `ResearchAgent` returning a typed `ResearchOutput` with citations.
+
+**CLI:** `lottie knowledge ingest|list|inspect|clear` · `lottie memory graph|impact|audit` · `lottie run research`.
+
+**Benchmark (ResearchAgent):**
+
+| Provider | Cases | Accuracy | Success | p50 | p95 |
+|----------|-------|----------|---------|-----|-----|
+| anthropic/claude-sonnet-4-6 (MockLLM) | 4 | 100% | 100% | 5993ms | 8426ms |
+
+**Results:** 610/610 tests · **99% coverage** · `mypy --strict` + `ruff` clean · 8/8 input cases · injection source gated & never stored. Found + fixed one Phase-1 test bug (KI-R4-01: wrong typer import). **20/20 sign-off boxes** → Phase 1 tagged `v0.2.0`.
+
+> **How to run Round 4:** with API keys unset, from `lottie-orchestrator`:
+> `pytest -q && pytest --cov=lottie && mypy --strict src && ruff check && lottie benchmark agent research`,
+> then `bash rounds/round-4-knowledge/run-inputs.sh` from the lab. See [`rounds/round-4-knowledge/ROUND.md`](rounds/round-4-knowledge/ROUND.md).
+
+Results logged in [`rounds/round-4-knowledge/results.md`](rounds/round-4-knowledge/results.md).
 
 ---
 

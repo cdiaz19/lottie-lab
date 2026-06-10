@@ -1,0 +1,6 @@
+{
+  "_case": "knowledge_inspect",
+  "argv": ["knowledge", "inspect", "lottie/auth", "--root", "{FIXTURE}"],
+  "_expect_contains": ["lottie/auth", "depends_on", "global/conventions", "dependents", "lottie/api", "chunks"],
+  "_note": "Inspect a single document: metadata, chunk count, and resolved depends_on / dependents."
+}

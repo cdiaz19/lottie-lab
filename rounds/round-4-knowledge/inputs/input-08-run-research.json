@@ -1,0 +1,7 @@
+{
+  "_case": "run",
+  "argv": ["run", "research", "--input", "{\"query\":\"What are multi-agent AI systems?\",\"k\":5,\"max_points\":3}"],
+  "cwd": "orchestrator",
+  "_expect_json_keys": ["digest", "points", "citations"],
+  "_note": "lottie run research surface: returns a typed ResearchOutput (digest/points/citations) on MockLLMProvider, exit 0. Grounded retrieval+citations is additionally proven by `lottie benchmark agent research` (100%) and agents/research integration tests (group G). Run from orchestrator cwd because `run` discovers agents from cwd/agents and has no --root flag."
+}

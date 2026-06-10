@@ -1,0 +1,61 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 42 items
+
+src/lottie/cli/tests/test_knowledge.py::test_ingest_text_exit_zero PASSED                                                                                                                        [  2%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_text_reports_one_document PASSED                                                                                                             [  4%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_text_reports_chunk_count PASSED                                                                                                              [  7%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_text_writes_draft_file PASSED                                                                                                                [  9%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_injection_flagged PASSED                                                                                                                     [ 11%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_file_source PASSED                                                                                                                           [ 14%]
+src/lottie/cli/tests/test_knowledge.py::test_list_empty_root_shows_no_docs PASSED                                                                                                                [ 16%]
+src/lottie/cli/tests/test_knowledge.py::test_list_after_ingest_shows_doc_id PASSED                                                                                                               [ 19%]
+src/lottie/cli/tests/test_knowledge.py::test_list_columns_present PASSED                                                                                                                         [ 21%]
+src/lottie/cli/tests/test_knowledge.py::test_inspect_valid_id_exit_zero PASSED                                                                                                                   [ 23%]
+src/lottie/cli/tests/test_knowledge.py::test_inspect_shows_layer_draft PASSED                                                                                                                    [ 26%]
+src/lottie/cli/tests/test_knowledge.py::test_inspect_shows_chunk_count PASSED                                                                                                                    [ 28%]
+src/lottie/cli/tests/test_knowledge.py::test_inspect_bogus_id_nonzero PASSED                                                                                                                     [ 30%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_removes_draft_files PASSED                                                                                                                    [ 33%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_reports_files_removed PASSED                                                                                                                  [ 35%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_then_list_shows_empty PASSED                                                                                                                  [ 38%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_does_not_remove_directory PASSED                                                                                                              [ 40%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_empty_layer_exits_zero PASSED                                                                                                                 [ 42%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_invalid_layer_nonzero PASSED                                                                                                                  [ 45%]
+src/lottie/cli/tests/test_knowledge.py::test_clear_path_traversal_nonzero_and_no_files_deleted PASSED                                                                                            [ 47%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_unknown_store_nonzero_with_message PASSED                                                                                                    [ 50%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_store_env_var_resolved_at_runtime PASSED                                                                                                     [ 52%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_store_env_var_monkeypatch PASSED                                                                                                             [ 54%]
+src/lottie/cli/tests/test_knowledge.py::test_ingest_url_exits_zero_and_reports_error PASSED                                                                                                      [ 57%]
+src/lottie/cli/tests/test_memory_cli.py::test_graph_empty_root_prints_empty_message PASSED                                                                                                       [ 59%]
+src/lottie/cli/tests/test_memory_cli.py::test_graph_shows_edges_and_counts PASSED                                                                                                                [ 61%]
+src/lottie/cli/tests/test_memory_cli.py::test_impact_chain PASSED                                                                                                                                [ 64%]
+src/lottie/cli/tests/test_memory_cli.py::test_impact_leaf_shows_nothing_depends PASSED                                                                                                           [ 66%]
+src/lottie/cli/tests/test_memory_cli.py::test_impact_unknown_id_exit_zero PASSED                                                                                                                 [ 69%]
+src/lottie/cli/tests/test_memory_cli.py::test_audit_acyclic_exits_zero PASSED                                                                                                                    [ 71%]
+src/lottie/cli/tests/test_memory_cli.py::test_audit_reports_orphans PASSED                                                                                                                       [ 73%]
+src/lottie/cli/tests/test_memory_cli.py::test_audit_cycle_exits_nonzero PASSED                                                                                                                   [ 76%]
+src/lottie/cli/tests/test_memory_cli.py::test_audit_cycle_output_mentions_cycle PASSED                                                                                                           [ 78%]
+src/lottie/cli/tests/test_memory_cli.py::test_audit_stale_doc_reported PASSED                                                                                                                    [ 80%]
+src/lottie/cli/tests/test_memory_cli.py::test_audit_stale_days_custom PASSED                                                                                                                     [ 83%]
+src/lottie/cli/tests/test_run.py::test_run_executes_agent PASSED                                                                                                                                 [ 85%]
+src/lottie/cli/tests/test_run.py::test_run_provider_override PASSED                                                                                                                              [ 88%]
+src/lottie/cli/tests/test_run.py::test_run_unknown_agent PASSED                                                                                                                                  [ 90%]
+src/lottie/cli/tests/test_run.py::test_run_malformed_input PASSED                                                                                                                                [ 92%]
+src/lottie/cli/tests/test_run.py::test_run_missing_required_input PASSED                                                                                                                         [ 95%]
+src/lottie/cli/tests/test_run.py::test_run_surfaces_agent_error_cleanly PASSED                                                                                                                   [ 97%]
+src/lottie/cli/tests/test_run.py::test_run_from_project_failure_surfaces_as_bad_parameter PASSED                                                                                                 [100%]
+
+============================== 42 passed in 2.34s ==============================
+
+# NOTE (Round-4 deviations):
+# 1. Runbook selector "test_run.py::*research*" matches no node (no research-specific
+#    test in test_run.py). Ran full test_run.py; run-research path covered by
+#    agents/research (group G) + `lottie benchmark agent research`.
+# 2. KI-R4-01: test_knowledge.py imported nonexistent `typer._click.testing.Result`
+#    (typer 0.26.3). Fixed to `from typer.testing import CliRunner, Result` to match
+#    the public API and all sibling CLI tests.

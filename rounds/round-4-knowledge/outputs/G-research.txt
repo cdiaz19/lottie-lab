@@ -1,0 +1,37 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 26 items
+
+skills/summarizer/tests/test_summarizer.py::test_summarizer_extracts_prose_and_bullets PASSED                                                                                                    [  3%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_caps_points_at_max_points PASSED                                                                                                     [  7%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_no_bullets_returns_empty_points PASSED                                                                                               [ 11%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_last_metrics_populated_after_run PASSED                                                                                              [ 15%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_prompt_contains_input_text PASSED                                                                                                    [ 19%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_schema_rejects_wrong_type PASSED                                                                                                     [ 23%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_default_max_points_is_five PASSED                                                                                                    [ 26%]
+skills/summarizer/tests/test_summarizer.py::test_summarizer_di_constructor_forwarding PASSED                                                                                                     [ 30%]
+skills/summarizer/tests/test_summarizer.py::test_max_points_zero_raises_validation_error PASSED                                                                                                  [ 34%]
+skills/summarizer/tests/test_summarizer.py::test_max_points_negative_raises_validation_error PASSED                                                                                              [ 38%]
+skills/summarizer/tests/test_summarizer.py::test_max_points_one_is_valid PASSED                                                                                                                  [ 42%]
+skills/summarizer/tests/test_summarizer.py::test_parse_bullets_before_prose_summary_nonempty PASSED                                                                                              [ 46%]
+skills/summarizer/tests/test_summarizer.py::test_parse_trailing_prose_joined_into_summary PASSED                                                                                                 [ 50%]
+skills/summarizer/tests/test_summarizer.py::test_parse_all_bullets_no_prose_summary_nonempty PASSED                                                                                              [ 53%]
+agents/research/tests/test_research_agent.py::test_research_output_has_digest_and_citations PASSED                                                                                               [ 57%]
+agents/research/tests/test_research_agent.py::test_research_points_reflect_summarizer_bullets PASSED                                                                                             [ 61%]
+agents/research/tests/test_research_agent.py::test_research_prompt_contains_retrieved_chunk_text PASSED                                                                                          [ 65%]
+agents/research/tests/test_research_agent.py::test_research_last_metrics_set_after_run PASSED                                                                                                    [ 69%]
+agents/research/tests/test_research_agent.py::test_research_empty_store_no_citations PASSED                                                                                                      [ 73%]
+agents/research/tests/test_research_agent.py::test_research_default_summarizer_uses_agent_llm PASSED                                                                                             [ 76%]
+agents/research/tests/test_research_agent.py::test_max_points_controls_bullet_cap_independently_of_k PASSED                                                                                      [ 80%]
+agents/research/tests/test_research_from_project.py::test_from_project_returns_research_agent_instance PASSED                                                                                    [ 84%]
+agents/research/tests/test_research_from_project.py::test_from_project_run_produces_digest PASSED                                                                                                [ 88%]
+agents/research/tests/test_research_from_project.py::test_from_project_run_produces_citations_from_indexed_knowledge PASSED                                                                      [ 92%]
+agents/research/tests/test_research_from_project.py::test_service_constructs_plain_agent_without_from_project PASSED                                                                             [ 96%]
+agents/research/tests/test_research_from_project.py::test_service_uses_from_project_when_present PASSED                                                                                          [100%]
+
+============================== 26 passed in 1.88s ==============================

@@ -1,0 +1,6 @@
+{
+  "_case": "memory",
+  "argv": ["memory", "graph", "--root", "{FIXTURE}"],
+  "_expect_contains": ["global/conventions", "lottie/auth", "lottie/api", "3 node(s)", "2 edge(s)"],
+  "_note": "networkx dependency graph built from manifest depends_on: 3 nodes, 2 edges (conventions -> auth -> api)."
+}

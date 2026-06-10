@@ -1,0 +1,9 @@
+[92m00:49:12 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m00:49:12 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+                                             Benchmark                                              
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┓
+┃ provider                    ┃ cases ┃ accuracy ┃ success ┃ p50 ms ┃ p95 ms ┃ mean $ ┃ in/out tok ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━┩
+│ anthropic/claude-sonnet-4-6 │ 4     │ 100%     │ 100%    │ 5992.5 │ 8425.6 │ 0.0012 │ 652/187    │
+└─────────────────────────────┴───────┴──────────┴─────────┴────────┴────────┴────────┴────────────┘
+Report written to /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator/.lottie/benchmarks/research-report.json

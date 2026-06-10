@@ -1,0 +1,8 @@
+                       Knowledge Documents                       
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━┓
+┃ id                 ┃ layer    ┃ status  ┃ #tags ┃ #depends_on ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━┩
+│ global/conventions │ global   │ curated │ 2     │ 0           │
+│ lottie/api         │ platform │ aging   │ 2     │ 1           │
+│ lottie/auth        │ platform │ curated │ 2     │ 1           │
+└────────────────────┴──────────┴─────────┴───────┴─────────────┘

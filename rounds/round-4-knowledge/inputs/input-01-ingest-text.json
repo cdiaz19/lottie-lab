@@ -1,0 +1,7 @@
+{
+  "_case": "knowledge_ingest",
+  "argv": ["knowledge", "ingest", "--text", "Multi-agent systems coordinate specialized agents. JWT secures stateless auth.", "--layer", "draft", "--embedder", "mock/embed", "--store", "memory"],
+  "uses_tmp_root": true,
+  "_expect_contains": ["Ingested: 1 document(s)", "1 chunk(s)"],
+  "_note": "Happy-path ingest of a clean source into the draft layer on mock embedder + in-memory store (no API key)."
+}

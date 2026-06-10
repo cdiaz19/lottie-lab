@@ -1,0 +1,54 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 43 items
+
+tests/contracts/test_knowledge_schema.py::test_knowledge_layer_str_enum_values PASSED                                                                                                            [  2%]
+tests/contracts/test_knowledge_schema.py::test_doc_status_str_enum_values PASSED                                                                                                                 [  4%]
+tests/contracts/test_knowledge_schema.py::test_document_round_trip PASSED                                                                                                                        [  6%]
+tests/contracts/test_knowledge_schema.py::test_document_defaults PASSED                                                                                                                          [  9%]
+tests/contracts/test_knowledge_schema.py::test_chunk_round_trip PASSED                                                                                                                           [ 11%]
+tests/contracts/test_knowledge_schema.py::test_chunk_defaults PASSED                                                                                                                             [ 13%]
+tests/contracts/test_knowledge_schema.py::test_embedding_round_trip PASSED                                                                                                                       [ 16%]
+tests/contracts/test_knowledge_schema.py::test_embedding_dim_validator_ok PASSED                                                                                                                 [ 18%]
+tests/contracts/test_knowledge_schema.py::test_embedded_chunk_round_trip PASSED                                                                                                                  [ 20%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_query_defaults PASSED                                                                                                                   [ 23%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_query_full PASSED                                                                                                                       [ 25%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_hit_round_trip PASSED                                                                                                                   [ 27%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_result_round_trip PASSED                                                                                                                [ 30%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_result_defaults PASSED                                                                                                                  [ 32%]
+tests/contracts/test_knowledge_schema.py::test_chunk_config_defaults PASSED                                                                                                                      [ 34%]
+tests/contracts/test_knowledge_schema.py::test_chunk_config_custom PASSED                                                                                                                        [ 37%]
+tests/contracts/test_knowledge_schema.py::test_ingest_source_text_round_trip PASSED                                                                                                              [ 39%]
+tests/contracts/test_knowledge_schema.py::test_ingest_source_file_with_layer PASSED                                                                                                              [ 41%]
+tests/contracts/test_knowledge_schema.py::test_document_ingest_input_round_trip PASSED                                                                                                           [ 44%]
+tests/contracts/test_knowledge_schema.py::test_document_ingest_input_defaults PASSED                                                                                                             [ 46%]
+tests/contracts/test_knowledge_schema.py::test_document_ingest_output_defaults PASSED                                                                                                            [ 48%]
+tests/contracts/test_knowledge_schema.py::test_document_ingest_output_full PASSED                                                                                                                [ 51%]
+tests/contracts/test_knowledge_schema.py::test_chunker_input_round_trip PASSED                                                                                                                   [ 53%]
+tests/contracts/test_knowledge_schema.py::test_chunker_input_default_config PASSED                                                                                                               [ 55%]
+tests/contracts/test_knowledge_schema.py::test_chunker_output_round_trip PASSED                                                                                                                  [ 58%]
+tests/contracts/test_knowledge_schema.py::test_chunker_output_defaults PASSED                                                                                                                    [ 60%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_skill_input_round_trip PASSED                                                                                                           [ 62%]
+tests/contracts/test_knowledge_schema.py::test_retrieval_skill_output_round_trip PASSED                                                                                                          [ 65%]
+tests/contracts/test_knowledge_schema.py::test_summarizer_input_defaults PASSED                                                                                                                  [ 67%]
+tests/contracts/test_knowledge_schema.py::test_summarizer_input_custom PASSED                                                                                                                    [ 69%]
+tests/contracts/test_knowledge_schema.py::test_summarizer_output_round_trip PASSED                                                                                                               [ 72%]
+tests/contracts/test_knowledge_schema.py::test_summarizer_output_defaults PASSED                                                                                                                 [ 74%]
+tests/contracts/test_knowledge_schema.py::test_security_finding_round_trip PASSED                                                                                                                [ 76%]
+tests/contracts/test_knowledge_schema.py::test_injection_scan_input_defaults PASSED                                                                                                              [ 79%]
+tests/contracts/test_knowledge_schema.py::test_injection_scan_input_with_source PASSED                                                                                                           [ 81%]
+tests/contracts/test_knowledge_schema.py::test_injection_scan_output_flagged PASSED                                                                                                              [ 83%]
+tests/contracts/test_knowledge_schema.py::test_injection_scan_output_clean PASSED                                                                                                                [ 86%]
+tests/contracts/test_knowledge_schema.py::test_citation_round_trip PASSED                                                                                                                        [ 88%]
+tests/contracts/test_knowledge_schema.py::test_research_input_defaults PASSED                                                                                                                    [ 90%]
+tests/contracts/test_knowledge_schema.py::test_research_input_full PASSED                                                                                                                        [ 93%]
+tests/contracts/test_knowledge_schema.py::test_research_output_round_trip PASSED                                                                                                                 [ 95%]
+tests/contracts/test_knowledge_schema.py::test_research_output_defaults PASSED                                                                                                                   [ 97%]
+tests/contracts/test_knowledge_schema.py::test_all_boundary_models_are_pydantic_basemodel PASSED                                                                                                 [100%]
+
+============================== 43 passed in 1.49s ==============================

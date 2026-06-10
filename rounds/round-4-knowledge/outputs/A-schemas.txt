@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 42 items
+
+src/lottie/knowledge/tests/test_schema.py::test_document_defaults_and_layer_enum PASSED                                                                                                          [  2%]
+src/lottie/knowledge/tests/test_schema.py::test_retrieval_hit_carries_score PASSED                                                                                                               [  4%]
+src/lottie/knowledge/tests/test_schema.py::test_knowledge_layer_enum_values PASSED                                                                                                               [  7%]
+src/lottie/knowledge/tests/test_schema.py::test_retrieval_query_defaults PASSED                                                                                                                  [  9%]
+src/lottie/knowledge/tests/test_schema.py::test_document_status_defaults_to_draft PASSED                                                                                                         [ 11%]
+src/lottie/knowledge/tests/test_schema.py::test_document_status_explicit_curated PASSED                                                                                                          [ 14%]
+src/lottie/knowledge/tests/test_schema.py::test_embedding_valid_dim_matches_vector PASSED                                                                                                        [ 16%]
+src/lottie/knowledge/tests/test_schema.py::test_embedding_mismatched_dim_raises_validation_error PASSED                                                                                          [ 19%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_reads_id PASSED                                                                                                           [ 21%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_reads_tags PASSED                                                                                                         [ 23%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_body_has_no_fence_or_id_key PASSED                                                                                        [ 26%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_no_frontmatter PASSED                                                                                                     [ 28%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_malformed_yaml_no_raise PASSED                                                                                            [ 30%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_empty_fence_returns_empty_meta PASSED                                                                                     [ 33%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_non_dict_yaml_treated_as_no_meta PASSED                                                                                   [ 35%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_id_from_frontmatter PASSED                                                                                                      [ 38%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_tags PASSED                                                                                                                     [ 40%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_depends_on PASSED                                                                                                               [ 42%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_status_curated PASSED                                                                                                           [ 45%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_layer_passed_through PASSED                                                                                                     [ 47%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_source_is_str_path PASSED                                                                                                       [ 50%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_no_frontmatter_uses_stem_as_id PASSED                                                                                           [ 52%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_no_frontmatter_status_draft PASSED                                                                                              [ 54%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_no_frontmatter_empty_tags PASSED                                                                                                [ 57%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_no_frontmatter_empty_depends_on PASSED                                                                                          [ 59%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_invalid_status_falls_back_to_draft PASSED                                                                                       [ 61%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_frontmatter_dict_contains_all_raw_keys PASSED                                                                                   [ 64%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_status_valid_value_via_public_idiom PASSED                                                                                                  [ 66%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_status_invalid_value_falls_back_to_draft_public_idiom PASSED                                                                                [ 69%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_crlf_line_endings PASSED                                                                                                  [ 71%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_parse_frontmatter_preserves_extra_leading_blank_lines_in_body PASSED                                                                        [ 73%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_to_document_null_id_falls_back_to_stem PASSED                                                                                               [ 76%]
+src/lottie/knowledge/tests/test_frontmatter.py::test_fixture_file_on_disk_parses_correctly PASSED                                                                                                [ 78%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_documents_non_empty PASSED                                                                                                           [ 80%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_by_id_known_doc PASSED                                                                                                               [ 83%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_by_layer_global_contains_sample PASSED                                                                                               [ 85%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_by_id_unknown_returns_none PASSED                                                                                                    [ 88%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_directory_is_authoritative_over_frontmatter_layer PASSED                                                                             [ 90%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_by_layer_memory_empty PASSED                                                                                                         [ 92%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_missing_knowledge_dir_returns_empty PASSED                                                                                           [ 95%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_tmp_draft_layer PASSED                                                                                                               [ 97%]
+src/lottie/knowledge/tests/test_manifest.py::test_from_root_documents_sorted_by_id PASSED                                                                                                        [100%]
+
+============================== 42 passed in 2.04s ==============================

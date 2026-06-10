@@ -1,0 +1,52 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 41 items
+
+src/lottie/knowledge/tests/test_graph.py::TestBuildKnowledgeGraph::test_nodes_present PASSED                                                                                                     [  2%]
+src/lottie/knowledge/tests/test_graph.py::TestBuildKnowledgeGraph::test_edge_orientation_dep_to_dependent PASSED                                                                                 [  4%]
+src/lottie/knowledge/tests/test_graph.py::TestBuildKnowledgeGraph::test_node_attrs_stored PASSED                                                                                                 [  7%]
+src/lottie/knowledge/tests/test_graph.py::TestBuildKnowledgeGraph::test_dangling_dep_node_created PASSED                                                                                         [  9%]
+src/lottie/knowledge/tests/test_graph.py::TestGraphProperty::test_graph_is_digraph PASSED                                                                                                        [ 12%]
+src/lottie/knowledge/tests/test_graph.py::TestNeighbors::test_c_depends_on_b PASSED                                                                                                              [ 14%]
+src/lottie/knowledge/tests/test_graph.py::TestNeighbors::test_root_has_no_deps PASSED                                                                                                            [ 17%]
+src/lottie/knowledge/tests/test_graph.py::TestNeighbors::test_absent_node_returns_empty PASSED                                                                                                   [ 19%]
+src/lottie/knowledge/tests/test_graph.py::TestNeighbors::test_result_is_sorted PASSED                                                                                                            [ 21%]
+src/lottie/knowledge/tests/test_graph.py::TestImpact::test_impact_of_root_is_all_dependents PASSED                                                                                               [ 24%]
+src/lottie/knowledge/tests/test_graph.py::TestImpact::test_impact_of_leaf_is_empty PASSED                                                                                                        [ 26%]
+src/lottie/knowledge/tests/test_graph.py::TestImpact::test_impact_of_middle_node PASSED                                                                                                          [ 29%]
+src/lottie/knowledge/tests/test_graph.py::TestImpact::test_absent_node_returns_empty PASSED                                                                                                      [ 31%]
+src/lottie/knowledge/tests/test_graph.py::TestImpact::test_result_is_sorted PASSED                                                                                                               [ 34%]
+src/lottie/knowledge/tests/test_graph.py::TestImpact::test_impact_on_cycle_node PASSED                                                                                                           [ 36%]
+src/lottie/knowledge/tests/test_graph.py::TestCycles::test_no_cycles_in_chain PASSED                                                                                                             [ 39%]
+src/lottie/knowledge/tests/test_graph.py::TestCycles::test_xy_cycle_detected PASSED                                                                                                              [ 41%]
+src/lottie/knowledge/tests/test_graph.py::TestCycles::test_cycles_deterministic PASSED                                                                                                           [ 43%]
+src/lottie/knowledge/tests/test_graph.py::TestCycles::test_self_loop_is_a_cycle PASSED                                                                                                           [ 46%]
+src/lottie/knowledge/tests/test_graph.py::TestCycles::test_cycles_canonical_order PASSED                                                                                                         [ 48%]
+src/lottie/knowledge/tests/test_graph.py::TestOrphans::test_lonely_is_orphan PASSED                                                                                                              [ 51%]
+src/lottie/knowledge/tests/test_graph.py::TestOrphans::test_chain_nodes_not_orphans PASSED                                                                                                       [ 53%]
+src/lottie/knowledge/tests/test_graph.py::TestOrphans::test_orphans_sorted PASSED                                                                                                                [ 56%]
+src/lottie/knowledge/tests/test_graph.py::TestOrphans::test_ghost_node_excluded_from_orphans_and_stale PASSED                                                                                    [ 58%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_old_doc_is_stale PASSED                                                                                                                [ 60%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_recent_doc_not_stale PASSED                                                                                                            [ 63%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_missing_last_verified_not_stale PASSED                                                                                                 [ 65%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_yyyymm_format_treated_as_first_of_month PASSED                                                                                         [ 68%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_unparseable_last_verified_not_stale PASSED                                                                                             [ 70%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_stale_result_sorted PASSED                                                                                                             [ 73%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_exactly_on_boundary_not_stale PASSED                                                                                                   [ 75%]
+src/lottie/knowledge/tests/test_graph.py::TestStale::test_stale_accepts_naive_now PASSED                                                                                                         [ 78%]
+skills/retrieval/tests/test_hybrid.py::test_expand_graph_includes_dependency_chunk PASSED                                                                                                        [ 80%]
+skills/retrieval/tests/test_hybrid.py::test_expand_graph_b_ranks_above_a PASSED                                                                                                                  [ 82%]
+skills/retrieval/tests/test_hybrid.py::test_expand_graph_discount_applied_to_a_score PASSED                                                                                                      [ 85%]
+skills/retrieval/tests/test_hybrid.py::test_expand_graph_false_returns_only_base_hits PASSED                                                                                                     [ 87%]
+skills/retrieval/tests/test_hybrid.py::test_no_graph_injected_expand_true_behaves_like_no_expansion PASSED                                                                                       [ 90%]
+skills/retrieval/tests/test_hybrid.py::test_no_graph_injected_no_crash PASSED                                                                                                                    [ 92%]
+skills/retrieval/tests/test_hybrid.py::test_no_duplicate_when_neighbour_already_base_hit PASSED                                                                                                  [ 95%]
+skills/retrieval/tests/test_hybrid.py::test_last_metrics_populated_after_expand_run PASSED                                                                                                       [ 97%]
+skills/retrieval/tests/test_hybrid.py::test_expansion_crosses_layer_filter PASSED                                                                                                                [100%]
+
+============================== 41 passed in 2.01s ==============================

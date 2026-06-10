@@ -1,0 +1,10 @@
+ Dependents of  
+'global/conventi
+      ons'      
+┏━━━━━━━━━━━━━━┓
+┃ dependent id ┃
+┡━━━━━━━━━━━━━━┩
+│ lottie/api   │
+│ lottie/auth  │
+└──────────────┘
+2 document(s) transitively depend on 'global/conventions'.

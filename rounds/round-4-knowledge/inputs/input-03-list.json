@@ -1,0 +1,6 @@
+{
+  "_case": "knowledge_list",
+  "argv": ["knowledge", "list", "--root", "{FIXTURE}"],
+  "_expect_contains": ["global/conventions", "lottie/api", "lottie/auth"],
+  "_note": "List all manifest documents in the fixture knowledge root as a rich table (3 docs across global + platform layers)."
+}

@@ -1,0 +1,6 @@
+{
+  "_case": "memory",
+  "argv": ["memory", "audit", "--root", "{FIXTURE}"],
+  "_expect_contains": ["no cycles", "No orphans", "stale", "lottie/api"],
+  "_note": "audit reports cycles / orphans / stale. Fixture is acyclic, fully connected; lottie/api is stale (last_verified 2025-01 > 90 days)."
+}
