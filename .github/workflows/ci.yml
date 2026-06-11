@@ -19,8 +19,14 @@ jobs:
       # lottie-lab has no package of its own — it exercises the framework.
       # Install lottie-orchestrator (the code under test) from main + test deps.
       # setup-uv already created and activated .venv (VIRTUAL_ENV) — install into it.
+      # lottie-orchestrator is a PRIVATE repo, so cloning it needs a PAT with read
+      # access, stored as the ORCH_REPO_TOKEN secret. Remove the git-config line and
+      # the token if the orchestrator repo is made public.
       - name: Install lottie-orchestrator + test deps
+        env:
+          ORCH_REPO_TOKEN: ${{ secrets.ORCH_REPO_TOKEN }}
         run: |
+          git config --global url."https://x-access-token:${ORCH_REPO_TOKEN}@github.com/".insteadOf "https://github.com/"
           uv pip install pytest pytest-cov \
             "lottie-orchestrator @ git+https://github.com/cdiaz19/lottie-orchestrator.git@main"
       - name: Tests with coverage
