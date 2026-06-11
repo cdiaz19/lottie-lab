@@ -1,0 +1,9 @@
+{
+  "isError": false,
+  "structuredContent": {
+    "result": "The serving core is transport-agnostic; the MCP layer is a thin wrapper."
+  },
+  "content_texts": [
+    "[lottie] 0ms \u00b7 0/0 tok \u00b7 $0.0000"
+  ]
+}

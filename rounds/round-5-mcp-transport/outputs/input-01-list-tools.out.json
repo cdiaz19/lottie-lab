@@ -1,0 +1,16 @@
+{
+  "tools": [
+    {
+      "name": "digest",
+      "schema_props": [
+        "query"
+      ]
+    },
+    {
+      "name": "reviewer",
+      "schema_props": [
+        "query"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "_case": "mcp_call_bad_payload",
+  "op": "call_tool",
+  "tool": "digest",
+  "arguments": {"wrong": "field"},
+  "mock_response": "unused",
+  "_expect_error": true,
+  "_note": "Payload missing the required `query` field. run_agent's Pydantic validation (sole authority; validate_input=False) raises InvalidInputError → MCP isError result."
+}

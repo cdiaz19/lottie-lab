@@ -1,0 +1,11 @@
+{
+  "_case": "mcp_call_digest_happy",
+  "op": "call_tool",
+  "tool": "digest",
+  "arguments": {"query": "multi-agent AI systems"},
+  "mock_response": "Multi-agent systems coordinate specialized agents behind one interface.",
+  "_expect_not_error": true,
+  "_expect_structured_keys": ["result"],
+  "_expect_content_contains": ["[lottie]"],
+  "_note": "Happy path on a mocked provider (no API key). Output dict returned as structuredContent; latency/tokens/cost ride a trailing `[lottie] …` text line."
+}

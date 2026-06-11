@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+src/lottie/serve/tests/test_mcp_server.py::test_list_tools_one_per_agent PASSED                                                                                                                  [ 16%]
+src/lottie/serve/tests/test_mcp_server.py::test_broken_agent_is_skipped PASSED                                                                                                                   [ 33%]
+src/lottie/serve/tests/test_mcp_server.py::test_call_tool_happy_path PASSED                                                                                                                      [ 50%]
+src/lottie/serve/tests/test_mcp_server.py::test_call_tool_invalid_input_is_error PASSED                                                                                                          [ 66%]
+src/lottie/serve/tests/test_mcp_server.py::test_call_tool_execution_error_is_error PASSED                                                                                                        [ 83%]
+src/lottie/serve/tests/test_mcp_server.py::test_serve_stdio_runs_built_server PASSED                                                                                                             [100%]
+
+============================== 6 passed in 3.47s ===============================

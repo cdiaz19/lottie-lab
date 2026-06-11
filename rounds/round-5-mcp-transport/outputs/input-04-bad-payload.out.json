@@ -1,0 +1,7 @@
+{
+  "isError": true,
+  "structuredContent": null,
+  "content_texts": [
+    "invalid input for 'digest': 1 validation error for DigestAgentInput\nquery\n  Field required [type=missing, input_value={'wrong': 'field'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  ]
+}

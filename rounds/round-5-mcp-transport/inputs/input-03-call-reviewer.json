@@ -1,0 +1,11 @@
+{
+  "_case": "mcp_call_reviewer_happy",
+  "op": "call_tool",
+  "tool": "reviewer",
+  "arguments": {"query": "review this serving core design"},
+  "mock_response": "The serving core is transport-agnostic; the MCP layer is a thin wrapper.",
+  "_expect_not_error": true,
+  "_expect_structured_keys": ["result"],
+  "_expect_content_contains": ["[lottie]"],
+  "_note": "Second agent proves per-agent tool routing: calling `reviewer` runs the reviewer agent, not digest."
+}

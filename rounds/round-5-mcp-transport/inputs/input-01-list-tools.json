@@ -1,0 +1,7 @@
+{
+  "_case": "mcp_list_tools",
+  "op": "list_tools",
+  "_expect_tools": ["digest", "reviewer"],
+  "_expect_schema_prop": "query",
+  "_note": "MCP server registers one typed tool per discovered agent; inputSchema comes from each agent's Input model (digest + reviewer both expose `query`)."
+}

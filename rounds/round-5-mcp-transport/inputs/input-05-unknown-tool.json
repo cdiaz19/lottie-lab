@@ -1,0 +1,9 @@
+{
+  "_case": "mcp_call_unknown_tool",
+  "op": "call_tool",
+  "tool": "nonexistent",
+  "arguments": {"query": "x"},
+  "mock_response": "unused",
+  "_expect_error": true,
+  "_note": "No agent named `nonexistent` is registered. run_agent raises AgentNotFoundError (ServeError) → MCP isError result. Defensive: tools are pre-registered, so this path is reached only on a stale/forged call."
+}

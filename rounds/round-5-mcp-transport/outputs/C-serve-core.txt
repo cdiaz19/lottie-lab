@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 22 items
+
+src/lottie/serve/tests/test_mcp_server.py::test_list_tools_one_per_agent PASSED                                                                                                                  [  4%]
+src/lottie/serve/tests/test_mcp_server.py::test_broken_agent_is_skipped PASSED                                                                                                                   [  9%]
+src/lottie/serve/tests/test_mcp_server.py::test_call_tool_happy_path PASSED                                                                                                                      [ 13%]
+src/lottie/serve/tests/test_mcp_server.py::test_call_tool_invalid_input_is_error PASSED                                                                                                          [ 18%]
+src/lottie/serve/tests/test_mcp_server.py::test_call_tool_execution_error_is_error PASSED                                                                                                        [ 22%]
+src/lottie/serve/tests/test_mcp_server.py::test_serve_stdio_runs_built_server PASSED                                                                                                             [ 27%]
+src/lottie/serve/tests/test_schema.py::test_agent_info_defaults PASSED                                                                                                                           [ 31%]
+src/lottie/serve/tests/test_schema.py::test_run_result_defaults_and_output PASSED                                                                                                                [ 36%]
+src/lottie/serve/tests/test_security.py::test_check_input_is_identity PASSED                                                                                                                     [ 40%]
+src/lottie/serve/tests/test_security.py::test_check_output_is_identity PASSED                                                                                                                    [ 45%]
+src/lottie/serve/tests/test_service.py::test_list_agents_returns_name_and_provider PASSED                                                                                                        [ 50%]
+src/lottie/serve/tests/test_service.py::test_list_agents_does_not_import_user_code PASSED                                                                                                        [ 54%]
+src/lottie/serve/tests/test_service.py::test_run_agent_happy_path PASSED                                                                                                                         [ 59%]
+src/lottie/serve/tests/test_service.py::test_run_agent_unknown_name PASSED                                                                                                                       [ 63%]
+src/lottie/serve/tests/test_service.py::test_run_agent_invalid_input PASSED                                                                                                                      [ 68%]
+src/lottie/serve/tests/test_service.py::test_run_agent_execution_error PASSED                                                                                                                    [ 72%]
+src/lottie/serve/tests/test_service.py::test_run_agent_gate_called_input_then_output PASSED                                                                                                      [ 77%]
+src/lottie/serve/tests/test_service.py::test_run_agent_provider_override PASSED                                                                                                                  [ 81%]
+src/lottie/serve/tests/test_service.py::test_public_exports PASSED                                                                                                                               [ 86%]
+src/lottie/serve/tests/test_service.py::test_run_agent_bad_config_raises_load_error PASSED                                                                                                       [ 90%]
+src/lottie/serve/tests/test_service.py::test_run_agent_broken_schema_raises_load_error PASSED                                                                                                    [ 95%]
+src/lottie/serve/tests/test_service.py::test_run_agent_from_project_failure_raises_load_error PASSED                                                                                             [100%]
+
+============================== 22 passed in 2.69s ==============================

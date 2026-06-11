@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-orchestrator
+configfile: pyproject.toml
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+src/lottie/cli/tests/test_serve.py::test_serve_missing_mcp_shows_install_hint PASSED                                                                                                             [ 50%]
+src/lottie/cli/tests/test_serve.py::test_serve_invokes_serve_stdio_with_project_root PASSED                                                                                                      [100%]
+
+============================== 2 passed in 1.96s ===============================
