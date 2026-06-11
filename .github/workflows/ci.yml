@@ -18,9 +18,9 @@ jobs:
           enable-cache: true
       # lottie-lab has no package of its own — it exercises the framework.
       # Install lottie-orchestrator (the code under test) from main + test deps.
+      # setup-uv already created and activated .venv (VIRTUAL_ENV) — install into it.
       - name: Install lottie-orchestrator + test deps
         run: |
-          uv venv
           uv pip install pytest pytest-cov \
             "lottie-orchestrator @ git+https://github.com/cdiaz19/lottie-orchestrator.git@main"
       - name: Tests with coverage
