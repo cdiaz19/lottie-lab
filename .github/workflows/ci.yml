@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      # lottie-lab has no package of its own — it exercises the framework.
+      # Install lottie-orchestrator (the code under test) from main + test deps.
+      - name: Install lottie-orchestrator + test deps
+        run: |
+          uv venv
+          uv pip install pytest pytest-cov \
+            "lottie-orchestrator @ git+https://github.com/cdiaz19/lottie-orchestrator.git@main"
+      - name: Tests with coverage
+        run: .venv/bin/pytest agents skills -q --cov=agents --cov=skills --cov-report=term-missing --cov-report=xml
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

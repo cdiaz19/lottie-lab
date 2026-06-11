@@ -1,6 +1,8 @@
 # lottie-lab 🐶
 > Public testing ground for [Lottie Orchestrator](https://github.com/cdiaz19/lottie-orchestrator) — a provider-agnostic multi-agent AI framework.
 
+[![codecov](https://codecov.io/github/cdiaz19/lottie-lab/graph/badge.svg?token=TYML13AK0Z)](https://codecov.io/github/cdiaz19/lottie-lab)
+
 Built in the open. Every round tests a new phase of the framework against real inputs, real providers, and honest results.
 
 ---
