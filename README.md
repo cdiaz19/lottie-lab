@@ -21,7 +21,7 @@ lottie benchmark agent digest       # record latency, cost, accuracy
 
 ## Rounds
 
-Each round maps to a Lottie phase. A round doesn't close until every item on its checklist is signed off.
+Each round tackles a slice of the framework — usually the next phase, occasionally one pulled forward (MCP shipped early as Round 5). A round doesn't close until every item on its checklist is signed off.
 
 | Round | Phase | Focus | Status |
 |-------|-------|-------|--------|

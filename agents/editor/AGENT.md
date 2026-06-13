@@ -29,7 +29,7 @@ plan ──> (parallel)         ├──> review ──> [HITL gate] ──> pu
 |---|---|---|
 | `final` | `str` | The final answer assembled by the mesh run |
 | `history` | `list[StepResult]` | Ordered record of each worker invocation (`worker`, `result`) |
-| `status` | `str` | `"ok"` or `"interrupted"` (paused at HITL gate) |
+| `status` | `str` | `"complete"` or `"interrupted"` (paused at HITL gate) |
 | `thread_id` | `str` | Checkpoint thread ID, needed for resume |
 | `pending` | `PendingApproval \| None` | Set when status is `"interrupted"` |
 
@@ -98,7 +98,7 @@ Default: `anthropic/claude-sonnet-4-6` (supervisor LLM). Workers receive the sam
 Reuses the existing stack — **no new CLI**:
 
 ```bash
-lottie run editor               # run the content pipeline (pauses at publish gate)
+lottie run editor               # run the content pipeline (real provider drives the supervisor; pauses at publish gate)
 lottie serve                    # exposes editor as an MCP tool
-lottie benchmark agent editor
+# lottie benchmark agent editor # N/A for this HITL mesh — a run returns `interrupted`, not a scorable final
 ```
