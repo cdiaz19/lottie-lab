@@ -1,0 +1,15 @@
+provider: anthropic/claude-sonnet-4-6
+model_params:
+  temperature: 0.0
+  max_tokens: 512
+capabilities: []
+policies:
+  - base
+workers:
+  - plan
+  - draft
+  - factcheck
+  - review
+  - publish
+interrupt_before:
+  - publish
