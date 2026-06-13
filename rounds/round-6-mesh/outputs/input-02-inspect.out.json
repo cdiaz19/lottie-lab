@@ -1,0 +1,19 @@
+╭─────────────────────────────── agent: editor ────────────────────────────────╮
+│ provider: anthropic/claude-sonnet-4-6                                        │
+│ model_params: {'temperature': 0.0, 'max_tokens': 512}                        │
+│ capabilities: —                                                              │
+│ policies: base                                                               │
+│                                                                              │
+│ Input:                                                                       │
+│   task: str                                                                  │
+│   max_steps: int                                                             │
+│ Output:                                                                      │
+│   final: str                                                                 │
+│   history: list                                                              │
+│   status: typing.Literal['complete', 'interrupted']                          │
+│   thread_id: str | None                                                      │
+│   pending: lottie.mesh.schema.PendingApproval | None                         │
+│                                                                              │
+│ System prompt:                                                               │
+│ —                                                                            │
+╰──────────────────────────────────────────────────────────────────────────────╯

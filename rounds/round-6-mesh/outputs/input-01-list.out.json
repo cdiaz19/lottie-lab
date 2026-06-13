@@ -1,0 +1,8 @@
+                  Agents                  
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ name     ┃ provider                    ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ digest   │ anthropic/claude-sonnet-4-6 │
+│ editor   │ anthropic/claude-sonnet-4-6 │
+│ reviewer │ anthropic/claude-sonnet-4-6 │
+└──────────┴─────────────────────────────┘

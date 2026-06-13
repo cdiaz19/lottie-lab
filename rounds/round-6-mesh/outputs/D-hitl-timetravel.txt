@@ -1,0 +1,10 @@
+Deserializing unregistered type lottie.mesh.schema.StepResult from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('lottie.mesh.schema', 'StepResult')]
+Deserializing unregistered type lottie.mesh.schema.MeshState from checkpoint. This will be blocked in a future version. Set LANGGRAPH_STRICT_MSGPACK=true to block now, or add to allowed_msgpack_modules to allow explicitly: [('lottie.mesh.schema', 'MeshState')]
+run status      = interrupted
+history workers = ['plan', 'draft', 'factcheck', 'review']
+pending worker  = publish
+thread_id       = 6e1de5a39b254206a8764a325ca54a21
+resumed status  = complete
+final           = PUBLISHED: ship the launch post
+checkpoints     = 10
+RESULT: PASS

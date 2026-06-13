@@ -1,0 +1,3 @@
+PASS input-01-list
+PASS input-02-inspect
+PASS input-03-history

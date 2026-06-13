@@ -1,0 +1,12 @@
+╭───────────── mesh history (in-memory: nothing across processes) ─────────────╮
+│ agent:      editor                                                           │
+│ thread_id:  t1                                                               │
+│                                                                              │
+│ Checkpoint history requires the  extra and a persistent (sqlite)             │
+│ checkpointer for cross-process inspection.                                   │
+│ The default in-memory checkpointer is process-local: a fresh CLI process     │
+│ starts with an empty MemorySaver, so there is nothing to show across         │
+│ processes for a thread created by a prior run.                               │
+│                                                                              │
+│ Switch to the sqlite checkpointer for durable, inspectable history.          │
+╰──────────────────────────────────────────────────────────────────────────────╯
