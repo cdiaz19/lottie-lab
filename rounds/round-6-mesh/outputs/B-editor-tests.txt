@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /Users/cdiaz19/Documents/trae_projects/lottie-lab/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/cdiaz19/Documents/trae_projects/lottie-lab
+plugins: cov-7.1.0, asyncio-1.4.0, langsmith-0.8.7, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+agents/editor/tests/test_editor.py::test_run_pauses_before_publish PASSED [ 16%]
+agents/editor/tests/test_editor.py::test_parallel_branch_runs_both_workers PASSED [ 33%]
+agents/editor/tests/test_editor.py::test_resume_approve_completes_and_publishes PASSED [ 50%]
+agents/editor/tests/test_editor.py::test_undeclared_worker_is_refused PASSED [ 66%]
+agents/editor/tests/test_editor.py::test_workers_must_match_config_roster PASSED [ 83%]
+agents/editor/tests/test_schema.py::test_editor_io_are_mesh_models PASSED [100%]
+
+============================== 6 passed in 1.68s ===============================

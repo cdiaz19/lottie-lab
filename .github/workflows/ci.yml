@@ -28,7 +28,7 @@ jobs:
         run: |
           git config --global url."https://x-access-token:${ORCH_REPO_TOKEN}@github.com/".insteadOf "https://github.com/"
           uv pip install pytest pytest-cov \
-            "lottie-orchestrator @ git+https://github.com/cdiaz19/lottie-orchestrator.git@main"
+            "lottie-orchestrator[mesh] @ git+https://github.com/cdiaz19/lottie-orchestrator.git@main"
       - name: Tests with coverage
         run: .venv/bin/pytest agents skills -q --cov=agents --cov=skills --cov-report=term-missing --cov-report=xml
       - name: Upload coverage reports to Codecov

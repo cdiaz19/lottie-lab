@@ -21,7 +21,7 @@ lottie benchmark agent digest       # record latency, cost, accuracy
 
 ## Rounds
 
-Each round maps to a Lottie phase. A round doesn't close until every item on its checklist is signed off.
+Each round tackles a slice of the framework — usually the next phase, occasionally one pulled forward (MCP shipped early as Round 5). A round doesn't close until every item on its checklist is signed off.
 
 | Round | Phase | Focus | Status |
 |-------|-------|-------|--------|
@@ -29,9 +29,10 @@ Each round maps to a Lottie phase. A round doesn't close until every item on its
 | [Round 2](rounds/round-2-phase0-completion/) | Phase 0 | Registry, benchmark, KI-01 fix, second agent | Complete |
 | [Round 3](rounds/round-3-serve-core/) | Phase 0 | Serve core (`AgentService`), memory stubs, security write-gate — Phase 0 closed | Complete |
 | [Round 4](rounds/round-4-knowledge/) | Phase 1 | Knowledge — document ingest, RAG pipeline, knowledge graph, `ResearchAgent` | Complete |
-| Round 5 | Phase 2 | Multi-agent mesh — LangGraph, supervisor → workers, parallel runs | ⏳ Pending |
-| Round 6 | Phase 3 | Governance — audit trail, policy engine, security layer | ⏳ Pending |
-| Round 7 | Phase 4 | Integration — MCP server, OpenAI-compat API | ⏳ Pending |
+| [Round 5](rounds/round-5-mcp-transport/) | Phase 4 | MCP stdio transport — `lottie serve` (done early, ahead of phase order) | Complete |
+| [Round 6](rounds/round-6-mesh/) | Phase 2 + 3 | Multi-agent mesh — LangGraph, supervisor→workers, parallel fan-out, HITL, time-travel | Complete |
+| Round 7 | Governance | audit trail, policy engine, OpenTelemetry | ⏳ Pending |
+| Round 8 | Phase 4 | remaining integration — REST, OpenAI-compat API | ⏳ Pending |
 
 ---
 
@@ -102,6 +103,32 @@ Results logged in [`rounds/round-3-serve-core/results.md`](rounds/round-3-serve-
 > then `bash rounds/round-4-knowledge/run-inputs.sh` from the lab. See [`rounds/round-4-knowledge/ROUND.md`](rounds/round-4-knowledge/ROUND.md).
 
 Results logged in [`rounds/round-4-knowledge/results.md`](rounds/round-4-knowledge/results.md).
+
+---
+
+## Round 5 - MCP stdio Transport - Complete
+
+**What was tested:** MCP stdio transport layer — `lottie serve` wiring, one typed tool per agent, `call_tool` routing, error mapping, optional-dep hygiene. Shipped early (Phase 4 slice 1), ahead of phase order.
+
+Results logged in [`rounds/round-5-mcp-transport/results.md`](rounds/round-5-mcp-transport/results.md).
+
+---
+
+## Round 6 - Multi-agent Mesh - Complete
+
+**What was tested:** supervisor→worker routing, parallel fan-out, HITL interrupt/resume, checkpoint time-travel, and capability enforcement — verified end-to-end from an independent lab mesh (`EditorMesh`) on the published API. Mock providers only; API keys unset.
+
+**Mesh:** `EditorMesh` — topology `plan → parallel[draft, factcheck] → review → publish (HITL gate)`. Workers are pure deterministic stubs; the supervisor is the sole LLM consumer.
+
+**Results:** 39 framework mesh tests (cwd=orchestrator, `[mesh]` extra) · 6 editor tests · 17 lab suite · 3/3 CLI cases (list, inspect, mesh-history) · in-process driver RESULT PASS (run status `interrupted`, history `['plan', 'draft', 'factcheck', 'review']`, resume status `complete`, final `PUBLISHED: ship the launch post`, 10 checkpoints) · `mypy --strict` clean (7 source files) · `ruff` clean.
+
+> **How to run Round 6:** `uv pip install -e '../lottie-orchestrator[mesh]'`, then:
+> `pytest agents/editor`, `bash rounds/round-6-mesh/run-inputs.sh`, `python3 rounds/round-6-mesh/_mesh_driver.py`.
+> See [`rounds/round-6-mesh/results.md`](rounds/round-6-mesh/results.md) and [`rounds/round-6-mesh/ROUND.md`](rounds/round-6-mesh/ROUND.md).
+
+> **Caveats:** The CLI's `build_provider` always returns `LiteLLMProvider`, so end-to-end routing/parallel/HITL/time-travel is proven by the in-process `_mesh_driver.py`, not via `lottie run`. The in-memory checkpointer is process-local — durable cross-process resume via sqlite is tracked as FU-9.
+
+Results logged in [`rounds/round-6-mesh/results.md`](rounds/round-6-mesh/results.md).
 
 ---
 
