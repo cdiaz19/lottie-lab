@@ -1,0 +1,6 @@
+{
+  "_case": "inspect",
+  "argv": ["inspect", "agent", "editor"],
+  "_expect_contains": ["editor", "task"],
+  "_note": "typed EditorInput (task/max_steps) surfaces via inspect."
+}

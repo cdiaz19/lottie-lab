@@ -1,0 +1,6 @@
+{
+  "_case": "list",
+  "argv": ["list", "agents"],
+  "_expect_contains": ["editor"],
+  "_note": "editor mesh registered alongside the lab's digest/reviewer agents."
+}

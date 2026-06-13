@@ -1,0 +1,6 @@
+{
+  "_case": "mesh-history",
+  "argv": ["mesh", "history", "--agent", "editor", "--thread-id", "t1"],
+  "_expect_contains": ["editor"],
+  "_note": "Phase-3 mesh history CLI: in-memory checkpointer is process-local; cold CLI prints an informative notice, exit 0."
+}
