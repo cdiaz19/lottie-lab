@@ -47,7 +47,7 @@ def main() -> int:
 
     ok = out.status == "interrupted"
     ok = ok and out.pending is not None and out.pending.worker == "publish"
-    ok = ok and "draft" in workers and "factcheck" in workers  # parallel branches
+    ok = ok and "draft" in workers and "factcheck" in workers
 
     # C: approve -> resume -> complete.
     resumed = mesh.resume(out.thread_id or "", ApprovalDecision(action="approve"))
@@ -55,7 +55,7 @@ def main() -> int:
     print(f"final           = {resumed.final}")
     ok = ok and resumed.status == "complete" and resumed.final.startswith("PUBLISHED:")
 
-    # D: time-travel -- the engine exposes the checkpoint timeline for the thread.
+    # D: time-travel
     engine = mesh._engine
     history = engine.history(  # type: ignore[attr-defined]
         out.thread_id or "", nodes=mesh._nodes, route=mesh._route_fn()

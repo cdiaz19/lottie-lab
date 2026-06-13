@@ -47,8 +47,8 @@ def test_parallel_branch_runs_both_workers() -> None:
     mesh = _mesh(_SCRIPT)
     out = mesh.run(EditorInput(task="ship the post"))
     workers = [s.worker for s in out.history]
-    assert "draft" in workers and "factcheck" in workers  # parallel fan-out merged
-    assert workers[0] == "plan"  # ordering preserved before the fan-out
+    assert "draft" in workers and "factcheck" in workers
+    assert workers[0] == "plan"  # fan-out merges after plan, never before
 
 
 def test_resume_approve_completes_and_publishes() -> None:
@@ -69,4 +69,4 @@ def test_undeclared_worker_is_refused() -> None:
 
 def test_workers_must_match_config_roster() -> None:
     with pytest.raises(ValueError, match="workers"):
-        _mesh(_SCRIPT, workers=["plan", "draft"])  # incomplete roster
+        _mesh(_SCRIPT, workers=["plan", "draft"])
