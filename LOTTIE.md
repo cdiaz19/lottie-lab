@@ -5,6 +5,7 @@
 ## Agents
 - **ReviewerAgent** — `agents/reviewer/`
 - **DigestAgent** — `agents/digest/`
+- **EditorMesh** — `agents/editor/`
 
 ## Skills
 - **SummarizerSkill** — `skills/summarizer/`
