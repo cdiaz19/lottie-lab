@@ -29,10 +29,10 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 2](rounds/round-2-phase0-completion/) | Phase 0 | Registry, benchmark, KI-01 fix, second agent | Complete |
 | [Round 3](rounds/round-3-serve-core/) | Phase 0 | Serve core (`AgentService`), memory stubs, security write-gate — Phase 0 closed | Complete |
 | [Round 4](rounds/round-4-knowledge/) | Phase 1 | Knowledge — document ingest, RAG pipeline, knowledge graph, `ResearchAgent` | Complete |
-| [Round 5](rounds/round-5-mcp-transport/) | Phase 4 | MCP stdio transport — `lottie serve` (done early, ahead of phase order) | Complete |
-| [Round 6](rounds/round-6-mesh/) | Phase 2 + 3 | Multi-agent mesh — LangGraph, supervisor→workers, parallel fan-out, HITL, time-travel | Complete |
-| Round 7 | Governance | audit trail, policy engine, OpenTelemetry | ⏳ Pending |
-| Round 8 | Phase 4 | remaining integration — REST, OpenAI-compat API | ⏳ Pending |
+| [Round 5](rounds/round-5-mcp-transport/) | Phase 2| MCP stdio transport — `lottie serve` | Complete |
+| [Round 6](rounds/round-6-mesh/) | Phase 3 + 4| Multi-agent mesh — LangGraph, supervisor→workers, parallel fan-out, HITL, time-travel | Complete |
+| Round 7 | Governance | audit trail, policy engine, OpenTelemetry | Pending |
+| Round 8 | Phase 4 | remaining integration — REST, OpenAI-compat API | Pending |
 
 ---
 
