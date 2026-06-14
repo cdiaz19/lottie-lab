@@ -1,0 +1,4 @@
+CASE 05-allow-whitelist: Non-empty allow, capability NOT listed -> denied (default-deny whitelist).
+declared_policies=['base'] capabilities=['text.summarize']
+  order=['base'] -> outcome=PolicyDenied (expect PolicyDenied) llm_calls=0 audit_status=denied | PolicyDenied: capability 'text.summarize' not in policy allow-list
+RESULT: PASS

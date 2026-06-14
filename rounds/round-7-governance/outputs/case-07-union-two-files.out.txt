@@ -1,0 +1,5 @@
+CASE 07-union-two-files: Two policy files union; the deny in the second file applies (order-independent).
+declared_policies=['base', 'extra'] capabilities=['text.summarize']
+  order=['base', 'extra'] -> outcome=PolicyDenied (expect PolicyDenied) llm_calls=0 audit_status=denied | PolicyDenied: capability 'text.summarize' denied by policy
+  order=['extra', 'base'] -> outcome=PolicyDenied (expect PolicyDenied) llm_calls=0 audit_status=denied | PolicyDenied: capability 'text.summarize' denied by policy
+RESULT: PASS

@@ -1,0 +1,18 @@
+{
+  "id": "03-deny",
+  "desc": "deny matches a declared capability -> PolicyDenied, blocked before _execute.",
+  "declared": [
+    "base"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "deny": [
+        "text.summarize"
+      ]
+    }
+  },
+  "expect": "PolicyDenied"
+}

@@ -1,0 +1,15 @@
+CASE 09-audit-integration: audit rows for denied/escalated/ok + `lottie audit` render.
+audit statuses present: ['denied', 'escalated', 'ok']
+lottie audit exit=0
+
+                                   audit log                                    
+┏━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━┳━━━━━━━━━━┓
+┃ ts        ┃ agent    ┃ status    ┃ root ┃ tokens ┃ cost     ┃ ms  ┃ in/out   ┃
+┡━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━╇━━━━━━━━━━┩
+│ 2026-06-… │ DigestA… │ escalated │ Y    │ 0/0    │ 0.000000 │ 0.0 │ 95ec800… │
+│ 2026-06-… │ DigestA… │ denied    │ Y    │ 0/0    │ 0.000000 │ 0.0 │ 95ec800… │
+│ 2026-06-… │ DigestA… │ ok        │ Y    │ 0/0    │ 0.000000 │ 0.0 │ 95ec800… │
+└───────────┴──────────┴───────────┴──────┴────────┴──────────┴─────┴──────────┘
+[92m23:08:46 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m23:08:46 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+

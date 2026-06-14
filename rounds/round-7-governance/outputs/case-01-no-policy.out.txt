@@ -1,0 +1,4 @@
+CASE 01-no-policy: No policy declared / no policy file present -> run succeeds (baseline).
+declared_policies=[] capabilities=['text.summarize']
+  order=[] -> outcome=ok (expect ok) llm_calls=1 audit_status=ok | ok: DIGEST: a concise summary of the input.
+RESULT: PASS

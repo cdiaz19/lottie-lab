@@ -1,0 +1,4 @@
+CASE 03-deny: deny matches a declared capability -> PolicyDenied, blocked before _execute.
+declared_policies=['base'] capabilities=['text.summarize']
+  order=['base'] -> outcome=PolicyDenied (expect PolicyDenied) llm_calls=0 audit_status=denied | PolicyDenied: capability 'text.summarize' denied by policy
+RESULT: PASS

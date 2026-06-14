@@ -1,0 +1,4 @@
+CASE 06-deny-beats-allow: deny + allow both match same capability -> deny wins (precedence).
+declared_policies=['base'] capabilities=['text.summarize']
+  order=['base'] -> outcome=PolicyDenied (expect PolicyDenied) llm_calls=0 audit_status=denied | PolicyDenied: capability 'text.summarize' denied by policy
+RESULT: PASS

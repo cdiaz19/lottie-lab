@@ -1,0 +1,18 @@
+{
+  "id": "05-allow-whitelist",
+  "desc": "Non-empty allow, capability NOT listed -> denied (default-deny whitelist).",
+  "declared": [
+    "base"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "allow": [
+        "other.capability"
+      ]
+    }
+  },
+  "expect": "PolicyDenied"
+}

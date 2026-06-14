@@ -1,0 +1,3 @@
+project: audit-demo
+providers:
+  default: mock/x
