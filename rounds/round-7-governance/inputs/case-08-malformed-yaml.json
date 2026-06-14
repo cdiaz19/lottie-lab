@@ -1,0 +1,16 @@
+{
+  "id": "08-malformed-yaml",
+  "desc": "Malformed policy YAML -> fail-closed at instantiate (no silent allow).",
+  "declared": [
+    "base"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "_raw": "deny: [a, b\nallow: ::: not valid :::\n  - x\n"
+    }
+  },
+  "expect": "PolicyConfigError"
+}

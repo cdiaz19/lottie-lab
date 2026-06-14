@@ -1,0 +1,21 @@
+{
+  "id": "06-deny-beats-allow",
+  "desc": "deny + allow both match same capability -> deny wins (precedence).",
+  "declared": [
+    "base"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "deny": [
+        "text.summarize"
+      ],
+      "allow": [
+        "text.summarize"
+      ]
+    }
+  },
+  "expect": "PolicyDenied"
+}

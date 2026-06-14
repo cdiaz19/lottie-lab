@@ -1,0 +1,10 @@
+{
+  "id": "01-no-policy",
+  "desc": "No policy declared / no policy file present -> run succeeds (baseline).",
+  "declared": [],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {},
+  "expect": "ok"
+}

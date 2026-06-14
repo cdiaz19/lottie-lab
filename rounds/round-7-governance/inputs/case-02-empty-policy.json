@@ -1,0 +1,16 @@
+{
+  "id": "02-empty-policy",
+  "desc": "Declared policy is a 0-byte file -> no rules -> run succeeds.",
+  "declared": [
+    "base"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "_raw": ""
+    }
+  },
+  "expect": "ok"
+}

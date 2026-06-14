@@ -1,0 +1,4 @@
+CASE 04-escalate: escalate matches -> PolicyEscalation (distinct from deny), also blocks.
+declared_policies=['base'] capabilities=['text.summarize']
+  order=['base'] -> outcome=PolicyEscalation (expect PolicyEscalation) llm_calls=0 audit_status=escalated | PolicyEscalation: capability 'text.summarize' requires approval (escalate)
+RESULT: PASS

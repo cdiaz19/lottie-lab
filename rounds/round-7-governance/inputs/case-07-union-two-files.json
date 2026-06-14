@@ -1,0 +1,25 @@
+{
+  "id": "07-union-two-files",
+  "desc": "Two policy files union; the deny in the second file applies (order-independent).",
+  "declared": [
+    "base",
+    "extra"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "deny": [
+        "unrelated"
+      ]
+    },
+    "extra": {
+      "deny": [
+        "text.summarize"
+      ]
+    }
+  },
+  "expect": "PolicyDenied",
+  "also_reversed": true
+}

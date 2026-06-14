@@ -1,0 +1,18 @@
+{
+  "id": "04-escalate",
+  "desc": "escalate matches -> PolicyEscalation (distinct from deny), also blocks.",
+  "declared": [
+    "base"
+  ],
+  "capabilities": [
+    "text.summarize"
+  ],
+  "files": {
+    "base": {
+      "escalate": [
+        "text.summarize"
+      ]
+    }
+  },
+  "expect": "PolicyEscalation"
+}

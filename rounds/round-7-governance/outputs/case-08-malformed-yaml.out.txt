@@ -1,0 +1,11 @@
+CASE 08-malformed-yaml: Malformed policy YAML -> fail-closed at instantiate (no silent allow).
+declared_policies=['base'] capabilities=['text.summarize']
+  order=['base'] -> outcome=PolicyConfigError (expect PolicyConfigError) llm_calls=0 audit_status=(empty) | PolicyConfigError: policy 'base' at /var/folders/fr/2d87lt5n0_3f73_xhkvqt4xr0000gn/T/tmp3sbaoelz/policies/base.yaml is not valid YAML: while parsing a flow sequence
+  in "<unicode string>", line 1, column 7:
+    deny: [a, b
+          ^
+expected ',' or ']', but got ':'
+  in "<unicode string>", line 2, column 6:
+    allow: ::: not valid :::
+         ^
+RESULT: PASS

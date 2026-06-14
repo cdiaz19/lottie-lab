@@ -1,0 +1,4 @@
+CASE 02-empty-policy: Declared policy is a 0-byte file -> no rules -> run succeeds.
+declared_policies=['base'] capabilities=['text.summarize']
+  order=['base'] -> outcome=ok (expect ok) llm_calls=1 audit_status=ok | ok: DIGEST: a concise summary of the input.
+RESULT: PASS
