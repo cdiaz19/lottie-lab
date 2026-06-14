@@ -44,12 +44,17 @@ python3 rounds/round-7-governance/_policy_driver.py    # writes inputs/ + output
 The driver is the harness: it writes `inputs/case-*.json` (scenarios) and `outputs/case-*.out.txt`
 (captured results), and seeds `outputs/audit-demo/` for the `lottie audit` render.
 
-## Definition of done
+## Definition of done — ✅ COMPLETE (9/9)
 
-Every §-checklist box in `results.md` signed off; policy enforced before `_execute` on `deny`/
-`escalate`; whitelist + precedence + multi-file union correct; empty/absent rules block nothing;
-malformed config fails closed; audit rows written with `denied`/`escalated`/`ok` and rendered by
-`lottie audit`; findings recorded honestly.
+Every §7 sign-off box in `results.md` is checked. Policy is enforced before `_execute` on `deny`/
+`escalate` (proven by `llm_calls=0`); whitelist + precedence + multi-file union correct; empty/absent
+rules block nothing; malformed config fails closed with the typed `PolicyConfigError`; audit rows
+written with `denied`/`escalated`/`ok` and rendered by `lottie audit`.
+
+**Finding FG-1 (found → fixed):** the round caught that malformed policy YAML failed closed but leaked
+a raw `yaml.ParserError` instead of `PolicyConfigError`. Fixed in `lottie-orchestrator` commit
+**`6b79f80`** (`feat/governance-policy-engine`) + a regression unit test; re-run flips case 8 to ✅,
+matrix **9/9**.
 
 ## Deviations / notes
 

@@ -6,8 +6,8 @@ audit PR #11), installed editable in the lab venv.
 `MockLLMProvider` (offline). A blocked run leaves `MockLLMProvider._index == 0`, proving `_execute`
 never ran.
 
-**Headline: 8/9 cases pass clean; case 8 surfaces one real finding (FG-1) — fail-closed holds, but
-the error type is unwrapped.**
+**Headline: 9/9 cases pass. Case 8 originally surfaced finding FG-1 (fail-closed but untyped error);
+FG-1 was fixed in `lottie-orchestrator` (commit `6b79f80`) and the round re-run now passes clean.**
 
 ## Test matrix
 
@@ -20,7 +20,7 @@ the error type is unwrapped.**
 | 5 | `allow` whitelist, cap not listed | denied | `PolicyDenied` ("not in allow-list") | 0 | `denied` | ✅ |
 | 6 | `deny` + `allow` same cap | deny wins | `PolicyDenied` | 0 | `denied` | ✅ |
 | 7 | two files unioned (both orders) | denied, order-independent | `PolicyDenied` for `[base,extra]` **and** `[extra,base]` | 0 | `denied` | ✅ |
-| 8 | malformed policy YAML | `PolicyConfigError`, fail-closed | **fail-closed ✅** but raises `yaml.parser.ParserError`, not `PolicyConfigError` | 0 | (none) | ⚠️ **FG-1** |
+| 8 | malformed policy YAML | `PolicyConfigError`, fail-closed | `PolicyConfigError` (fail-closed) — after FG-1 fix `6b79f80` | 0 | (none) | ✅ |
 | 9 | audit integration | denied/escalated/ok logged + `lottie audit` renders | all three statuses present; `lottie audit` exit 0, table shows `escalated`/`denied`/`ok` for `DigestAgent` | — | — | ✅ |
 
 ## Proof points
@@ -42,18 +42,22 @@ the error type is unwrapped.**
 
 ## Findings
 
-### FG-1 (minor, recommend fixing before #12 merges): malformed policy YAML fails closed but with an unwrapped error
-`load_policy` calls `yaml.safe_load(...)` without catching parse errors. A genuinely malformed policy
-file therefore raises `yaml.parser.ParserError` straight out of `instantiate_agent`, not the framework's
-typed `PolicyConfigError`. **Fail-closed is preserved** — the run is blocked, never a silent allow — so
-this is not a security hole, but the error contract is leaky: callers catching `PolicyConfigError` (the
-documented "bad policy config" signal) would miss it.
-**Recommended fix** (one line, in `src/lottie/governance/policy.py` `load_policy`): wrap the
-`yaml.safe_load` call in `try/except yaml.YAMLError as exc: raise PolicyConfigError(...) from exc`. After
-that, case 8 would observe `PolicyConfigError` and flip to ✅.
+### FG-1 — FOUND → FIXED: malformed policy YAML failed closed but with an unwrapped error
+**Found (this round, case 8):** `load_policy` called `yaml.safe_load(...)` without catching parse
+errors, so a genuinely malformed policy file raised `yaml.parser.ParserError` straight out of
+`instantiate_agent`, not the framework's typed `PolicyConfigError`. Fail-closed was preserved (the run
+was blocked, never a silent allow) — not a security hole — but the error contract was leaky: callers
+catching `PolicyConfigError` (the documented "bad policy config" signal) would have missed it. The
+slice-2 unit tests didn't cover this; Round 7 caught it.
 
-> Note: `load_policy` already raises `PolicyConfigError` for a *missing* file and for a *wrong-shape*
-> (non-mapping) file — only true YAML **parse** errors slip through untyped.
+**Fixed:** `lottie-orchestrator` commit **`6b79f80`** (branch `feat/governance-policy-engine`) wraps
+the `yaml.safe_load` call: `try/except yaml.YAMLError → raise PolicyConfigError(<file path> …) from exc`
+— still fail-closed, now typed. A regression unit test
+(`test_load_policy_malformed_yaml_raises_config_error`) was added next to the other policy tests so it
+can't recur. Round 7 re-run after the fix: **case 8 → ✅ (`PolicyConfigError`)**, matrix 9/9.
+
+> Note: `load_policy` already raised `PolicyConfigError` for a *missing* file and a *wrong-shape*
+> (non-mapping) file; FG-1 closed the remaining gap — true YAML **parse** errors.
 
 ### Observation (not a defect): MockLLM ok-runs log 0 tokens
 The `ok` audit rows show `0/0` tokens because `MockLLMProvider` reports no usage. Real-provider runs
@@ -68,11 +72,12 @@ populate tokens/cost. Out of scope for this round (we validate policy + audit wi
 - [x] Precedence `deny > escalate > allow` (deny beats allow on the same capability)
 - [x] Multiple policy files union, order-independent
 - [x] No policy / empty (0-byte) policy ⇒ run succeeds (backward-compatible)
-- [x] Malformed policy config fails **closed** (no silent allow) — ⚠️ raises `yaml.ParserError` not `PolicyConfigError` (**FG-1**, fix recommended before #12 merge)
+- [x] Malformed policy config fails **closed** (no silent allow) and raises the typed `PolicyConfigError` (after **FG-1** fix `6b79f80`)
 - [x] Blocked runs audited with `status="denied"`/`"escalated"`; normal run `status="ok"`
 - [x] `lottie audit` renders the rows (exit 0)
-- [x] Findings recorded honestly (FG-1)
+- [x] Findings recorded honestly (FG-1 found → fixed)
 
-**Verdict:** audit trail + policy engine validated end-to-end from a downstream project. 8/9 clean;
-case 8 is fail-closed with one recommended one-line hardening (FG-1). **No PR merged, nothing pushed to
-main** — awaiting review before merging #11 then #12.
+**Verdict:** audit trail + policy engine validated end-to-end from a downstream project — **9/9**. Round
+7 found FG-1 (malformed YAML untyped error); it was fixed in `lottie-orchestrator` `6b79f80` (still
+fail-closed, now typed, regression-tested) and the re-run passes clean. **No orchestrator PR merged** —
+#11 → #12 await review.
