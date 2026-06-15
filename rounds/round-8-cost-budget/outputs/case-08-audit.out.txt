@@ -1,0 +1,15 @@
+CASE 08-audit-integration: ok + budget_exceeded rows + `lottie audit` render.
+audit statuses present: ['budget_exceeded', 'ok']
+lottie audit exit=0
+
+                                   audit log                                    
+┏━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━┳━━━━━━━━━━┓
+┃ ts        ┃ agent    ┃ status    ┃ root ┃ tokens ┃ cost     ┃ ms  ┃ in/out   ┃
+┡━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━╇━━━━━━━━━━┩
+│ 2026-06-… │ DigestA… │ budget_e… │ Y    │ 0/0    │ 0.000000 │ 0.0 │ e7b9e8e… │
+│ 2026-06-… │ DigestA… │ ok        │ Y    │ 10/20  │ 0.010000 │ 0.0 │ de33478… │
+│ 2026-06-… │ DigestA… │ ok        │ Y    │ 0/0    │ 0.500000 │ 1.0 │ aaaaaaa… │
+└───────────┴──────────┴───────────┴──────┴────────┴──────────┴─────┴──────────┘
+[92m22:47:39 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m22:47:39 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+

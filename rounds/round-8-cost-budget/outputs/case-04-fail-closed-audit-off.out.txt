@@ -1,0 +1,5 @@
+CASE 04-fail-closed-audit-off: Budget set + audit disabled -> fail-closed BudgetExceeded.
+budget=0.05 seed=None deny=[] audit_off=True
+outcome=BudgetExceeded (expect BudgetExceeded) llm_calls=0 audit_status=(audit off)
+BudgetExceeded: agent 'DigestAgent' has budget $0.0500 but the audit ledger is disabled - cannot verify spend (fail-closed)
+RESULT: PASS

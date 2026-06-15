@@ -1,0 +1,5 @@
+CASE 06-policy-before-budget: Policy-denied AND over budget -> PolicyDenied (policy first).
+budget=0.05 seed=0.05 deny=['text.summarize'] audit_off=False
+outcome=PolicyDenied (expect PolicyDenied) llm_calls=0 audit_status=denied
+PolicyDenied: capability 'text.summarize' denied by policy
+RESULT: PASS

@@ -1,0 +1,4 @@
+CASE 07-accrual-circuit-breaker: budget=0.05, cost=0.04/run, 3 runs.
+outcomes=['ok', 'ok', 'BudgetExceeded'] (expect ['ok','ok','BudgetExceeded']) final_spend=$0.0800
+run that crosses the budget completes; the next is blocked (one-run overshoot, sequential).
+RESULT: PASS

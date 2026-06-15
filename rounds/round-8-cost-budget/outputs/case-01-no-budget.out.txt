@@ -1,0 +1,5 @@
+CASE 01-no-budget: No budget declared -> unlimited (baseline).
+budget=None seed=None deny=[] audit_off=False
+outcome=ok (expect ok) llm_calls=1 audit_status=ok
+ok: DIGEST: a concise summary.
+RESULT: PASS

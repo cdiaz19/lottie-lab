@@ -1,0 +1,5 @@
+CASE 02-under-budget: Budget set, prior spend below it -> run proceeds.
+budget=0.1 seed=0.02 deny=[] audit_off=False
+outcome=ok (expect ok) llm_calls=1 audit_status=ok
+ok: DIGEST: a concise summary.
+RESULT: PASS
