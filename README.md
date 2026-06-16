@@ -33,7 +33,7 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 6](rounds/round-6-mesh/) | Phase 2 + 3 | Multi-agent mesh — LangGraph, supervisor→workers, parallel fan-out, HITL, time-travel | Complete |
 | [Round 7](rounds/round-7-governance/) | Governance | Audit trail + capability policy engine (allow/deny/escalate) — 9/9, caught + fixed finding FG-1 | Complete |
 | [Round 8](rounds/round-8-cost-budget/) | Governance | Cost budget circuit-breaker (per-agent, fail-closed) — 8/8 | Complete |
-| Round 9 | Governance | OpenTelemetry spans | Pending |
+| [Round 9](rounds/round-9-otel/) | Governance | OpenTelemetry tracing — 5/5; parallel-mesh span nesting verified | Complete |
 | Round 10 | Phase 4 | remaining integration — REST, OpenAI-compat API | Pending |
 
 ---
