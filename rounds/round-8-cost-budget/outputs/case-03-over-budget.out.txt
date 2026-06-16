@@ -1,0 +1,5 @@
+CASE 03-over-budget: Prior spend >= budget -> BudgetExceeded, blocked before _execute.
+budget=0.05 seed=0.05 deny=[] audit_off=False
+outcome=BudgetExceeded (expect BudgetExceeded) llm_calls=0 audit_status=budget_exceeded
+BudgetExceeded: agent 'DigestAgent' reached its budget: spent $0.0500 >= $0.0500
+RESULT: PASS

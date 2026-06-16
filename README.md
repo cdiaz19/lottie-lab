@@ -32,8 +32,9 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 5](rounds/round-5-mcp-transport/) | Phase 4 | MCP stdio transport — `lottie serve` (done early) | Complete |
 | [Round 6](rounds/round-6-mesh/) | Phase 2 + 3 | Multi-agent mesh — LangGraph, supervisor→workers, parallel fan-out, HITL, time-travel | Complete |
 | [Round 7](rounds/round-7-governance/) | Governance | Audit trail + capability policy engine (allow/deny/escalate) — 9/9, caught + fixed finding FG-1 | Complete |
-| Round 8 | Governance | cost budgets + OpenTelemetry | Pending |
-| Round 9 | Phase 4 | remaining integration — REST, OpenAI-compat API | Pending |
+| [Round 8](rounds/round-8-cost-budget/) | Governance | Cost budget circuit-breaker (per-agent, fail-closed) — 8/8 | Complete |
+| Round 9 | Governance | OpenTelemetry spans | Pending |
+| Round 10 | Phase 4 | remaining integration — REST, OpenAI-compat API | Pending |
 
 ---
 
@@ -130,6 +131,26 @@ Results logged in [`rounds/round-5-mcp-transport/results.md`](rounds/round-5-mcp
 > **Caveats:** The CLI's `build_provider` always returns `LiteLLMProvider`, so end-to-end routing/parallel/HITL/time-travel is proven by the in-process `_mesh_driver.py`, not via `lottie run`. The in-memory checkpointer is process-local — durable cross-process resume via sqlite is tracked as FU-9.
 
 Results logged in [`rounds/round-6-mesh/results.md`](rounds/round-6-mesh/results.md).
+
+---
+
+## Round 8 - Cost Budget - Complete
+
+**What was tested:** the per-agent cumulative **cost budget circuit-breaker** (governance slice 3) —
+an agent declaring `budget_usd` is blocked once its prior recorded spend reaches the budget. Verified
+end-to-end from the lab via the real `instantiate_agent` path + the real `DigestAgent`, with a
+cost-reporting provider so spend actually accrues. A blocked run leaves the provider unconsumed
+(`llm_calls=0`), proving it blocks before `_execute`.
+
+**Results:** 8/8 cases — over-budget block (audited `budget_exceeded`); fail-closed when the audit
+ledger is disabled (and scoped to a *configured* budget, so unbudgeted agents are unaffected); policy
+checked before budget; the circuit breaker engaging on real accrual (`[ok, ok, BudgetExceeded]`, one-run
+sequential overshoot); and `lottie audit` rendering the cost rows. No findings.
+
+> **How to run Round 8:** orchestrator installed editable on `feat/governance-cost-budget`, then
+> `python3 rounds/round-8-cost-budget/_cost_driver.py`. See
+> [`rounds/round-8-cost-budget/results.md`](rounds/round-8-cost-budget/results.md) and
+> [`rounds/round-8-cost-budget/ROUND.md`](rounds/round-8-cost-budget/ROUND.md).
 
 ---
 

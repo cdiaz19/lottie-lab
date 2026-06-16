@@ -1,0 +1,5 @@
+CASE 05-no-budget-audit-off: No budget + audit disabled -> runs (fail-closed scopes to a budget).
+budget=None seed=None deny=[] audit_off=True
+outcome=ok (expect ok) llm_calls=1 audit_status=(audit off)
+ok: DIGEST: a concise summary.
+RESULT: PASS
