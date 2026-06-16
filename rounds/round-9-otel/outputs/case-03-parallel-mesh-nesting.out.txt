@@ -1,0 +1,5 @@
+CASE 03-parallel-mesh-nesting: a parallel LangGraph mesh with WORKER AGENTS; do their
+spans nest under the mesh span across worker threads? (the spec's open question)
+span names=['worker-a', 'worker-b', 'mesh'] worker parents={'worker-a': 'mesh', 'worker-b': 'mesh'}
+VERDICT: NESTS under mesh span
+RESULT: PASS
