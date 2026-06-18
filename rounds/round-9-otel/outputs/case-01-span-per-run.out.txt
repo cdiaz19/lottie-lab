@@ -1,0 +1,3 @@
+CASE 01-span-per-run: a single agent run emits one span with lottie.* attributes.
+span names=['digest'] attrs={'lottie.agent': 'digest', 'lottie.kind': 'agent', 'lottie.status': 'ok', 'lottie.latency_ms': 0.2274580765515566, 'lottie.input_tokens': 0, 'lottie.output_tokens': 0, 'lottie.cost_usd': 0.0, 'lottie.provider': 'mock/mock-model'}
+RESULT: PASS
