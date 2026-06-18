@@ -1,0 +1,3 @@
+GET /v1/models lists ONLY chat-capable agents (those with a chat: block).
+status=200 ids=['digest'] (expect digest in; reviewer/editor out)
+RESULT: PASS

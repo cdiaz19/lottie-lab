@@ -8,3 +8,8 @@ policies:
 memory:
   enabled: false
   namespace: digest
+# Opt digest into the OpenAI-compatible /v1/chat/completions endpoint (Round 10).
+# last user message -> DigestAgentInput.query ; DigestAgentOutput.result -> assistant content
+chat:
+  input_field: query
+  output_field: result

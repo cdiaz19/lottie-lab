@@ -1,0 +1,4 @@
+A secret in the model output -> 200 with finish_reason=content_filter, empty content,
+usage populated, and the secret never present in the response body.
+status=200 finish=content_filter content='' usage={'prompt_tokens': 0, 'completion_tokens': 0, 'total_tokens': 0} akia_leaked=False
+RESULT: PASS

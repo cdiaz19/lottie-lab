@@ -1,0 +1,3 @@
+Unknown model AND a non-chat agent both -> 404 model_not_found.
+unknown=404/model_not_found reviewer=404/model_not_found
+RESULT: PASS
