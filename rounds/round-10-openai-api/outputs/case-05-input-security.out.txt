@@ -1,0 +1,3 @@
+Prompt-injection input -> 400 content_filter, payload NOT echoed in the error.
+status=400 code=content_filter message='request blocked by content policy'
+RESULT: PASS
