@@ -1,0 +1,3 @@
+Unknown model + stream:true -> 404 JSON model_not_found (pre-stream error stays JSON).
+status=404 content_type=application/json code=model_not_found
+RESULT: PASS

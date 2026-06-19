@@ -1,0 +1,4 @@
+POST /v1/chat/completions {stream:true} -> 200 text/event-stream of chat.completion.chunk
+events: role delta, content delta (= the agent output), finish_reason=stop, [DONE].
+status=200 content_type=text/event-stream; charset=utf-8 n_chunks=3 finish=stop
+RESULT: PASS

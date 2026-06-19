@@ -1,0 +1,3 @@
+A streamed run is audited with root=True (governance inherited; the output gate + BaseAgent.run
+fire before any byte streams). records=1 root=True status=ok
+RESULT: PASS
