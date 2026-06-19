@@ -1,0 +1,3 @@
+POST /v1/agents/editor/resume (approve) continues past the gate -> 200 complete.
+status=complete final='PUBLISHED: write a launch post'
+RESULT: PASS

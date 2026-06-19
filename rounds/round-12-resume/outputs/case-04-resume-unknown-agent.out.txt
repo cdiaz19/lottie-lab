@@ -1,0 +1,2 @@
+Resume an unknown agent -> 404 not_found. status=404/not_found
+RESULT: PASS
