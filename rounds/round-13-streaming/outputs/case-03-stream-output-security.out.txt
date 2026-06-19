@@ -1,0 +1,4 @@
+A secret in the output + stream:true -> 200 SSE with finish_reason=content_filter, NO content
+delta, and the secret never present in the stream.
+status=200 finish=content_filter akia_leaked=False
+RESULT: PASS
