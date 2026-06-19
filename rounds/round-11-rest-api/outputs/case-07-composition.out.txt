@@ -1,0 +1,4 @@
+One `lottie serve --port` app serves both surfaces: OpenAI /v1/models (chat-capable
+only) AND REST /v1/agents (every agent), over one AgentService.
+/v1/models ids=['digest']  /v1/agents names=['digest', 'editor', 'reviewer']
+RESULT: PASS

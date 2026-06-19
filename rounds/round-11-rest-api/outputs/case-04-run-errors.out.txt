@@ -1,0 +1,4 @@
+Unknown agent -> 404 not_found; Input that fails validation -> 400 invalid_request;
+non-object body -> 400.
+unknown=404/not_found bad_input=400/invalid_request non_object=400
+RESULT: PASS

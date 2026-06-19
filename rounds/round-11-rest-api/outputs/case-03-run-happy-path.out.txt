@@ -1,0 +1,3 @@
+POST /v1/agents/{name}/run takes the agent's typed Input JSON -> serialized RunResult.
+status=200 output={'result': 'a concise digest of the input'} run_status=complete tokens=0/0 cost=0.0
+RESULT: PASS
