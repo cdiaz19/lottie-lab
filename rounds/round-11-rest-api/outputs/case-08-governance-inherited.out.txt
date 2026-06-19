@@ -1,0 +1,5 @@
+A top-level REST run is audited with root=True (anyio.to_thread copies contextvars
+into the worker thread). Security + policy + cost inherited via AgentService.run_agent
+-> BaseAgent.run; NO second gate.
+status=200 records=1 root=True audit_status=ok
+RESULT: PASS

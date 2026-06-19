@@ -35,7 +35,8 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 8](rounds/round-8-cost-budget/) | Governance | Cost budget circuit-breaker (per-agent, fail-closed) — 8/8 | Complete |
 | [Round 9](rounds/round-9-otel/) | Governance | OpenTelemetry tracing — 5/5; parallel-mesh span nesting verified | Complete |
 | [Round 10](rounds/round-10-openai-api/) | Phase 4 | OpenAI-compatible `/v1/chat/completions` transport (`lottie serve --port`) — 7/7; security + audit inherited | Complete |
-| Round 11 | Phase 4 | remaining integration — generic REST (`/v1/agents/{name}/run`), streaming | Pending |
+| [Round 11](rounds/round-11-rest-api/) | Phase 4 | Generic REST transport (`/v1/agents`, `/v1/agents/{name}/run`) on the shared HTTP app — 8/8; OpenAI+REST compose, security + audit inherited | Complete |
+| Round 12 | Phase 4 | remaining integration — resume over REST (mesh HITL), streaming | Pending |
 
 ---
 

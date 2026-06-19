@@ -1,0 +1,4 @@
+A secret in the agent output -> 200 with status=withheld, output stripped to {},
+usage still reported, and the secret never present in the response body.
+status=200 run_status=withheld output={} akia_leaked=False
+RESULT: PASS
