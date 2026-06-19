@@ -1,0 +1,3 @@
+A resume run is audited via AgentService.resume_agent -> BaseAgent.run (no second gate).
+records=1 statuses=['ok']
+RESULT: PASS

@@ -1,0 +1,3 @@
+POST /v1/agents/editor/run drives the mesh to the publish HITL gate -> 200 interrupted
+with a thread_id + pending. status=interrupted thread_id=74120b7ab1764e3f9d373bf5233be6e4 pending={'worker': 'publish', 'proposed_input': {'task': 'write a launch post'}}
+RESULT: PASS

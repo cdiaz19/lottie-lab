@@ -1,0 +1,4 @@
+Durable resume (FU-9): app A runs to the gate (checkpoint -> sqlite); a FRESH app B
+(empty cache) resumes the same thread_id from the shared on-disk db -> 200 complete.
+db_persisted=True resume_status=200/complete final='PUBLISHED: write a launch post'
+RESULT: PASS

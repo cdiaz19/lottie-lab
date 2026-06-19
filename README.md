@@ -36,7 +36,8 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 9](rounds/round-9-otel/) | Governance | OpenTelemetry tracing — 5/5; parallel-mesh span nesting verified | Complete |
 | [Round 10](rounds/round-10-openai-api/) | Phase 4 | OpenAI-compatible `/v1/chat/completions` transport (`lottie serve --port`) — 7/7; security + audit inherited | Complete |
 | [Round 11](rounds/round-11-rest-api/) | Phase 4 | Generic REST transport (`/v1/agents`, `/v1/agents/{name}/run`) on the shared HTTP app — 8/8; OpenAI+REST compose, security + audit inherited | Complete |
-| Round 12 | Phase 4 | remaining integration — resume over REST (mesh HITL), streaming | Pending |
+| [Round 12](rounds/round-12-resume/) | Phase 4 | Durable resume over REST (`POST /v1/agents/{name}/resume`, sqlite checkpointer) — 8/8; cross-process resume (FU-9), typed errors, audit inherited | Complete |
+| Round 13 | Phase 4 | remaining integration — streaming responses | Pending |
 
 ---
 
