@@ -1,0 +1,4 @@
+digest overrides _stream -> stream:true streams INCREMENTALLY: one content chunk per complete
+line (gate is line-buffered), reconstructing the output; role first, finish_reason=stop, [DONE].
+status=200 n_content_chunks=3 contents=['alpha\n', 'beta\n', 'gamma\n'] finish=stop
+RESULT: PASS

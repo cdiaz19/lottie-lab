@@ -1,0 +1,4 @@
+Injection input + stream:true on the REAL streaming agent -> 400 JSON content_filter (NOT an SSE
+200): stream_agent gates the input EAGERLY, before run_stream is pulled. Payload not echoed.
+status=400 content_type=application/json code=content_filter
+RESULT: PASS

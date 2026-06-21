@@ -8,3 +8,8 @@ policies:
 memory:
   enabled: false
   namespace: reviewer
+# Chat-capable but NOT streaming (no _stream override) — Round 14's capability-fallback case:
+# stream:true on reviewer falls back to format-level SSE, while digest streams for real.
+chat:
+  input_field: query
+  output_field: result
