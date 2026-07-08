@@ -45,7 +45,7 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 18](rounds/round-18-http-hardening/) | v1 (S4) | HTTP hardening — API-key auth, rate limiting, pagination — 6/6; open-when-unset, Bearer/X-API-Key, 429, limit/offset | Complete |
 | [Round 19](rounds/round-19-hitl-edited-input/) | v1 (S5) | HITL edited_input-on-approve — 3/3; edit applied to resumed worker, bad edit 400, empty unchanged | Complete |
 | [Round 20](rounds/round-20-agentic-hygiene/) | v1 (S6) | Agentic hygiene — max_turns completion cap + `_verify` hook — 4/4; cap enforced, verify fail-closed | Complete |
-| Round 21 | v1 (S7) | release smoke — full v1 regression across all surfaces | Pending |
+| [Round 21](rounds/round-21-v1-regression/) | v1 (S7) | Full v1 regression smoke — 6/6 rounds green against orchestrator `v1.0.0` | Complete |
 
 ---
 
