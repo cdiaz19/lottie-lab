@@ -1,0 +1,3 @@
+PASS — 04-verify-passes
+
+_verify passes a clean output -> run succeeds. result='clean answer'

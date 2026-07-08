@@ -1,0 +1,3 @@
+PASS — 01-max-turns-cap
+
+max_turns=1, agent makes 2 completions -> TurnLimitExceeded on the 2nd. capped=True

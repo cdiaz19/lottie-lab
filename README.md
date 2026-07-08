@@ -44,7 +44,8 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 17](rounds/round-17-cost-caps/) | v1 (S3) | Per-run token cap + TOCTOU-safe atomic cost reservation — 5/5; atomic admission, settle, token cap, legacy, fail-closed | Complete |
 | [Round 18](rounds/round-18-http-hardening/) | v1 (S4) | HTTP hardening — API-key auth, rate limiting, pagination — 6/6; open-when-unset, Bearer/X-API-Key, 429, limit/offset | Complete |
 | [Round 19](rounds/round-19-hitl-edited-input/) | v1 (S5) | HITL edited_input-on-approve — 3/3; edit applied to resumed worker, bad edit 400, empty unchanged | Complete |
-| Round 20 | v1 (S6+) | remaining v1 backlog — agentic hygiene (max-turns + verify hook), release | Pending |
+| [Round 20](rounds/round-20-agentic-hygiene/) | v1 (S6) | Agentic hygiene — max_turns completion cap + `_verify` hook — 4/4; cap enforced, verify fail-closed | Complete |
+| Round 21 | v1 (S7) | release smoke — full v1 regression across all surfaces | Pending |
 
 ---
 

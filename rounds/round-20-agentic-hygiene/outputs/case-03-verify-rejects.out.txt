@@ -1,0 +1,3 @@
+PASS — 03-verify-rejects
+
+_verify rejects output containing 'BAD' -> run fails fail-closed. rejected=True
