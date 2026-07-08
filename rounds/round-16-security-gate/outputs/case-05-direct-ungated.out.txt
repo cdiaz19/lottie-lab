@@ -1,0 +1,3 @@
+PASS — 05-direct-ungated
+
+direct BaseAgent construction -> NullSecurityGate (unenforced). null=True result='clean output'

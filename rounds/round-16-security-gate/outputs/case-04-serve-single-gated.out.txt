@@ -1,0 +1,3 @@
+PASS — 04-serve-single-gated
+
+instantiate_agent(security_gate=None) (the serve wiring) -> NullSecurityGate on the agent; serve's external gate stays authoritative. null_gate=True

@@ -1,0 +1,3 @@
+PASS — 01-clean-passes
+
+gated run, clean I/O -> ok. result='a concise, clean digest'
