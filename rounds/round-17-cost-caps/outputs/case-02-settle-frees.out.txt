@@ -1,0 +1,3 @@
+PASS — 02-settle-frees
+
+sequential gated runs both admitted (reservation settled between). result='a digest'

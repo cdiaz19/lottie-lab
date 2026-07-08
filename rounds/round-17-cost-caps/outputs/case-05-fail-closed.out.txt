@@ -1,0 +1,3 @@
+PASS — 05-fail-closed
+
+budget set + audit ledger disabled -> reserve() fails closed (never admits). blocked=True
