@@ -1,0 +1,3 @@
+PASS — 01-auth-open
+
+LOTTIE_API_KEYS unset -> open. status_ok=True

@@ -1,0 +1,3 @@
+PASS — 02-auth-required
+
+missing=401 bearer=200 xkey=200 wrong=401 no_key_echo=True

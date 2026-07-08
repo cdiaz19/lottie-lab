@@ -42,7 +42,8 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 15](rounds/round-15-capability/) | v1 (S1) | Rule 11 — per-skill-call capability enforcement — 5/5; declared/undeclared/empty, name derivation, framework skills exempt | Complete |
 | [Round 16](rounds/round-16-security-gate/) | v1 (S2) | BaseAgent/CLI security gate (rules 8 & 9 at the chokepoint) — 5/5; injection refused, secret withheld, serve single-gated | Complete |
 | [Round 17](rounds/round-17-cost-caps/) | v1 (S3) | Per-run token cap + TOCTOU-safe atomic cost reservation — 5/5; atomic admission, settle, token cap, legacy, fail-closed | Complete |
-| Round 18 | v1 (S4+) | remaining v1 backlog — HTTP auth/rate-limit/pagination, HITL edited_input, agentic hygiene | Pending |
+| [Round 18](rounds/round-18-http-hardening/) | v1 (S4) | HTTP hardening — API-key auth, rate limiting, pagination — 6/6; open-when-unset, Bearer/X-API-Key, 429, limit/offset | Complete |
+| Round 19 | v1 (S5+) | remaining v1 backlog — HITL edited_input, agentic hygiene | Pending |
 
 ---
 
