@@ -40,7 +40,8 @@ Each round tackles a slice of the framework — usually the next phase, occasion
 | [Round 13](rounds/round-13-streaming/) | Phase 4 | SSE streaming for `/v1/chat/completions` (`stream:true`) — 6/6; format-level, security + audit inherited | Complete |
 | [Round 14](rounds/round-14-real-streaming/) | Phase 4+ | Real token streaming for `/v1/chat/completions` — 6/6; incremental deltas through the governance chokepoint + line-buffered secret gate | Complete |
 | [Round 15](rounds/round-15-capability/) | v1 (S1) | Rule 11 — per-skill-call capability enforcement — 5/5; declared/undeclared/empty, name derivation, framework skills exempt | Complete |
-| Round 16 | v1 (S2) | remaining v1 backlog — BaseAgent/CLI security gate, cost caps/TOCTOU, HTTP auth, HITL edited_input, agentic hygiene | Pending |
+| [Round 16](rounds/round-16-security-gate/) | v1 (S2) | BaseAgent/CLI security gate (rules 8 & 9 at the chokepoint) — 5/5; injection refused, secret withheld, serve single-gated | Complete |
+| Round 17 | v1 (S3+) | remaining v1 backlog — cost caps/TOCTOU, HTTP auth, HITL edited_input, agentic hygiene | Pending |
 
 ---
 
