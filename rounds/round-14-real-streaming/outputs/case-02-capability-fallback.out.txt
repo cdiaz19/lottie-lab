@@ -1,0 +1,5 @@
+reviewer (chat block, NO _stream) + stream:true -> capability gate routes to FORMAT-level
+fallback: the same multi-line output arrives as ONE content chunk (run fully, then stream).
+Same endpoint, same request shape; digest=real (n>1), reviewer=fallback (n==1).
+status=200 n_content_chunks=1 finish=stop
+RESULT: PASS

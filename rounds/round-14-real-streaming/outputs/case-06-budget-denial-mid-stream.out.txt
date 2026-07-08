@@ -1,0 +1,4 @@
+digest with budget_usd: 0.0 + stream:true -> the cost gate denies on the first pull: a 200 SSE
+that ends finish_reason=error (no content streamed) and a budget_exceeded audit row. Governance
+holds on the streamed path; you can't send a 500 after the 200. status=200 finish=error audit_statuses=['budget_exceeded']
+RESULT: PASS

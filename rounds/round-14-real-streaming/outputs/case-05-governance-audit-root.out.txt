@@ -1,0 +1,3 @@
+A real-streamed run goes THROUGH BaseAgent.run_stream (not around it): policy/cost pre-gates +
+audit fire on the streaming path. One DigestAgent record, root=True, status=ok. records=1 root=True status=ok
+RESULT: PASS
