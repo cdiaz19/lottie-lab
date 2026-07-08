@@ -1,0 +1,4 @@
+PASS — 04-name-derivation
+
+Skill identity = class name minus 'Skill', lowercased -> matches config vocab.
+SummarizerSkill.resolved_capability_name()='summarizer'

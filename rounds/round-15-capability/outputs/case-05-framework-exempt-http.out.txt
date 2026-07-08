@@ -1,0 +1,6 @@
+PASS — 05-framework-exempt-http
+
+POST /v1/agents/curator/run (config caps=[summarizer]) through the real serve gate.
+SecurityGate's InputSanitizer/SecretDetection skills run outside _execute -> exempt;
+curator's own SummarizerSkill call is allowed. No spurious CapabilityDenied.
+status=200 body_status=complete result='digest this'

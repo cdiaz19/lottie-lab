@@ -1,0 +1,4 @@
+PASS — 02-undeclared-blocked
+
+capabilities=[something-else]; the SummarizerSkill call is blocked fail-closed BEFORE the skill runs.
+raised=CapabilityDenied=True msg="skill 'summarizer' is not a declared capability ['something-else']"

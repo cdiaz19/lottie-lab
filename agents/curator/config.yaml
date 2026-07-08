@@ -1,0 +1,13 @@
+provider: anthropic/claude-sonnet-4-6
+model_params:
+  temperature: 0.0
+  max_tokens: 512
+# Rule 11 (orchestrator S1): CuratorAgent calls SummarizerSkill (capability "summarizer").
+# Declaring it here whitelists the call; removing it blocks the call, fail-closed.
+capabilities:
+  - summarizer
+policies:
+  - base
+memory:
+  enabled: false
+  namespace: curator
