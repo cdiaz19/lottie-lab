@@ -1,0 +1,3 @@
+PASS — 04-rate-per-identity
+
+per-key buckets: a=200,429 b=200

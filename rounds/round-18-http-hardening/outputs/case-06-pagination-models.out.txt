@@ -1,0 +1,3 @@
+PASS — 06-pagination-models
+
+/v1/models full=2 limit1=1

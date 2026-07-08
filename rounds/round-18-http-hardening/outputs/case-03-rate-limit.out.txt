@@ -1,0 +1,3 @@
+PASS — 03-rate-limit
+
+rate=2 -> 200,200,429 (third is 429)
