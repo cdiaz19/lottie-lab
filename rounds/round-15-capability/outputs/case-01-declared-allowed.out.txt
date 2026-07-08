@@ -1,0 +1,4 @@
+PASS — 01-declared-allowed
+
+capabilities=[summarizer]; CuratorAgent calls SummarizerSkill -> allowed.
+result='hello world'

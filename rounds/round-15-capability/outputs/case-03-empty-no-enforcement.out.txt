@@ -1,0 +1,4 @@
+PASS — 03-empty-no-enforcement
+
+capabilities=[]; NullCapabilityGate -> the skill call is unenforced (back-compat).
+result='ok'
