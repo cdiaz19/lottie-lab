@@ -1,0 +1,2 @@
+resume approve + edited_input naming a non-editable field -> 400 invalid_request (fail-closed, no state mutation). status_code=400
+RESULT: PASS

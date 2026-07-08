@@ -1,0 +1,3 @@
+resume approve + edited_input{task} -> 200; the edit is applied to MeshState before the
+resumed publish worker runs. status_code=200 status=complete
+RESULT: PASS
