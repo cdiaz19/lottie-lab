@@ -1,0 +1,3 @@
+PASS — 03-token-cap
+
+max_run_tokens=5, run accrues 12 -> TokenCapExceeded mid-run. capped=True

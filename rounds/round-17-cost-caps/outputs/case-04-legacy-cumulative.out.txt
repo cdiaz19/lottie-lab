@@ -1,0 +1,3 @@
+PASS — 04-legacy-cumulative
+
+budget_usd=0, max_run_usd=None -> legacy cumulative check blocks (spent 0 >= 0). blocked=True

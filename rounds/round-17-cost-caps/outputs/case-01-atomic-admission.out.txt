@@ -1,0 +1,3 @@
+PASS — 01-atomic-admission
+
+budget=10, max_run_usd=6; one reservation held (6) -> a concurrent run's reservation (6) is refused: committed+reserved+amount > budget. blocked=True held_handle=True
