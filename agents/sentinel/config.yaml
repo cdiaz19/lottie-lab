@@ -1,0 +1,11 @@
+provider: anthropic/claude-sonnet-4-6
+model_params:
+  temperature: 0.0
+capabilities: []
+policies:
+  - base
+# Agentic hygiene (orchestrator S6): bound the run to at most 5 LLM completions.
+max_turns: 5
+memory:
+  enabled: false
+  namespace: sentinel
