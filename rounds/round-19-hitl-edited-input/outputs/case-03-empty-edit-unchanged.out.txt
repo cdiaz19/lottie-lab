@@ -1,0 +1,2 @@
+resume approve + empty edited_input -> plain approve, back-compat unchanged. status_code=200 status=complete
+RESULT: PASS
