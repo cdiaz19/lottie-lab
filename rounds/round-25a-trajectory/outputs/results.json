@@ -1,0 +1,38 @@
+{
+  "round": "25a",
+  "slice": "V2 S3a \u2014 trajectory persistence",
+  "passed": 6,
+  "total": 6,
+  "cases": [
+    {
+      "name": "1. trajectory off by default writes no episodic record",
+      "pass": true,
+      "detail": "episodic=0"
+    },
+    {
+      "name": "2. 3 runs persist 3 episodic records, readable by a fresh client",
+      "pass": true,
+      "detail": "episodic=3"
+    },
+    {
+      "name": "3. failed run recorded with success=false and its error",
+      "pass": true,
+      "detail": "episodic=1"
+    },
+    {
+      "name": "4. MemoryAgent consolidates the runs (was structurally 0 before S3a)",
+      "pass": true,
+      "detail": "consolidated=2, semantic=1"
+    },
+    {
+      "name": "5. recall injects semantic notes only \u2014 no raw trajectory in the prompt",
+      "pass": true,
+      "detail": "prefix_len=253"
+    },
+    {
+      "name": "6. injection-like trajectory rejected by the write gate, not stored",
+      "pass": true,
+      "detail": "episodic=0"
+    }
+  ]
+}
