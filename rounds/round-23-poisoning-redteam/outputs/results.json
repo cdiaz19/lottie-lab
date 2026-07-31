@@ -1,0 +1,43 @@
+{
+  "round": "23",
+  "slice": "V2 S1 \u2014 write gateway, memory-poisoning red-team",
+  "passed": 7,
+  "total": 7,
+  "cases": [
+    {
+      "name": "1. L1 gate rejects prompt-injection payloads fail-closed",
+      "pass": true,
+      "detail": "4 payloads, leaked=none"
+    },
+    {
+      "name": "2. L1 gate blocks secret exfiltration into memory",
+      "pass": true,
+      "detail": "2 payloads"
+    },
+    {
+      "name": "3. rejection reason carries no offending content",
+      "pass": true,
+      "detail": "reasons=['memory write rejected: prompt-injection detected']"
+    },
+    {
+      "name": "4. L2 frames poisoned content as DATA, not instructions",
+      "pass": true,
+      "detail": "block_len=278"
+    },
+    {
+      "name": "5. L2 defangs a delimiter break-out attempt",
+      "pass": true,
+      "detail": "closing_delimiters=1"
+    },
+    {
+      "name": "6. accepted writes stay attributable (provenance stamped)",
+      "pass": true,
+      "detail": "agent=worker-7, run=run-abc"
+    },
+    {
+      "name": "7. deprecate is a soft delete \u2014 the record survives for audit",
+      "pass": true,
+      "detail": "status=deprecated"
+    }
+  ]
+}
