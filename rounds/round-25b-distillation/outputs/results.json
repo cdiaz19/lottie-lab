@@ -1,0 +1,53 @@
+{
+  "round": "25b",
+  "slice": "V2 S3b \u2014 skill distillation",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. S3a trajectories are readable as a distillation corpus",
+      "pass": true,
+      "detail": "trajectories=3"
+    },
+    {
+      "name": "2. draft written to skills/draft/ with template + provenance + SKILL.md",
+      "pass": true,
+      "detail": "files=['SKILL.md', 'provenance.yaml', 'template.yaml']"
+    },
+    {
+      "name": "3. draft round-trips with provenance intact",
+      "pass": true,
+      "detail": "agent=digest, n=3"
+    },
+    {
+      "name": "4. TemplateRunnerSkill executes the distilled template",
+      "pass": true,
+      "detail": "version=0.1.0"
+    },
+    {
+      "name": "5. draft contains NO Python \u2014 it is data, not an importable module",
+      "pass": true,
+      "detail": "py_files=[]"
+    },
+    {
+      "name": "6. injected template rejected by the write gate, nothing on disk",
+      "pass": true,
+      "detail": "blocked=True"
+    },
+    {
+      "name": "7. attribute-traversal placeholder cannot leak (no str.format)",
+      "pass": true,
+      "detail": "traversal left as literal text"
+    },
+    {
+      "name": "8. missing required slot fails closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "9. re-distill bumps the minor version",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
