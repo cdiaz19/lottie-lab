@@ -1,0 +1,53 @@
+{
+  "round": "27a",
+  "slice": "V2 S5a \u2014 context compaction",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. harness.compaction config reaches the agent via instantiate_agent",
+      "pass": true,
+      "detail": "max=500, keep=3"
+    },
+    {
+      "name": "2. compaction is OFF by default",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "3. a context under the threshold is not compacted (no wasted LLM call)",
+      "pass": true,
+      "detail": "sent=10, llm_calls=1"
+    },
+    {
+      "name": "4. a context over the threshold is compacted to a summary + recent turns",
+      "pass": true,
+      "detail": "sent=3"
+    },
+    {
+      "name": "5. the most recent turns survive verbatim",
+      "pass": true,
+      "detail": "last='turn 11 xxxx'"
+    },
+    {
+      "name": "6. the recall-as-data block survives compaction (S2a contract held)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "7. a summariser failure sends the FULL context rather than failing the run",
+      "pass": true,
+      "detail": "sent=12"
+    },
+    {
+      "name": "8. a token-cap trip propagates \u2014 compaction does not keep spending",
+      "pass": true,
+      "detail": "TokenCapExceeded raised"
+    },
+    {
+      "name": "9. a normal agent run still works with compaction enabled",
+      "pass": true,
+      "detail": "result='summarised'"
+    }
+  ]
+}
