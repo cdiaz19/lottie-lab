@@ -1,0 +1,53 @@
+{
+  "round": "26",
+  "slice": "V2 S4 \u2014 learning-delta eval loop",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "0. the eval suite actually ran (no provider errors)",
+      "pass": true,
+      "detail": "baseline_success=1.0, learning_success=1.0"
+    },
+    {
+      "name": "1. empty store reports 0 recalled notes (the experiment never ran)",
+      "pass": true,
+      "detail": "notes=0, verdict=neutral"
+    },
+    {
+      "name": "2. both arms ran the same suite",
+      "pass": true,
+      "detail": "baseline=3, learning=3"
+    },
+    {
+      "name": "3. seven metrics reported, each tagged higher_is_better",
+      "pass": true,
+      "detail": "metrics=7"
+    },
+    {
+      "name": "4. benchmarking writes no memory (no trajectories, no lessons)",
+      "pass": true,
+      "detail": "before=0, after=0"
+    },
+    {
+      "name": "5. a populated store is reflected in the note count",
+      "pass": true,
+      "detail": "notes=4"
+    },
+    {
+      "name": "6. state-dependent metrics are reproducible run-to-run",
+      "pass": true,
+      "detail": "verdict=neutral"
+    },
+    {
+      "name": "7. machine-readable report written to .lottie/benchmarks/",
+      "pass": true,
+      "detail": "file=digest-learning-delta.json"
+    },
+    {
+      "name": "8. the verdict can report regression, not just success",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
