@@ -1,0 +1,48 @@
+{
+  "round": "25c",
+  "slice": "V2 S3c \u2014 HITL promotion",
+  "passed": 8,
+  "total": 8,
+  "cases": [
+    {
+      "name": "1. approve moves draft -> skills/distilled/ and consumes the draft",
+      "pass": true,
+      "detail": "drafts_left=[]"
+    },
+    {
+      "name": "2. promoted skill is DATA \u2014 no .py, no importable module (rule 13c)",
+      "pass": true,
+      "detail": "files=['SKILL.md', 'promotion.yaml', 'provenance.yaml', 'template.yaml']"
+    },
+    {
+      "name": "3. promotion records reviewer, capability, and source version",
+      "pass": true,
+      "detail": "by=ana, cap=digestion"
+    },
+    {
+      "name": "4. `distilled` alone does NOT grant the promoted template",
+      "pass": true,
+      "detail": "CapabilityDenied raised"
+    },
+    {
+      "name": "5. holding both capabilities allows the run",
+      "pass": true,
+      "detail": "result='an answer'"
+    },
+    {
+      "name": "6. a draft edited after authoring is re-screened and blocked at promotion",
+      "pass": true,
+      "detail": "blocked=True, promoted=[]"
+    },
+    {
+      "name": "7. reject discards the draft and promotes nothing",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "8. a traversing skill name cannot escape skills/draft/",
+      "pass": true,
+      "detail": "InvalidSkillName raised"
+    }
+  ]
+}
