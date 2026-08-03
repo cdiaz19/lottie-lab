@@ -1,0 +1,63 @@
+{
+  "round": "28",
+  "slice": "V3 S1 \u2014 runtime kernel",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "name": "1. a realistic gate chain runs pre low-to-high, post high-to-low",
+      "pass": true,
+      "detail": "log=['reserve:cost', 'reserve:capability', 'event:RunStarted', 'event:RunCompleted', 'settle:capability', 'settle:cost']"
+    },
+    {
+      "name": "2. RunCompleted reaches observers before the cost settle (audit-before-settle)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "3. two modules using the same state key do not collide",
+      "pass": true,
+      "detail": "seen={'b': 'b', 'a': 'a'}"
+    },
+    {
+      "name": "4. a denied run still releases the outer reservation",
+      "pass": true,
+      "detail": "log=['reserve:cost', 'settle:cost']"
+    },
+    {
+      "name": "5. a sabotaging subscriber cannot fail a run, nor starve the next subscriber",
+      "pass": true,
+      "detail": "survivor=['event:RunStarted', 'event:RunCompleted']"
+    },
+    {
+      "name": "6. a subscriber cannot read raw input off the bus (hash-only contract)",
+      "pass": true,
+      "detail": "events=2, leaked=False"
+    },
+    {
+      "name": "6b. an echoing hasher is REFUSED and no event escapes with raw content",
+      "pass": true,
+      "detail": "refused=True, events_emitted=0"
+    },
+    {
+      "name": "7. one subscriber cannot mutate what later subscribers observe",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "8. a plugin claiming an occupied order is rejected AT REGISTRATION",
+      "pass": true,
+      "detail": "error=\"module 'impostor' claims order 10, already held by 'security'\""
+    },
+    {
+      "name": "9. a refused run emits RunBlocked naming the gate that refused",
+      "pass": true,
+      "detail": "blocked_by=policy"
+    },
+    {
+      "name": "10. no shipped module consumes the kernel yet (zero behaviour change)",
+      "pass": true,
+      "detail": "consumers=[]"
+    }
+  ]
+}
