@@ -1,0 +1,53 @@
+{
+  "round": "27b",
+  "slice": "V2 S5b \u2014 session artifacts",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. a run without a session leaves no artifact",
+      "pass": true,
+      "detail": "sessions_dir_exists=False"
+    },
+    {
+      "name": "2. a session run persists state to .lottie/sessions/",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "3. a fresh agent+store resumes and advances the progress",
+      "pass": true,
+      "detail": "step=2"
+    },
+    {
+      "name": "4. run history accumulates across processes",
+      "pass": true,
+      "detail": "runs=2"
+    },
+    {
+      "name": "5. separate sessions do not interfere",
+      "pass": true,
+      "detail": "other=1, nightly=2"
+    },
+    {
+      "name": "6. progress written before a crash survives the crash",
+      "pass": true,
+      "detail": "progress={'reached': 'halfway'}, status=error"
+    },
+    {
+      "name": "7. run history is hash-only \u2014 the query text is not in the file",
+      "pass": true,
+      "detail": "runs carry input_sha256 only"
+    },
+    {
+      "name": "8. a traversing session id cannot escape .lottie/sessions/",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "9. injected progress is rejected by the write screen",
+      "pass": true,
+      "detail": "refused=True"
+    }
+  ]
+}
