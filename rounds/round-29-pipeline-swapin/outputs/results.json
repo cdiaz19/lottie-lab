@@ -1,0 +1,53 @@
+{
+  "round": "29",
+  "slice": "V3 S2a \u2014 pipeline swap-in",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. an ordinary agent run is unchanged after the swap-in",
+      "pass": true,
+      "detail": "result='an answer'"
+    },
+    {
+      "name": "2. all 12 standard middleware mount with distinct orders",
+      "pass": true,
+      "detail": "mounted=12, distinct_orders=12"
+    },
+    {
+      "name": "3. the run is still audited, and still flagged root",
+      "pass": true,
+      "detail": "records=1, root=True"
+    },
+    {
+      "name": "4. a failed run is still audited with status=error",
+      "pass": true,
+      "detail": "status=error"
+    },
+    {
+      "name": "5. a policy-denied run is audited status=denied AND root=True",
+      "pass": true,
+      "detail": "blocked=True, status=denied, root=True"
+    },
+    {
+      "name": "6. the rule-11 capability gate is active during _execute",
+      "pass": true,
+      "detail": "gate active inside the execute window"
+    },
+    {
+      "name": "7. the capability gate is already released during _verify",
+      "pass": true,
+      "detail": "gate released before the verify hook"
+    },
+    {
+      "name": "8. rule 11 still blocks an undeclared skill call inside _execute",
+      "pass": true,
+      "detail": "CapabilityDenied raised"
+    },
+    {
+      "name": "9. the _verify post-condition still fails a run closed",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
