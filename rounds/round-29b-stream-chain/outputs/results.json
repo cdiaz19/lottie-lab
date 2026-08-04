@@ -1,0 +1,53 @@
+{
+  "round": "29b",
+  "slice": "V3 S2b \u2014 streaming chain",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. the streaming chain is exactly policy, cost, audit, depth, capability",
+      "pass": true,
+      "detail": "names=['policy', 'cost', 'audit', 'depth', 'capability']"
+    },
+    {
+      "name": "2. verify / security_output / reflect are absent (a stream has no Output)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "3. deltas reach the caller unchanged",
+      "pass": true,
+      "detail": "pieces=['alpha ', 'beta ', 'gamma']"
+    },
+    {
+      "name": "4. an unconsumed stream generator runs no gates and produces no deltas",
+      "pass": true,
+      "detail": "log=[]"
+    },
+    {
+      "name": "5. audit fires only after the last delta, never at generator creation",
+      "pass": true,
+      "detail": "mid=0, final=1"
+    },
+    {
+      "name": "6. the rule-11 gate is active for the whole stream, not just its creation",
+      "pass": true,
+      "detail": "gate live inside _stream"
+    },
+    {
+      "name": "7. closing the stream early still unwinds the scopes (audit written, depth restored)",
+      "pass": true,
+      "detail": "depth=0"
+    },
+    {
+      "name": "8. a policy-denied stream raises before any delta is produced",
+      "pass": true,
+      "detail": "blocked=True, deltas=[]"
+    },
+    {
+      "name": "9. the non-streaming path still works alongside the shared chain",
+      "pass": true,
+      "detail": "result='x'"
+    }
+  ]
+}
