@@ -17,7 +17,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from lottie.core.middleware import STANDARD_CHAIN
+from lottie.core.middleware import build_chain
 from lottie.governance.audit import SqliteAuditLogger
 from lottie.governance.capability import CapabilityDenied, active_capability_gate
 from lottie.governance.policy import PolicyDenied, PolicyGate
@@ -71,12 +71,13 @@ try:
     )
 
     # --- Case 2: the whole standard chain is mounted ------------------------
-    agent = _agent()
-    chain = [cls(agent) for cls in STANDARD_CHAIN]
+    # S3 replaced STANDARD_CHAIN with build_chain(agent); S4 moved audit out of the
+    # chain to become an EventBus subscriber, so the count is 11 rather than 12.
+    chain = build_chain(_agent())
     orders = [m.order for m in chain]
     check(
-        "2. all 12 standard middleware mount with distinct orders",
-        len(chain) == 12 and len(set(orders)) == 12,
+        "2. the standard middleware mount with distinct orders",
+        len(chain) == 11 and len(set(orders)) == 11,
         f"mounted={len(chain)}, distinct_orders={len(set(orders))}",
     )
 

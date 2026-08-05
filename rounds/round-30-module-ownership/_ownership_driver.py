@@ -75,9 +75,10 @@ check(
 
 # --- Case 2: the chain is still complete ------------------------------------
 chain = build_chain(_agent())
+# 11 since S4 moved audit out of the chain to become an EventBus subscriber.
 check(
-    "2. the chain is still 12 modules with distinct orders",
-    len(chain) == 12 and len({m.order for m in chain}) == 12,
+    "2. the chain is still complete, with distinct orders",
+    len(chain) == 11 and len({m.order for m in chain}) == 11,
     f"modules={len(chain)}",
 )
 
@@ -220,7 +221,7 @@ check(
 scoped = _agent()._build_pipeline().scoped_names()
 check(
     "10. the streaming chain still mounts the migrated policy/cost/capability",
-    scoped == ["policy", "cost", "audit", "depth", "capability"],
+    scoped == ["policy", "cost", "depth", "capability"],
     f"scoped={scoped}",
 )
 

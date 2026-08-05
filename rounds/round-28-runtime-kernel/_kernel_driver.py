@@ -323,24 +323,49 @@ check(
     f"blocked_by={getattr(blocked[0], 'blocked_by', None) if blocked else None}",
 )
 
-# --- Case 10: the kernel has no consumers yet -------------------------------
-# S1's claim is zero behaviour change. Verify no shipped module imports it.
+# --- Case 10: the kernel imports NO subsystem -------------------------------
+# This case originally asserted "nothing consumes the kernel yet", which was S1's
+# zero-behaviour-change claim. S2 onwards consumes it deliberately, so that snapshot
+# expired. The ENDURING property — the one V3 exists to establish — is the import
+# DIRECTION: subsystems may depend on the kernel, never the reverse.
+import ast
 import subprocess
 
+runtime_dir = Path(__import__("lottie").__file__).parent / "runtime"
+forbidden = ("lottie.core", "lottie.governance", "lottie.memory", "lottie.security", "lottie.llm")
+offenders: list[str] = []
+for module in runtime_dir.rglob("*.py"):
+    if "tests" in module.parts:
+        continue
+    tree = ast.parse(module.read_text(encoding="utf-8"))
+    for node in ast.walk(tree):
+        names: list[str] = []
+        if isinstance(node, ast.Import):
+            names = [a.name for a in node.names]
+        elif isinstance(node, ast.ImportFrom) and node.module:
+            names = [node.module]
+        for name in names:
+            if any(name == f or name.startswith(f + ".") for f in forbidden):
+                offenders.append(f"{module.name} imports {name}")
+check(
+    "10. the kernel imports NO subsystem — the dependency direction holds",
+    offenders == [],
+    f"offenders={offenders or 'none'}",
+)
+
+# --- Case 11: and it IS consumed, which is the point ------------------------
 grep = subprocess.run(
     ["grep", "-rl", "lottie.runtime", str(Path(__import__("lottie").__file__).parent)],
     capture_output=True,
     text=True,
 )
 consumers = [
-    line
-    for line in grep.stdout.splitlines()
-    if "/runtime/" not in line and line.endswith(".py")
+    line for line in grep.stdout.splitlines() if "/runtime/" not in line and line.endswith(".py")
 ]
 check(
-    "10. no shipped module consumes the kernel yet (zero behaviour change)",
-    consumers == [],
-    f"consumers={consumers}",
+    "11. subsystems DO consume the kernel (S2+ mounted it)",
+    len(consumers) > 0,
+    f"consumers={len(consumers)}",
 )
 
 passed = sum(1 for _, ok, _ in results if ok)

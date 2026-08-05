@@ -27,7 +27,7 @@
     {
       "name": "5. recall injects semantic notes only \u2014 no raw trajectory in the prompt",
       "pass": true,
-      "detail": "prefix_len=253"
+      "detail": "prompt_len=359"
     },
     {
       "name": "6. injection-like trajectory rejected by the write gate, not stored",

@@ -70,9 +70,11 @@ def _agent(**cfg: object) -> _Streaming:
 
 # --- Case 1: the streaming chain is the scoped subset -----------------------
 names = _agent()._build_pipeline().scoped_names()
+# S4 moved audit out of the chain to become an EventBus subscriber, so it is no longer
+# a scoped middleware. Case 5 still verifies the stream IS audited — via the bus now.
 check(
-    "1. the streaming chain is exactly policy, cost, audit, depth, capability",
-    names == ["policy", "cost", "audit", "depth", "capability"],
+    "1. the streaming chain is exactly policy, cost, depth, capability",
+    names == ["policy", "cost", "depth", "capability"],
     f"names={names}",
 )
 

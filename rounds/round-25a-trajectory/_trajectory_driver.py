@@ -147,13 +147,16 @@ recall_cfg = AgentConfig.model_validate(
         },
     }
 )
+# V3 S5 moved `_load_recall` into RecallMiddleware, so this now observes what the
+# provider ACTUALLY received rather than poking a method that no longer exists on the
+# agent. Stronger assertion for the same guarantee.
 recaller = _digest(["answer"], recall_cfg)
-recaller._load_recall()
-prefix = recaller._recall_prefix
+recaller.run(DigestAgentInput(query="what did we learn"))
+sent = "\n".join(m.content for m in recaller.llm.calls[-1])
 check(
     "5. recall injects semantic notes only — no raw trajectory in the prompt",
-    "digest summarises short queries" in prefix and '"task"' not in prefix,
-    f"prefix_len={len(prefix)}",
+    "digest summarises short queries" in sent and '"task"' not in sent,
+    f"prompt_len={len(sent)}",
 )
 
 # --- Case 6: injection-like task is gated out -------------------------------
