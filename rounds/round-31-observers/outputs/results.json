@@ -1,0 +1,53 @@
+{
+  "round": "31",
+  "slice": "V3 S4 \u2014 observers as subscribers",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. audit is no longer a middleware \u2014 it is an observer",
+      "pass": true,
+      "detail": "chain=['capability', 'cost', 'depth', 'policy', 'recall', 'reflect', 'security_input', 'security_output', 'session', 'trajectory', 'verify']"
+    },
+    {
+      "name": "2. a successful run is still audited, still root=True",
+      "pass": true,
+      "detail": "rows=1, status=ok"
+    },
+    {
+      "name": "3. the record still carries the input hash, provider and timing",
+      "pass": true,
+      "detail": "provider=mock/mock-model"
+    },
+    {
+      "name": "4. a failed run is audited status=error with the message",
+      "pass": "ValueError('query cannot be empty')",
+      "detail": "status=error"
+    },
+    {
+      "name": "5. a completed stream is audited with no output hash",
+      "pass": true,
+      "detail": "status=ok"
+    },
+    {
+      "name": "6. a CANCELLED stream is audited as partial, never as ok",
+      "pass": true,
+      "detail": "status=error, error='stream closed before completion'"
+    },
+    {
+      "name": "7. a denied run keeps its governance-specific status (gate audits it, not the bus)",
+      "pass": true,
+      "detail": "status=denied"
+    },
+    {
+      "name": "8. a sabotaging observer cannot fail the run, and audit still lands",
+      "pass": true,
+      "detail": "result='an answer', audited=1"
+    },
+    {
+      "name": "9. AuditSubscriber constructs from a logger alone, with no agent",
+      "pass": true,
+      "detail": "no BaseAgent in its constructor"
+    }
+  ]
+}
