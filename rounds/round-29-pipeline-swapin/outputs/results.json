@@ -10,9 +10,9 @@
       "detail": "result='an answer'"
     },
     {
-      "name": "2. all 12 standard middleware mount with distinct orders",
+      "name": "2. the standard middleware mount with distinct orders",
       "pass": true,
-      "detail": "mounted=12, distinct_orders=12"
+      "detail": "mounted=11, distinct_orders=11"
     },
     {
       "name": "3. the run is still audited, and still flagged root",

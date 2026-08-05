@@ -5,9 +5,9 @@
   "total": 9,
   "cases": [
     {
-      "name": "1. the streaming chain is exactly policy, cost, audit, depth, capability",
+      "name": "1. the streaming chain is exactly policy, cost, depth, capability",
       "pass": true,
-      "detail": "names=['policy', 'cost', 'audit', 'depth', 'capability']"
+      "detail": "names=['policy', 'cost', 'depth', 'capability']"
     },
     {
       "name": "2. verify / security_output / reflect are absent (a stream has no Output)",

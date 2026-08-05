@@ -1,8 +1,8 @@
 {
   "round": "28",
   "slice": "V3 S1 \u2014 runtime kernel",
-  "passed": 11,
-  "total": 11,
+  "passed": 12,
+  "total": 12,
   "cases": [
     {
       "name": "1. a realistic gate chain runs pre low-to-high, post high-to-low",
@@ -55,9 +55,14 @@
       "detail": "blocked_by=policy"
     },
     {
-      "name": "10. no shipped module consumes the kernel yet (zero behaviour change)",
+      "name": "10. the kernel imports NO subsystem \u2014 the dependency direction holds",
       "pass": true,
-      "detail": "consumers=[]"
+      "detail": "offenders=none"
+    },
+    {
+      "name": "11. subsystems DO consume the kernel (S2+ mounted it)",
+      "pass": true,
+      "detail": "consumers=11"
     }
   ]
 }
