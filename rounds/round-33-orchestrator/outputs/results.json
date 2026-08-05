@@ -1,0 +1,53 @@
+{
+  "round": "33",
+  "slice": "V3 S6 \u2014 module orchestrator",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. the mounted chain is reportable, in execution order",
+      "pass": true,
+      "detail": "mounted=11"
+    },
+    {
+      "name": "2. the chain is ordered and every position is distinct",
+      "pass": true,
+      "detail": "orders=[10, 20, 30, 34, 36, 40, 60, 70, 75, 80, 90]"
+    },
+    {
+      "name": "3. a module can be disabled per agent",
+      "pass": true,
+      "detail": "mounted=10"
+    },
+    {
+      "name": "4. a disabled module is never constructed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "5. an agent with a disabled module still runs",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6. a typo'd module name is detectable rather than silently inert",
+      "pass": true,
+      "detail": "unknown={'recal'}, still_mounted=11"
+    },
+    {
+      "name": "7. disabling a fail-closed gate is visible in the mounted chain",
+      "pass": true,
+      "detail": "mounted=10"
+    },
+    {
+      "name": "8. two modules claiming one slot is rejected at composition",
+      "pass": true,
+      "detail": "error=\"module 'policy' claims order 20, already held by 'security_input'\""
+    },
+    {
+      "name": "9. KNOWN_MODULES matches the real chain (doctor cannot drift)",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
