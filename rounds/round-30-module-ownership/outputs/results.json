@@ -1,0 +1,58 @@
+{
+  "round": "30",
+  "slice": "V3 S3 \u2014 module ownership",
+  "passed": 10,
+  "total": 10,
+  "cases": [
+    {
+      "name": "1. security / policy / cost / capability are owned by their subsystems",
+      "pass": true,
+      "detail": "owners={'security_input': 'lottie.security.middleware', 'security_output': 'lottie.security.middleware', 'policy': 'lottie.governance.middleware', 'cost': 'lottie.governance.middleware', 'capability': 'lottie.governance.middleware'}"
+    },
+    {
+      "name": "2. the chain is still 12 modules with distinct orders",
+      "pass": true,
+      "detail": "modules=12"
+    },
+    {
+      "name": "3. the migrated modules construct from a gate alone, with no agent",
+      "pass": true,
+      "detail": "no BaseAgent in their constructors"
+    },
+    {
+      "name": "4. rule 8 \u2014 the input gate still refuses fail-closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "5. rule 9 \u2014 the output gate still withholds fail-closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6. policy still denies AND still audits the block (root=True)",
+      "pass": true,
+      "detail": "blocked=True, status=denied"
+    },
+    {
+      "name": "7. budget still blocks AND still audits status=budget_exceeded",
+      "pass": true,
+      "detail": "blocked=True, status=budget_exceeded"
+    },
+    {
+      "name": "8. rule 11 still blocks an undeclared skill call inside _execute",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "9. an ordinary run is unchanged after the ownership move",
+      "pass": true,
+      "detail": "result='an answer'"
+    },
+    {
+      "name": "10. the streaming chain still mounts the migrated policy/cost/capability",
+      "pass": true,
+      "detail": "scoped=['policy', 'cost', 'audit', 'depth', 'capability']"
+    }
+  ]
+}
