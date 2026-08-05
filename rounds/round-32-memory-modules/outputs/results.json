@@ -1,0 +1,53 @@
+{
+  "round": "32",
+  "slice": "V3 S5 \u2014 memory and session modules",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "1. recall / trajectory / session are owned by their subsystems",
+      "pass": true,
+      "detail": "recall=lottie.memory.middleware, session=lottie.session.middleware"
+    },
+    {
+      "name": "2. the chain is 11 modules with distinct orders (audit left in S4)",
+      "pass": true,
+      "detail": "modules=11"
+    },
+    {
+      "name": "3. episodic trajectory capture still works after the move",
+      "pass": true,
+      "detail": "episodic=1"
+    },
+    {
+      "name": "4. trajectory is still OFF by default",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "5. recall still injects the note as a DATA block (S2a contract)",
+      "pass": true,
+      "detail": "render_as_data block present"
+    },
+    {
+      "name": "6. the recall prefix is cleared after the run",
+      "pass": true,
+      "detail": "prefix=''"
+    },
+    {
+      "name": "7. session history still accumulates across fresh agents",
+      "pass": true,
+      "detail": "runs=2"
+    },
+    {
+      "name": "8. session run history is still hash-only",
+      "pass": true,
+      "detail": "input_sha256 present on every run"
+    },
+    {
+      "name": "9. a failed run is still recorded in the session as an error",
+      "pass": true,
+      "detail": "status=error"
+    }
+  ]
+}
