@@ -1,0 +1,48 @@
+{
+  "round": "35",
+  "slice": "E4 S2 \u2014 reflection as a module",
+  "passed": 8,
+  "total": 8,
+  "cases": [
+    {
+      "name": "1. reflect is owned by the memory subsystem",
+      "pass": true,
+      "detail": "owner=lottie.memory.middleware"
+    },
+    {
+      "name": "2. reflection is still OFF by default",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "3. enabled, a successful run writes a SEMANTIC lesson",
+      "pass": true,
+      "detail": "notes=1"
+    },
+    {
+      "name": "4. reflection is SKIPPED when the run's token cap is already reached",
+      "pass": true,
+      "detail": "notes=0"
+    },
+    {
+      "name": "5. a FAILED run is never reflected on",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6. a reflector failure never fails an already-successful run",
+      "pass": true,
+      "detail": "result='an answer'"
+    },
+    {
+      "name": "7. the lesson lands in SEMANTIC and not EPISODIC (tier follows origin)",
+      "pass": true,
+      "detail": "semantic=1, episodic=0"
+    },
+    {
+      "name": "8. ReflectMiddleware constructs from callables alone, with no agent",
+      "pass": true,
+      "detail": "no BaseAgent in its constructor"
+    }
+  ]
+}
