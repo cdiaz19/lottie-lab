@@ -1,0 +1,63 @@
+{
+  "round": "34",
+  "slice": "E4 S1 \u2014 Context Compiler",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "name": "1. an ordinary agent's prompt is unchanged by the compiler",
+      "pass": true,
+      "detail": "messages=2"
+    },
+    {
+      "name": "2. recall is assembled ahead of the agent's messages, by declared order",
+      "pass": true,
+      "detail": "recall first"
+    },
+    {
+      "name": "3. recall and the agent's messages are both pinned sources",
+      "pass": true,
+      "detail": "pinning={'recall': True, 'agent': True}"
+    },
+    {
+      "name": "4. provenance answers 'which source filled the window?'",
+      "pass": true,
+      "detail": "knowledge=300, task=100"
+    },
+    {
+      "name": "5. over budget, the lowest-order droppable source is given up first",
+      "pass": true,
+      "detail": "dropped=['knowledge']"
+    },
+    {
+      "name": "6. a pinned source is never dropped, even far over budget",
+      "pass": true,
+      "detail": "dropped=[]"
+    },
+    {
+      "name": "7. dropping stops once under budget rather than dropping everything it could",
+      "pass": true,
+      "detail": "dropped=['a']"
+    },
+    {
+      "name": "8. a summariser is preferred over outright dropping",
+      "pass": true,
+      "detail": "summarised, not dropped"
+    },
+    {
+      "name": "9. nothing is summarised when the prompt already fits (no wasted LLM call)",
+      "pass": true,
+      "detail": "summariser_calls=0"
+    },
+    {
+      "name": "10. an assembly failure sends the prompt as-is rather than failing the run",
+      "pass": true,
+      "detail": "result='an answer'"
+    },
+    {
+      "name": "11. a budget stop during assembly propagates, never swallowed",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
