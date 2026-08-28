@@ -1,0 +1,58 @@
+{
+  "round": "36",
+  "slice": "E5 S1 \u2014 provider router",
+  "passed": 10,
+  "total": 10,
+  "cases": [
+    {
+      "name": "1. providers.fallback is finally honoured (config stops lying)",
+      "pass": true,
+      "detail": "chain=['anthropic/primary', 'openai/secondary']"
+    },
+    {
+      "name": "2. a project with no fallback is not wrapped at all",
+      "pass": true,
+      "detail": "type=LiteLLMProvider"
+    },
+    {
+      "name": "3. a transient failure advances to the fallback",
+      "pass": true,
+      "detail": "served='from b'"
+    },
+    {
+      "name": "4. a content-policy refusal is NEVER retried on the fallback",
+      "pass": true,
+      "detail": "secondary_calls=0"
+    },
+    {
+      "name": "5. an auth error fails fast rather than doubling the spend",
+      "pass": true,
+      "detail": "secondary_calls=0"
+    },
+    {
+      "name": "6. an unrecognised provider error defaults to NOT transient",
+      "pass": true,
+      "detail": "new SDK error types cannot silently widen the fallback"
+    },
+    {
+      "name": "7. model reports the provider that actually served, for the audit record",
+      "pass": true,
+      "detail": "model=b"
+    },
+    {
+      "name": "8. a fallback notifies \u2014 it is never silent",
+      "pass": true,
+      "detail": "notified=[('a', 'b')]"
+    },
+    {
+      "name": "9. a mid-stream failure never falls back (no spliced answer from two models)",
+      "pass": true,
+      "detail": "deltas=['partial'], secondary_calls=0"
+    },
+    {
+      "name": "10. a transient failure before the first delta does fall back",
+      "pass": true,
+      "detail": "deltas=['b-delta']"
+    }
+  ]
+}
