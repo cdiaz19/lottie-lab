@@ -62,7 +62,7 @@
     {
       "name": "11. subsystems DO consume the kernel (S2+ mounted it)",
       "pass": true,
-      "detail": "consumers=11"
+      "detail": "consumers=12"
     }
   ]
 }

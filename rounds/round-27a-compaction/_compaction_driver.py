@@ -17,7 +17,7 @@ from pathlib import Path
 
 from lottie.governance.cost import TokenCapExceeded
 from lottie.llm import Message, MockLLMProvider
-from lottie.memory.compaction import SUMMARY_PREFIX
+from lottie.context.compaction import SUMMARY_PREFIX
 from lottie.project.config import AgentConfig
 from lottie.project.discovery import instantiate_agent
 
