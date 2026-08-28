@@ -157,7 +157,7 @@ check(
 degraded = _agent()
 
 
-def _boom(messages: list[Message]) -> list[StaticSource]:
+def _boom(messages: list[Message], extra: object = ()) -> list[StaticSource]:
     raise RuntimeError("assembly down")
 
 
@@ -177,7 +177,7 @@ check(
 capped = _agent()
 
 
-def _cap(messages: list[Message]) -> list[StaticSource]:
+def _cap(messages: list[Message], extra: object = ()) -> list[StaticSource]:
     raise TokenCapExceeded("cap reached")
 
 
