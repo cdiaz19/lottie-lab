@@ -1,0 +1,63 @@
+{
+  "round": "37",
+  "slice": "E6 S1 \u2014 recorded plans and replay",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "name": "1. a completed mesh run records the routing decisions it made",
+      "pass": true,
+      "detail": "plans=1"
+    },
+    {
+      "name": "2. the recorded plan matches the path actually taken",
+      "pass": true,
+      "detail": "steps=[['draft'], ['review']]"
+    },
+    {
+      "name": "3. the plan stores a task HASH, never the task text",
+      "pass": "40ae721d03b271d074a93929c74829ec5e32e03ea66aee45e2f6fac4865a2e2b",
+      "detail": "hash-only, like the audit ledger"
+    },
+    {
+      "name": "4. a plan knows which task it belongs to",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "5. a replayed run makes ZERO supervisor calls",
+      "pass": true,
+      "detail": "path=['draft', 'review']"
+    },
+    {
+      "name": "6. replaying against a changed worker roster fails LOUDLY",
+      "pass": true,
+      "detail": "a silent divergence looks like a reproduction and is not"
+    },
+    {
+      "name": "7. a parallel fan-out is recorded as ONE step, not two",
+      "pass": true,
+      "detail": "steps=[['draft', 'review']]"
+    },
+    {
+      "name": "8. sequential steps are recorded separately (LocalEngine leaves step=0)",
+      "pass": true,
+      "detail": "steps=[['draft'], ['review']]"
+    },
+    {
+      "name": "9. a mesh with no plans root leaves no artefacts",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "10. loading a plan that was never recorded raises",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "11. a traversing thread id cannot escape .lottie/plans/",
+      "pass": true,
+      "detail": "same guard as distill drafts and sessions"
+    }
+  ]
+}
