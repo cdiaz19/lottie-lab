@@ -1,0 +1,63 @@
+{
+  "round": "38",
+  "slice": "E7 \u2014 plugin SDK",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "name": "1. a well-behaved plugin receives real run events",
+      "pass": true,
+      "detail": "events=['RunStarted', 'RunCompleted']"
+    },
+    {
+      "name": "2. a plugin cannot read the task \u2014 events are hash-only",
+      "pass": true,
+      "detail": "events=2, leaked=False"
+    },
+    {
+      "name": "3. a plugin cannot read the output either",
+      "pass": true,
+      "detail": "output_sha256 only"
+    },
+    {
+      "name": "4. a middleware-shaped plugin is refused at load",
+      "pass": true,
+      "detail": "and the error explains why"
+    },
+    {
+      "name": "5. a plugin never enters the middleware chain",
+      "pass": true,
+      "detail": "chain=['capability', 'cost', 'depth', 'policy', 'recall', 'reflect', 'security_input', 'security_output', 'session', 'trajectory', 'verify']"
+    },
+    {
+      "name": "6. a plugin that raises on every event cannot fail the run",
+      "pass": true,
+      "detail": "result='HI'"
+    },
+    {
+      "name": "7. a sabotaging plugin cannot starve the next one",
+      "pass": true,
+      "detail": "survivor_events=2"
+    },
+    {
+      "name": "8. a sabotaging plugin cannot displace the audit record",
+      "pass": true,
+      "detail": "plugins subscribe after audit, and the bus isolates each dispatch"
+    },
+    {
+      "name": "9. a non-subscriber is refused at load, by shape",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "10. nothing loads that the config did not name",
+      "pass": true,
+      "detail": "no discovery step exists"
+    },
+    {
+      "name": "11. an unimportable plugin fails loudly rather than being skipped",
+      "pass": true,
+      "detail": "a silently-skipped exporter would look like it was running"
+    }
+  ]
+}
