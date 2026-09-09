@@ -66,22 +66,38 @@ def _emit(cid: str, body: str, ok: bool) -> bool:
     return ok
 
 
+def _chat_capable() -> set[str]:
+    """Agents declaring a `chat:` block, read from config rather than hardcoded.
+
+    This case used to name the agents literally, which made it assert lab bookkeeping
+    instead of endpoint behaviour: `reviewer` was later given a chat mapping, and the
+    case failed for being out of date rather than for anything the server did wrong.
+    """
+    import yaml
+
+    out = set()
+    for cfg in sorted((LAB_ROOT / "agents").glob("*/config.yaml")):
+        if (yaml.safe_load(cfg.read_text()) or {}).get("chat"):
+            out.add(cfg.parent.name)
+    return out
+
+
 def case_01_models() -> bool:
     resp = _client().get("/v1/models")
     body = resp.json()
     ids = {m["id"] for m in body.get("data", [])}
+    expected = _chat_capable()
     ok = (
         resp.status_code == 200
         and body.get("object") == "list"
-        and "digest" in ids            # chat block present
-        and "reviewer" not in ids      # no chat block
-        and "editor" not in ids        # mesh, no chat block
+        and ids == expected
+        and bool(expected)  # a vacuous match would pass an empty listing
         and all(m["object"] == "model" and m["owned_by"] == "lottie" for m in body["data"])
     )
     return _emit(
         "01-models",
-        "GET /v1/models lists ONLY chat-capable agents (those with a chat: block).\n"
-        f"status={resp.status_code} ids={sorted(ids)} (expect digest in; reviewer/editor out)",
+        "GET /v1/models lists EXACTLY the chat-capable agents (those with a chat: block).\n"
+        f"status={resp.status_code} ids={sorted(ids)} expected={sorted(expected)}",
         ok,
     )
 
@@ -118,9 +134,12 @@ def case_03_model_not_found() -> bool:
         "/v1/chat/completions",
         json={"model": "nope", "messages": [{"role": "user", "content": "hi"}]},
     )
-    nonchat = c.post(  # reviewer exists but declares no chat block
+    # `curator` exists but declares no chat block. This case used to name `reviewer`,
+    # which a later round gave a chat mapping — so the case was asserting a 404 against
+    # an agent that had legitimately become chat-exposed.
+    nonchat = c.post(
         "/v1/chat/completions",
-        json={"model": "reviewer", "messages": [{"role": "user", "content": "hi"}]},
+        json={"model": "curator", "messages": [{"role": "user", "content": "hi"}]},
     )
     ok = (
         unknown.status_code == 404
@@ -132,7 +151,7 @@ def case_03_model_not_found() -> bool:
         "03-model-not-found",
         "Unknown model AND a non-chat agent both -> 404 model_not_found.\n"
         f"unknown={unknown.status_code}/{unknown.json()['error']['code']} "
-        f"reviewer={nonchat.status_code}/{nonchat.json()['error']['code']}",
+        f"curator={nonchat.status_code}/{nonchat.json()['error']['code']}",
         ok,
     )
 
@@ -150,15 +169,19 @@ def case_04_bad_requests() -> bool:
     malformed = c.post(  # missing required `model`
         "/v1/chat/completions", json={"messages": [{"role": "user", "content": "hi"}]}
     )
+    # `stream: true` was a 400 when this round was written; SSE shipped afterwards, so
+    # the correct assertion is now that it streams — 200 with an event-stream content
+    # type — and only the genuinely malformed requests are refused.
     ok = (
-        stream.status_code == 400
-        and stream.json()["error"]["type"] == "invalid_request_error"
+        stream.status_code == 200
+        and stream.headers.get("content-type", "").startswith("text/event-stream")
         and no_user.status_code == 400
+        and no_user.json()["error"]["type"] == "invalid_request_error"
         and malformed.status_code == 400
     )
     return _emit(
         "04-bad-requests",
-        "stream:true / no user message / missing model -> 400 invalid_request_error.\n"
+        "stream:true -> SSE 200; no user message / missing model -> 400 invalid_request_error.\n"
         f"stream={stream.status_code} no_user={no_user.status_code} malformed={malformed.status_code}",
         ok,
     )

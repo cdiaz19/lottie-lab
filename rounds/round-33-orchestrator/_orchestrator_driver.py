@@ -21,7 +21,7 @@ from lottie.core.middleware import KNOWN_MODULES, build_chain
 from lottie.llm import MockLLMProvider
 from lottie.project.config import AgentConfig
 from lottie.project.discovery import instantiate_agent
-from lottie.runtime.registry import ModuleConflictError
+from lottie.runtime.middleware import ModuleConflictError
 
 from agents.digest.agent import DigestAgent
 from agents.digest.schema import DigestAgentInput

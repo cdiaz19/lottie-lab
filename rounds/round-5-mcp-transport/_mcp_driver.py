@@ -70,10 +70,20 @@ def _check(case: dict[str, Any], result: dict[str, Any]) -> int:
             if name not in got:
                 print(f"  MISS tool: {name}", file=sys.stderr)
                 miss = 1
+        # Every tool must publish an input schema — an empty one gives a caller nothing
+        # to fill in, which is the failure this case exists to catch.
+        for t in result.get("tools", []):
+            if not t["schema_props"]:
+                print(f"  MISS: tool {t['name']} publishes an empty schema", file=sys.stderr)
+                miss = 1
+        # The named prop is checked only on the tools this case NAMES. Agents added to the
+        # lab later have their own input fields (curator takes `text`, editor a mesh task),
+        # and demanding one agent's field name of every agent asserts nothing real.
         prop = case.get("_expect_schema_prop")
         if prop:
+            expected = set(case["_expect_tools"])
             for t in result.get("tools", []):
-                if prop not in t["schema_props"]:
+                if t["name"] in expected and prop not in t["schema_props"]:
                     print(f"  MISS schema prop {prop} on {t['name']}", file=sys.stderr)
                     miss = 1
     if case.get("_expect_not_error") and result.get("isError"):

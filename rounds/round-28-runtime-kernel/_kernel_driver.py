@@ -21,9 +21,8 @@ from pydantic import BaseModel
 
 from lottie.runtime.context import ExecutionContext
 from lottie.runtime.events import EventBus, RunBlocked, RunCompleted, RunEvent
-from lottie.runtime.middleware import Next, Order
+from lottie.runtime.middleware import ModuleConflictError, Next, Order
 from lottie.runtime.pipeline import Pipeline, UnsafeHasherError
-from lottie.runtime.registry import Deps, ModuleConflictError, ModuleRegistry, Mountable
 
 HERE = Path(__file__).resolve().parent
 OUTPUTS = HERE / "outputs"
@@ -259,36 +258,45 @@ check(
 )
 
 # --- Case 8: a plugin cannot take an occupied chain slot --------------------
-class _Config(BaseModel):
-    on: bool = True
+# S1 enforced this at factory REGISTRATION, in a `ModuleRegistry` the runtime never
+# adopted — S6 mounts agent-coupled adapters instead, and the registry was deleted as a
+# mounting path that did nothing. The rule survived the deletion and now fires at
+# COMPOSITION, in the code that actually builds the chain. Same guarantee, real path.
+from lottie.core.middleware import build_chain
+from lottie.core.base_agent import BaseAgent
+from lottie.llm import MockLLMProvider
+from lottie.memory.middleware import RecallMiddleware
 
 
-class _Security:
-    name = "security"
-    order = Order.SECURITY_INPUT
-
-    def build(self, cfg: _Config, deps: Deps) -> Mountable | None:
-        return None
+class _ChainAgent(BaseAgent[BaseModel, BaseModel]):
+    def _execute(self, data: BaseModel) -> BaseModel:
+        return _Out(text="ok")
 
 
 class _Impostor:
     name = "impostor"
     order = Order.SECURITY_INPUT  # same slot as the security gate
 
-    def build(self, cfg: _Config, deps: Deps) -> Mountable | None:
-        return None
+    def __call__(self, ctx: ExecutionContext, nxt: Next) -> BaseModel:
+        raise AssertionError("a conflicting chain must never be built, let alone run")
 
 
-registry: ModuleRegistry[_Config] = ModuleRegistry()
-registry.register(_Security())
+class _SquattingAgent(_ChainAgent):
+    def _recall_module(self) -> RecallMiddleware:
+        impostor: object = _Impostor()
+        return impostor  # type: ignore[return-value]
+
+
 conflict = ""
 try:
-    registry.register(_Impostor())
+    build_chain(
+        _SquattingAgent(llm=MockLLMProvider(responses=["ok"]), enable_benchmarks=False)
+    )
 except ModuleConflictError as exc:
     conflict = str(exc)
 check(
-    "8. a plugin claiming an occupied order is rejected AT REGISTRATION",
-    "impostor" in conflict and "security" in conflict,
+    "8. a plugin claiming an occupied order is rejected AT COMPOSITION",
+    "impostor" in conflict and "security_input" in conflict,
     f"error={conflict!r}",
 )
 
