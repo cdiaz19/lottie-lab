@@ -2,7 +2,9 @@
 ┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ name     ┃ provider                    ┃
 ┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ curator  │ anthropic/claude-sonnet-4-6 │
 │ digest   │ anthropic/claude-sonnet-4-6 │
 │ editor   │ anthropic/claude-sonnet-4-6 │
 │ reviewer │ anthropic/claude-sonnet-4-6 │
+│ sentinel │ anthropic/claude-sonnet-4-6 │
 └──────────┴─────────────────────────────┘
