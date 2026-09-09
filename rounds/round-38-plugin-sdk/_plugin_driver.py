@@ -8,6 +8,7 @@ here probes that boundary.
 
 from __future__ import annotations
 
+import importlib
 import json
 import sys
 import tempfile
@@ -204,6 +205,49 @@ try:
         "11. an unimportable plugin fails loudly rather than being skipped",
         fatal,
         "a silently-skipped exporter would look like it was running",
+    )
+
+    # --- Case 12: there is ONE extension path, and it is subscribers -------
+    # S1 shipped a `ModuleRegistry` for third-party module factories that the runtime
+    # never adopted — S6 mounted agent-coupled adapters instead, because every real
+    # module needs the agent, not the `Deps(bus, root)` the registry offered. Leaving it
+    # in place advertised a mounting path that did nothing: an author would register a
+    # factory and silently get no module. It was deleted; this pins that it stays gone.
+    registry_gone = False
+    try:
+        importlib.import_module("lottie.runtime.registry")
+    except ModuleNotFoundError:
+        registry_gone = True
+    check(
+        "12. no second, dead mounting path — a plugin is a subscriber or nothing",
+        registry_gone,
+        "a factory registry that mounts nothing is worse than no API at all",
+    )
+
+    # --- Case 13: the order-conflict guard survived the deletion -----------
+    # It is the one rule the registry held that mattered: a plugin must never be able to
+    # take a security gate's slot. It moved to the code that composes the real chain.
+    from lottie.core.middleware import build_chain
+    from lottie.runtime.middleware import ModuleConflictError, Order
+
+    class _Squatter:
+        name = "squatter"
+        order = Order.SECURITY_INPUT
+
+        def __call__(self, ctx, nxt):  # pragma: no cover
+            raise AssertionError("a conflicting chain must never be built")
+
+    squat_agent = _agent()
+    squat_agent._recall_module = lambda: _Squatter()
+    refused = False
+    try:
+        build_chain(squat_agent)
+    except ModuleConflictError:
+        refused = True
+    check(
+        "13. a module claiming the input gate's slot is refused at composition",
+        refused,
+        "displacing a security gate must fail at startup, not at run time",
     )
 
 finally:

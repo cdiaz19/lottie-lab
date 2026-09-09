@@ -1,8 +1,8 @@
 {
   "round": "38",
   "slice": "E7 \u2014 plugin SDK",
-  "passed": 11,
-  "total": 11,
+  "passed": 13,
+  "total": 13,
   "cases": [
     {
       "name": "1. a well-behaved plugin receives real run events",
@@ -58,6 +58,16 @@
       "name": "11. an unimportable plugin fails loudly rather than being skipped",
       "pass": true,
       "detail": "a silently-skipped exporter would look like it was running"
+    },
+    {
+      "name": "12. no second, dead mounting path \u2014 a plugin is a subscriber or nothing",
+      "pass": true,
+      "detail": "a factory registry that mounts nothing is worse than no API at all"
+    },
+    {
+      "name": "13. a module claiming the input gate's slot is refused at composition",
+      "pass": true,
+      "detail": "displacing a security gate must fail at startup, not at run time"
     }
   ]
 }
