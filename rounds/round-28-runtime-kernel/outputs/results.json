@@ -45,9 +45,9 @@
       "detail": ""
     },
     {
-      "name": "8. a plugin claiming an occupied order is rejected AT REGISTRATION",
+      "name": "8. a plugin claiming an occupied order is rejected AT COMPOSITION",
       "pass": true,
-      "detail": "error=\"module 'impostor' claims order 10, already held by 'security'\""
+      "detail": "error=\"module 'impostor' claims order 10, already held by 'security_input'\""
     },
     {
       "name": "9. a refused run emits RunBlocked naming the gate that refused",
@@ -62,7 +62,7 @@
     {
       "name": "11. subsystems DO consume the kernel (S2+ mounted it)",
       "pass": true,
-      "detail": "consumers=18"
+      "detail": "consumers=19"
     }
   ]
 }

@@ -1,3 +1,3 @@
-GET /v1/models lists ONLY chat-capable agents (those with a chat: block).
-status=200 ids=['digest', 'reviewer'] (expect digest in; reviewer/editor out)
-RESULT: FAIL
+GET /v1/models lists EXACTLY the chat-capable agents (those with a chat: block).
+status=200 ids=['digest', 'reviewer'] expected=['digest', 'reviewer']
+RESULT: PASS

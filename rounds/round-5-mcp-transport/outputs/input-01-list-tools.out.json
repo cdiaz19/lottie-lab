@@ -1,13 +1,32 @@
 {
   "tools": [
     {
+      "name": "curator",
+      "schema_props": [
+        "text"
+      ]
+    },
+    {
       "name": "digest",
       "schema_props": [
         "query"
       ]
     },
     {
+      "name": "editor",
+      "schema_props": [
+        "max_steps",
+        "task"
+      ]
+    },
+    {
       "name": "reviewer",
+      "schema_props": [
+        "query"
+      ]
+    },
+    {
+      "name": "sentinel",
       "schema_props": [
         "query"
       ]
