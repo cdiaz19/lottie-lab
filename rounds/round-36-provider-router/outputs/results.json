@@ -1,8 +1,8 @@
 {
   "round": "36",
   "slice": "E5 S1 \u2014 provider router",
-  "passed": 10,
-  "total": 10,
+  "passed": 12,
+  "total": 12,
   "cases": [
     {
       "name": "1. providers.fallback is finally honoured (config stops lying)",
@@ -53,6 +53,16 @@
       "name": "10. a transient failure before the first delta does fall back",
       "pass": true,
       "detail": "deltas=['b-delta']"
+    },
+    {
+      "name": "11. a fallback reaches the event bus, where a plugin can see it",
+      "pass": true,
+      "detail": "events=1"
+    },
+    {
+      "name": "12. the event carries the exception TYPE, never its message",
+      "pass": true,
+      "detail": "reason='RateLimitError'"
     }
   ]
 }
