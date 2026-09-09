@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import sys
+import warnings
 import tempfile
 from collections.abc import Generator, Mapping
 from pathlib import Path
@@ -203,6 +204,71 @@ check(
     "10. a transient failure before the first delta does fall back",
     recovered == ["b-delta"],
     f"deltas={recovered}",
+)
+
+# --- Case 11: a fallback now reaches the EVENT BUS ------------------------
+# E5 shipped with a stated deviation: the design said a fallback would emit on the bus
+# and it did not, because the provider is built before the agent that owns it. E7 made
+# the bus a public extension point, which made the gap worth closing.
+from pydantic import BaseModel
+
+from lottie.core.base_agent import BaseAgent
+from lottie.project.config import AgentConfig
+from lottie.project.discovery import instantiate_agent
+from lottie.runtime.events import ProviderFallback, RunEvent
+
+
+class _In(BaseModel):
+    task: str
+
+
+class _Out(BaseModel):
+    answer: str
+
+
+class _EchoAgent(BaseAgent[_In, _Out]):
+    def _execute(self, data: _In) -> _Out:
+        return _Out(answer=self.complete([Message(role="user", content=data.task)]).content)
+
+
+class _Collector:
+    name = "collector"
+
+    def __init__(self) -> None:
+        self.seen: list[RunEvent] = []
+
+    def on_event(self, event: RunEvent) -> None:
+        self.seen.append(event)
+
+
+collector = _Collector()
+routed = RoutedProvider([_Fake("primary/x", raises=RateLimitError()), _Fake("fallback/y")])
+bus_agent = instantiate_agent(
+    _EchoAgent,  # type: ignore[arg-type]
+    llm=routed,
+    root=_project(None),
+    config=AgentConfig.model_validate({"provider": "mock/sim"}),
+    enable_benchmarks=False,
+)
+bus_agent.set_plugins([collector])  # type: ignore[arg-type]
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    bus_agent.run(_In(task="hi"))
+fallbacks = [e for e in collector.seen if isinstance(e, ProviderFallback)]
+check(
+    "11. a fallback reaches the event bus, where a plugin can see it",
+    len(fallbacks) == 1
+    and fallbacks[0].failed_model == "primary/x"
+    and fallbacks[0].fallback_model == "fallback/y",
+    f"events={len(fallbacks)}",
+)
+
+# --- Case 12: the reason is the exception TYPE, not its message -----------
+# An error string can carry a prompt fragment or a key; events are scalar-and-hash only.
+check(
+    "12. the event carries the exception TYPE, never its message",
+    fallbacks and fallbacks[0].reason == "RateLimitError",
+    f"reason={fallbacks[0].reason if fallbacks else None!r}",
 )
 
 passed = sum(1 for _, ok, _ in results if ok)
