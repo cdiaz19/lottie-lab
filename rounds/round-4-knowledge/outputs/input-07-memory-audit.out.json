@@ -2,5 +2,7 @@
 
 No orphans.
 
-⚠ 1 stale document(s) (last_verified > 90 days ago):
+⚠ 3 stale document(s) (last_verified > 90 days ago):
+  • global/conventions
   • lottie/api
+  • lottie/auth
