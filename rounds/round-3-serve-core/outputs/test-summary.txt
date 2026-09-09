@@ -1,5 +1,4 @@
-Round 3 — verify run (lottie-orchestrator @ 9acb48b, PR #4 merged)
-venv: lottie-orchestrator/.venv  (python 3.12.13, pytest 9.0.3)
+Round 3 — verify run
 
 pytest src/lottie/serve     -v   : 15 passed
 pytest src/lottie/memory    -v   : 18 passed

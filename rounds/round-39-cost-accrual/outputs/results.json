@@ -1,0 +1,52 @@
+[
+  {
+    "case": "1. the audit row carries the run's real cost, not zero",
+    "pass": true,
+    "detail": "cost_usd=0.04"
+  },
+  {
+    "case": "2. the audit row carries the run's real token counts",
+    "pass": true,
+    "detail": "tokens=10/20"
+  },
+  {
+    "case": "3. the ledger agrees with the agent's own metrics",
+    "pass": true,
+    "detail": "ledger=0.04 metrics=0.04"
+  },
+  {
+    "case": "4. total_cost accumulates across runs",
+    "pass": true,
+    "detail": "total=$0.1200"
+  },
+  {
+    "case": "5. the cumulative budget breaker refuses the run after the budget is crossed",
+    "pass": true,
+    "detail": "outcomes=['ok', 'ok', 'BudgetExceeded']"
+  },
+  {
+    "case": "6. the blocked run never spent a token \u2014 the gate is fail-closed",
+    "pass": true,
+    "detail": "provider_calls=2 (expect 2, the two admitted runs)"
+  },
+  {
+    "case": "7. `lottie audit` renders the real cost to an operator",
+    "pass": true,
+    "detail": "exit=0"
+  },
+  {
+    "case": "8. a plugin subscriber sees the real cost on RunCompleted",
+    "pass": true,
+    "detail": "events=1 cost=0.04"
+  },
+  {
+    "case": "9. the usage accumulator is cleared even when a gate aborts the run",
+    "pass": true,
+    "detail": "blocked=True active_ctx=None"
+  },
+  {
+    "case": "10. a genuinely free run still records $0.00",
+    "pass": true,
+    "detail": "cost=0.0 tokens=10/20"
+  }
+]
