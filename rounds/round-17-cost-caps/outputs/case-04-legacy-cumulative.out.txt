@@ -1,3 +1,4 @@
 PASS — 04-legacy-cumulative
 
 budget_usd=0, max_run_usd=None -> legacy cumulative check blocks (spent 0 >= 0). blocked=True
+Control: budget_usd=1.0 with an empty ledger ADMITS, so the block is the budget and not an always-on gate. admitted=True

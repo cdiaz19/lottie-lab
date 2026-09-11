@@ -1,9 +1,8 @@
 {
-  "digest": "The text contains no substantive information about multi-agent AI systems, as the source context was empty or unavailable. The author acknowledges this limitation and requests that relevant context passages be provided before answering. No factual claims or conclusions can be drawn from the material presented.",
+  "digest": "The response contains no substantive information about multi-agent AI systems, as the author indicates they were not provided with any context to draw from and is simply requesting that the necessary source material be supplied before answering.",
   "points": [
-    "The provided text contains no actual content about multi-agent AI systems.",
-    "The absence of context passages means no grounded or meaningful summary can be produced.",
-    "The author requests relevant source material before proceeding with a response."
+    "No context or source material was provided to support a meaningful response about multi-agent AI systems.",
+    "The author is requesting the relevant context passages before proceeding with an accurate, grounded answer."
   ],
   "citations": []
 }
