@@ -51,6 +51,27 @@ class _UsageProvider(LLMProvider):
         )
 
 
+class _PricedProvider(_UsageProvider):
+    """A provider that reports a real cost, so committed spend accrues in the ledger.
+
+    `_UsageProvider` reports cost_usd=0.0, which is exactly why this round passed
+    unchanged through the regression that left the audit ledger recording free runs:
+    with no cost to lose, there was nothing to notice.
+    """
+
+    def __init__(self, in_tok: int, out_tok: int, cost: float) -> None:
+        super().__init__(in_tok, out_tok)
+        self._cost = cost
+
+    def complete(
+        self, messages: list[Message], model_params: Mapping[str, object] | None = None
+    ) -> LLMResponse:
+        base = super().complete(messages, model_params)
+        return LLMResponse(
+            content=base.content, usage=base.usage, model=base.model, cost_usd=self._cost
+        )
+
+
 def _config(**kw: object) -> AgentConfig:
     return AgentConfig.model_validate({"provider": "usage/sim", **kw})
 
@@ -132,10 +153,22 @@ def case_04_legacy_budget_still_blocks() -> bool:
             a.run(DigestAgentInput(query="x"))
         except BudgetExceeded:
             blocked = True
+        # Positive control: budget 0 blocks for ANY ledger state, including a broken one
+        # that always reads zero. Assert the same config with headroom ADMITS the run, so
+        # the block above is attributable to the budget and not to a permanently-on gate.
+        b = _digest(root, _UsageProvider(1, 1), budget_usd=1.0)
+        admitted = False
+        try:
+            b.run(DigestAgentInput(query="y"))
+            admitted = True
+        except BudgetExceeded:
+            pass
         return _emit(
             "04-legacy-cumulative",
-            f"budget_usd=0, max_run_usd=None -> legacy cumulative check blocks (spent 0 >= 0). blocked={blocked}",
-            blocked,
+            f"budget_usd=0, max_run_usd=None -> legacy cumulative check blocks (spent 0 >= 0). "
+            f"blocked={blocked}\nControl: budget_usd=1.0 with an empty ledger ADMITS, so the "
+            f"block is the budget and not an always-on gate. admitted={admitted}",
+            blocked and admitted,
         )
 
 
@@ -159,6 +192,38 @@ def case_05_fail_closed_disabled_ledger() -> bool:
         )
 
 
+def case_06_committed_spend_constrains_the_next_reservation() -> bool:
+    """The case that was DEAD: real spend from a finished run must shrink the headroom.
+
+    budget $10, max_run_usd $6, $5 per run. Run 1 is admitted ($0 committed + $6 hold).
+    It settles, leaving $5 committed. Run 2 needs $5 + $6 = $11 > $10, so it is refused.
+
+    While the audit ledger recorded every run as free, committed stayed $0 forever and run
+    2 was admitted — `max_run_usd` and `budget_usd` together bounded nothing but
+    concurrency. Every other case in this round still passed, because none of them spent
+    anything.
+    """
+    with tempfile.TemporaryDirectory() as d:
+        root = Path(d)
+        a = _digest(root, _PricedProvider(1, 1, 5.0), budget_usd=10.0, max_run_usd=6.0)
+        a.run(DigestAgentInput(query="x"))  # admitted; settles, committing $5
+        from lottie.governance.audit import SqliteAuditLogger
+
+        committed = SqliteAuditLogger(root).total_cost("DigestAgent")
+        blocked = False
+        try:
+            a.run(DigestAgentInput(query="y"))
+        except BudgetExceeded:
+            blocked = True
+        return _emit(
+            "06-committed-spend",
+            f"budget=10, max_run_usd=6, $5/run. Run 1 admitted and settled -> committed="
+            f"${committed:.2f}. Run 2 needs committed+amount=11 > 10 -> refused. "
+            f"blocked={blocked}",
+            blocked and abs(committed - 5.0) < 1e-9,
+        )
+
+
 def main() -> int:
     OUTPUTS.mkdir(parents=True, exist_ok=True)
     cases = [
@@ -167,6 +232,7 @@ def main() -> int:
         case_03_token_cap_aborts_runaway,
         case_04_legacy_budget_still_blocks,
         case_05_fail_closed_disabled_ledger,
+        case_06_committed_spend_constrains_the_next_reservation,
     ]
     results = [c() for c in cases]
     passed, total = sum(results), len(results)

@@ -2,7 +2,7 @@
 ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━┳━━━━━━━━━━━━┓
 ┃ ts        ┃ agent     ┃ status ┃ root ┃ tokens ┃ cost     ┃ ms  ┃ in/out     ┃
 ┡━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━╇━━━━━━━━━━━━┩
-│ 2026-09-… │ DigestAg… │ ok     │ Y    │ 10/20  │ 0.010000 │ 0.0 │ 6d23a0eb/… │
+│ 2026-09-… │ DigestAg… │ ok     │ Y    │ 10/20  │ 0.010000 │ 0.1 │ 6d23a0eb/… │
 └───────────┴───────────┴────────┴──────┴────────┴──────────┴─────┴────────────┘
-[92m15:55:14 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
-[92m15:55:14 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m23:25:43 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m23:25:43 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'

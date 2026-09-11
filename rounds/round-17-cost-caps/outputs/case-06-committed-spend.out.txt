@@ -1,0 +1,3 @@
+PASS — 06-committed-spend
+
+budget=10, max_run_usd=6, $5/run. Run 1 admitted and settled -> committed=$5.00. Run 2 needs committed+amount=11 > 10 -> refused. blocked=True
